@@ -1,7 +1,9 @@
+import { Stories } from "./components/stories/stories";
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      <Stories />
     </div>
   );
 }
