@@ -1,10 +1,11 @@
-import { Stories } from "./components/stories/stories";
+import { Routes } from "./routes/Routes";
+
 
 function App() {
   return (
-    <div>
-      <Stories />
-    </div>
+    <>
+      <Routes/>
+    </>
   );
 }
 
