@@ -1,4 +1,4 @@
-import { Stories } from "./components/stories/stories";
+import { Stories } from "./components/stories/Stories";
 
 function App() {
   return (
