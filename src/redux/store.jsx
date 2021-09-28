@@ -1,7 +1,8 @@
-import {applyMiddleware, combineReducer, compose, createStore} from 'redux'
+import {applyMiddleware, combineReducers, compose, createStore} from 'redux'
 import thunk from 'redux-thunk'
-const rootReducer = combineReducer({
-
+import { homeReducer } from './reducer';
+const rootReducer = combineReducers({
+    homeReducer
 })
 
 const composedEnhancer =
