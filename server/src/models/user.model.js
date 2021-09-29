@@ -7,7 +7,7 @@ const reqString = {
     required: true,
     trim: true,
 };
-
+const sample = "https://cdn.dribbble.com/users/2878951/screenshots/14013747/media/603f0b853c409547dfa51cba996f375c.png?compress=1&resize=400x300"
 const usersSchema = new mongoose.Schema(
     {
         username: reqString,
@@ -16,7 +16,7 @@ const usersSchema = new mongoose.Schema(
         gender: { type: String, default: null },
         bio: { type: String, default: null },
         password: reqString,
-        profilePic: { type: String, default: null },
+        profilePic: { type: String, default: sample },
         followers: [mongoose.Schema.Types.ObjectId],
         following: [mongoose.Schema.Types.ObjectId],
         notifications: [

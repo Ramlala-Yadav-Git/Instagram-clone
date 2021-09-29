@@ -7,13 +7,11 @@ const sample = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_
 const UserWrapper = styled.div`
 display: flex;
 align-items: center;
-/* width: 40%; */
-/* border: 1px solid gray; */
 cursor: pointer;
 padding-left: 10px;
 margin-bottom: 10px;
 &:hover{
-    background: #bdb6b68f;
+    background: #EFEFEF;
 }
 &>div > img{
 width: 60px;
@@ -28,14 +26,14 @@ border-radius: 50%;
 
 
 `
-export const User = ({ name = "name", status = "22h" }) => {
+export const User = ({ name = "name", status = "22h", img, onClick, id }) => {
 
 
 
     return <>
-        <UserWrapper>
+        <UserWrapper onClick={() => onClick(id)}>
             <div>
-                <img src={sample} alt="profilePic" />
+                <img src={img} alt="profilePic" />
             </div>
             <div>
                 <p>{name}</p>

@@ -13,9 +13,11 @@ router.get('/', async (req, res) => {
         const size = +req.query.limit || 10;
         const offset = (page - 1) * size;
         const users = await UsersData.find().skip(offset).limit(size).lean().exec()
+        const data = [
+            ...users
+        ]
 
-
-        return res.status(200).json({ data: users })
+        return res.status(200).json({ data: data })
     }
     catch (err) {
         res.status(400).json({ error: 'Sorry! something went wrong' });
