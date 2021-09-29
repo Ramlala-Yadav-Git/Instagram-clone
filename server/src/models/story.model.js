@@ -6,7 +6,7 @@ const reqString = {
     trim: true,
 };
 
-const storySchema = mongoose.Schema(
+const storySchema = new mongoose.Schema(
     {
         img: reqString,
         userProfile: reqString,

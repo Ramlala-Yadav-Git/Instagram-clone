@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const reqString = {
     type: String,
@@ -6,15 +6,16 @@ const reqString = {
     trim: true,
 };
 
-const postsSchema = mongoose.Schema(
+const postsSchema = new mongoose.Schema(
     {
         userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'user',
             required: true,
         },
-        caption: { type: String, trim: true },
-        likes: [mongoose.Schema.Types.ObjectId],
+        caption: { type: String, trim: true, required: true },
+        img: { type: String, required: true },
+        likes: [{ type: mongoose.Schema.Types.ObjectId }],
         comments: [
             {
                 userId: {
@@ -24,23 +25,24 @@ const postsSchema = mongoose.Schema(
                 },
                 comment: reqString,
                 commentTime: reqString,
-                likes: [mongoose.Schema.Types.ObjectId],
+                likes: [{ type: mongoose.Schema.Types.ObjectId }],
             },
         ],
-        tagUser: [mongoose.Schema.Types.ObjectId],
+        tagUser: [{ type: mongoose.Schema.Types.ObjectId }],
         tags: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'tags',
-                required: true,
             },
         ],
     },
     {
         timestamps: true,
+        versionKey: false
 
     }
 );
-const PostsData = mongoose.model('post', postsSchema);
+
+const PostsData = mongoose.model("post", postsSchema);
 
 module.exports = PostsData;

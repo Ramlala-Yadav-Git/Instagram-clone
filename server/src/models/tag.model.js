@@ -1,17 +1,20 @@
 const mongoose = require('mongoose');
 
-const HashtagSchema = new mongoose.Schema(
+const tagSchema = new mongoose.Schema(
     {
-        hashtagName: {
+        tagName: {
             type: String,
             required: true,
             trim: true,
         },
-        postIds: [mongoose.Schema.Types.ObjectId],
+        postIds: [{ type: mongoose.Schema.Types.ObjectId }],
     },
-    { timestamps: true }
+    {
+        timestamps: true,
+        versionKey: false
+    }
 );
 
-const HashtagData = mongoose.model('hashtags', HashtagSchema);
+const TagData = mongoose.model('tag', tagSchema);
 
-module.exports = HashtagData;
+module.exports = TagData;

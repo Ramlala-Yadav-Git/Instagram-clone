@@ -8,11 +8,11 @@ const UsersData = require("../models/user.model")
 router.get('/', async (req, res) => {
     try {
 
-        const page = +req.query.page;
-        const limit = +req.query.limit;
 
-        const offset = (page - 1) * limit;
-        const users = await UsersData.find().skip(offset).limit(limit).lean().exec()
+        const page = +req.query.page || 1;
+        const size = +req.query.limit || 10;
+        const offset = (page - 1) * size;
+        const users = await UsersData.find().skip(offset).limit(size).lean().exec()
 
 
         return res.status(200).json({ data: users })
