@@ -1,4 +1,3 @@
-import { User } from "./User"
 import styled from "styled-components"
 import { MessageInput } from "./MessageInput"
 const SecondPersonWrapper = styled.div`
