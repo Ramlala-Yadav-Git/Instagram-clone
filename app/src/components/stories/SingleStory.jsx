@@ -13,7 +13,7 @@ width: 66px;
 height:66px;
 border-radius: 50%;
 padding:5%;
-border: ${props => props.watch ? "3px solid #ce0606f0" : "3px solid gray"};
+border: ${props => props.watch ? "2px solid #ce0606f0" : "3px solid gray"};
 
 }
 `
