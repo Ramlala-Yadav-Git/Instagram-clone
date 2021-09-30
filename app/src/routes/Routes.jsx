@@ -1,19 +1,25 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
 import { HomePage } from '../components/Home/homePage'
-import { ViewStory } from "../components/stories/ViewStory"
-import { Stories } from "../components/stories/Stories"
+import { ImageInputPart } from '../components/Post/ImageInputPart'
+import { PostFirst } from '../components/Post/PostFirst'
 
 export const Routes = () => {
     return (
         <>
-            <Stories />
+            {/* <Stories /> */}
             <Switch>
                 <Route exact path="/">
                     <HomePage />
                 </Route>
                 <Route path="/viewStory">
-                    <ViewStory />
+                    {/* <ViewStory /> */}
+                </Route>
+                <Route exact path="/postFirst">
+                    <PostFirst />
+                </Route>
+                <Route exact path="/imageInputPart">
+                    <ImageInputPart />
                 </Route>
                 <Route>
                     <h1>Page not found</h1>

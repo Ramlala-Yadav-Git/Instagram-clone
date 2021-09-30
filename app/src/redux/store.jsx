@@ -1,8 +1,10 @@
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux'
 import thunk from 'redux-thunk'
 import { homeReducer } from './reducer';
+import { postReducer } from './postImage/PostReducer';
 const rootReducer = combineReducers({
-    homeReducer
+    homeReducer,
+    postReducer
 })
 
 const composedEnhancer =

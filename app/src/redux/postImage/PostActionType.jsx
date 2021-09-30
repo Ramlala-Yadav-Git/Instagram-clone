@@ -1,0 +1,3 @@
+export const GET_POST_DATA = "GET_POST_DATA"
+export const GET_POST_REQUEST = "GET_POST_REQUEST"
+export const GET_POST_FAILURE = "GET_POST_FAILURE"
