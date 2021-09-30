@@ -4,7 +4,6 @@ const express = require('express');
 const UserData = require("../models/user.model")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
-
 const router = express.Router();
 /// Registration of user
 router.get('/', (req, res) => {
@@ -13,7 +12,7 @@ router.get('/', (req, res) => {
 })
 router.post('/', async (req, res) => {
     const { username, fullname, email, password } = req.body;
-    console.log(username)
+    //console.log(username)
 
     if (!username || !fullname || !email || !password) {
         return res.status(422).json({ error: "true", message: "Please fill details properly" })
