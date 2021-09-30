@@ -30,7 +30,6 @@
 
 
 .navHeader{
-
 position: fixed;
 top: 0;
 left: 0;
@@ -46,14 +45,15 @@ align-items: center;
 }
 
 .navbarFirst{
-
     width: 26.666666%;
     margin-right: 10%;
 }
 .instaLogo{
   margin-top: 6px;
 }
-
+.instaLogo:hover{
+    cursor: pointer;
+}
 .instaLogo img{
     object-fit: cover;
     display: block;
@@ -103,13 +103,13 @@ align-items: center;
 .searchIcon{
     position: absolute;
     top:10px;
-    left:130px;
+    left:30%;
     color: silver;
 }
 .searchIcon1{
     position: absolute;
-    top:8px;
-    left:300px;
+    top:10px;
+    left:90%;
     color: silver;
 }
 .navbarLast{
