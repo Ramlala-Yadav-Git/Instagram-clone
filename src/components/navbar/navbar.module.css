@@ -1,0 +1,180 @@
+
+:root{
+ --white:#fff;
+ --black:#000
+
+
+}
+
+
+::-webkit-input-placeholder{
+    color: #8e8e8e;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+:-ms-input-placeholder{
+    color: #8e8e8e;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+::placeholder{
+    color:#8e8e8e;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+
+
+
+
+.navHeader{
+
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+margin: auto;
+height: 54px;
+background: var(--white);
+display: flex;
+padding: 0 300px;
+border-bottom: 1px solid #efefef;
+align-items: center;
+
+}
+
+.navbarFirst{
+
+    width: 26.666666%;
+    margin-right: 10%;
+}
+.instaLogo{
+  margin-top: 6px;
+}
+
+.instaLogo img{
+    object-fit: cover;
+    display: block;
+}
+
+.navbarMiddle{
+   
+    width: 26.666666%;
+    display: flex;
+    justify-content: center;
+    margin-right:7%;
+
+}
+
+.middleSearch{
+    position: relative;
+    width: 100%;
+   
+}
+
+.navBarSearch{
+    background: #fafafa;
+    border: 1px solid #d2dbdb;
+    color: silver;
+    width: 100%;
+    padding: 7px 45px;
+    border-radius: 3px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400 ;
+    text-align: center;
+}
+
+.navBarSearch1{
+    background: #fafafa;
+    border: 1px solid #d2dbdb;
+    color: silver;
+    width: 100%;
+    padding: 7px 45px;
+    border-radius: 3px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400 ;
+   
+}
+
+.searchIcon{
+    position: absolute;
+    top:10px;
+    left:130px;
+    color: silver;
+}
+.searchIcon1{
+    position: absolute;
+    top:8px;
+    left:300px;
+    color: silver;
+}
+.navbarLast{
+
+    width: 26.666666%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbarLast li{
+ list-style-type: none;
+ display: inline-block;
+ margin: 0 10px;
+ cursor: pointer;
+}
+.navbarIcons{
+  font-size: 26px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.profilePic{
+    max-width: 23px;
+    max-height: 23px;
+
+    margin-left: 3px;
+    cursor: pointer;
+}
+.settings{
+    position: absolute;
+    top:54px;
+    left:71%;
+    width: 10%;
+    padding: 1%;
+    border: 1px solid #d2dbdb;
+    background:var(--white);
+    border-radius: 3px;
+    cursor: pointer;
+}
+.settingPart{
+    width: 100%;
+    display: flex;
+    
+    
+}
+.settingStyle{
+    width: 20%;
+   
+    padding-top: 2px;
+    
+}
+.settingTitle{
+    color: #262626;
+}
+.switch{
+    font-size: 15px;
+    padding-top: 2px;
+    padding-left: 2px;
+}
+
+.settingPart1{
+    width: 100%;
+    border-top: 1px solid #d2dbdb;
+    margin-bottom: -5px;
+    
+    
+}
+
