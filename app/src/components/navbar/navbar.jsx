@@ -1,5 +1,5 @@
 import styles from "./navbar.module.css"
-import {FaLessThanEqual, FaSistrix,FaSyncAlt} from "react-icons/fa"
+import { FaLessThanEqual, FaSistrix, FaSyncAlt } from "react-icons/fa"
 import Avatar from '@material-ui/core/Avatar';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
@@ -10,11 +10,7 @@ import { useHistory } from "react-router";
 
 
 
-
-
-
-
-function Navbar(){
+export const Navbar = ()=>{
 const [profile,setProfile]=useState(false);
 const [home,setHome]=useState(true)
 const [message,setMessage]=useState(false);
@@ -81,16 +77,17 @@ const handleChatPush = ()=>{
     <div className={styles.navbarFirst}>
       <div className={styles.instaLogo} onClick={handleHomeLogo}>
         <img src={process.env.PUBLIC_URL + "/images/instalogo.png"} alt=""/>
+                </div>
 
-     </div>
+            </div>
+            <div className={styles.navbarMiddle}>
+                <div className={styles.middleSearch}>
+                    {(search) ? <div className={styles.navBarSearch} onClick={handleSearch}>  <FaSistrix className={styles.searchIcon} />Search</div> :
+                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} /><HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
 
-    </div>
-    <div className={styles.navbarMiddle}>
-        <div className={styles.middleSearch}>
-            {(search)?<div className={styles.navBarSearch} onClick={handleSearch}>  <FaSistrix className={styles.searchIcon} />Search</div>:
-            <div><input type="text" placeholder="Search" className={styles.navBarSearch1}/><HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1}/></div>
 
             }           
+
         </div>
 
 
@@ -187,10 +184,9 @@ const handleChatPush = ()=>{
   
   </>
 
-
 }
 
-export default Navbar
+
 
 
 

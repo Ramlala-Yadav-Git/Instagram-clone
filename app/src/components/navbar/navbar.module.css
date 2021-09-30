@@ -79,7 +79,7 @@ align-items: center;
     border: 1px solid #d2dbdb;
     color: silver;
     width: 100%;
-    padding: 7px 45px;
+    padding: 4px 10px;
     border-radius: 3px;
     outline: none;
     font-size: 14px;
@@ -92,7 +92,7 @@ align-items: center;
     border: 1px solid #d2dbdb;
     color: silver;
     width: 100%;
-    padding: 7px 45px;
+    padding: 4px 50px;
     border-radius: 3px;
     outline: none;
     font-size: 14px;
@@ -104,13 +104,16 @@ align-items: center;
     position: absolute;
     top:10px;
     left:30%;
+
     color: silver;
+    /* border: 1px solid pink; */
 }
 .searchIcon1{
     position: absolute;
     top:10px;
     left:90%;
     color: silver;
+
 }
 .navbarLast{
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router'
 import { Chat } from '../components/chat/Chat'
 import { HomeMain } from '../components/Home/HomeMain'
-import Navbar from '../components/navbar/navbar'
+import {Navbar} from '../components/navbar/navbar'
 import { ImageInputPart } from '../components/Post/ImageInputPart'
 import { PostFirst } from '../components/Post/PostFirst'
 
@@ -13,12 +13,16 @@ export const Routes = () => {
             <Switch>
                 <Route exact path="/">
                     <HomeMain/>
+
                 </Route>
-                <Route exact path="/postFirst">  
-                    <PostFirst/>
+                <Route path="/viewStory">
+                    {/* <ViewStory /> */}
                 </Route>
-                <Route exact path="/imageInputPart">  
-                    <ImageInputPart/>
+                <Route exact path="/postFirst">
+                    <PostFirst />
+                </Route>
+                <Route exact path="/imageInputPart">
+                    <ImageInputPart />
                 </Route>
                 <Route exact path="/directMessage">
                     <Chat/>
