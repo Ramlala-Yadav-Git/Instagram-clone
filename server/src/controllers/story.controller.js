@@ -3,7 +3,9 @@ const express = require('express')
 const userData = require("../models/user.model")
 const StoryData = require("../models/story.model")
 const fs = require("fs")
-const upload = require("../utils/fileupload")
+// const upload = require("../utils/fileupload")
+require("../utils/cloudinary.config")
+const upload = require("../utils/multer")
 
 const router = express.Router()
 
@@ -15,7 +17,6 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/", upload.single("img"), async (req, res) => {
-
     const story = await StoryData.create({
         img: req.file.path,
         userProfile: req.body.userProfile,

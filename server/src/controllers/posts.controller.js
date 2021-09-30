@@ -3,7 +3,8 @@
 const express = require("express");
 const router = express.Router()
 const fs = require("fs")
-const upload = require("../utils/fileupload")
+require("../utils/cloudinary.config")
+const upload = require("../utils/multer")
 
 const PostsData = require("../models/post.model")
 
@@ -52,7 +53,6 @@ router.get("/:id", async function (req, res) {
 router.post("/", upload.single("img"), async function (req, res) {
 
     try {
-        // const files = req.files.map((file) => file.path);
         const post = await PostsData.create({
             ...req.body,
             img: req.file.path
@@ -71,4 +71,25 @@ router.post("/", upload.single("img"), async function (req, res) {
     }
 })
 
+// get all post of an user
+
+router.get("/user/:id", async function (req, res) {
+    // id => userId
+    try {
+        const userId = req.params.id;
+        const posts = await PostsData.find({ userId: userId })
+            .sort({ createdAt: 'desc' })
+            .lean()
+            .exec();
+        return res.status(200).json({
+            error: "false",
+            data: posts,
+
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(400).json({ error: 'something went wrong' });
+    }
+
+})
 module.exports = router
