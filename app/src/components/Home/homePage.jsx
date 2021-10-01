@@ -6,7 +6,7 @@ import fbLogo from "./images/facebook-icon.png"
 import applePlay from "./images/applestore.png";
 import googlePlay from "./images/googlestore.png";
 import phone from "./images/phones.png"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -39,7 +39,7 @@ export const Login = () => {
         id = id._id
         // console.log(id);
         dispatch(GetLoggedData(id))
-        dispatch(getallUser)
+        // dispatch(getallUser)
         // localStorage.setItem("loginData", JSON.stringify(res))
         // alert(res.data.message)
         history.push("/")
