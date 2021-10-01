@@ -4,9 +4,9 @@ import { homeReducer } from './reducer';
 import { postReducer } from './postImage/PostReducer';
 import { LoggedUserReducer } from './loggedUser/LoggedUserReducer';
 const rootReducer = combineReducers({
-    home: homeReducer,
-    post: postReducer,
-    user: LoggedUserReducer
+    user: LoggedUserReducer,
+    homeReducer: homeReducer,
+    postReducer: postReducer
 })
 
 const composedEnhancer =

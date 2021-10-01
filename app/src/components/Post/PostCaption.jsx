@@ -1,13 +1,22 @@
 import { Avatar, Button, TextField } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import MyLogoImg from "../../Image/Logos/amar pic.jpeg"
 export const PostCaption = ({ data }) => {
-
+    const [caption, setCaption] = useState("");
     const InfoData = {
         imgLogo: MyLogoImg,
         name: "Profile amar",
         userName: "Profile Username"
+    }
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setCaption(values => ({...values, [name]: value}))
+      }
+    const handleShare = ()=>{
+        console.log(caption);
+        console.log(data);
     }
     return (
         <>
@@ -22,10 +31,15 @@ export const PostCaption = ({ data }) => {
                     </div>
 
 
-                    <textarea className="text_field" placeholder="Write a caption...">
+                    <textarea className="text_field" placeholder="Write a caption..."
+                    type="text" 
+                    name="caption" 
+                    onChange={(e)=>setCaption(e.target.value)}
+                    value={caption}
+                    >
 
                     </textarea>
-                    <Button variant="contained" className="button">Share</Button>
+                    <Button onClick={handleShare} variant="contained" className="button">Share</Button>
                 </CaptionBox>
             </Container>
         </>

@@ -1,4 +1,6 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState,useEffect } from 'react'
+import { shallowEqual, useSelector } from 'react-redux'
 
 import { Navbar } from "../navbar/navbar"
 import { Stories } from "../stories/Stories"
@@ -7,6 +9,17 @@ import styled from 'styled-components'
 import { Info } from '../suggestion/Info'
 
 export const HomeMain = () => {
+
+    const { data,loggedData, isLoading, isError } = useSelector(
+        (state)=>state.homeReducer,
+        shallowEqual
+    );
+
+    useEffect(() => {
+        setTimeout(()=>{
+            console.log(loggedData);
+        },1000)
+    }, [])
     return (
         <div>
             <Navbar />

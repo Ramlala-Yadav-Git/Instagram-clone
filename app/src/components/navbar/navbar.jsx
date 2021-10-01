@@ -66,6 +66,9 @@ export const Navbar = () => {
     const handleChatPush = () => {
         history.push("/directMessage")
     }
+    const handleChange = () => {
+        // history.push("/directMessage")
+    }
 
 
     return <>
@@ -79,7 +82,7 @@ export const Navbar = () => {
             <div className={styles.navbarMiddle}>
                 <div className={styles.middleSearch}>
                     {(search) ? <div className={styles.navBarSearch} onClick={handleSearch}>  <FaSistrix className={styles.searchIcon} />Search</div> :
-                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} /><HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
+                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} onChange={handleChange} /><HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
 
 
                     }
