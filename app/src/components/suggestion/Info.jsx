@@ -2,6 +2,7 @@ import React from 'react'
 import { Avatar } from '@material-ui/core'
 import MyLogoImg from "../../Image/Logos/amar pic.jpeg"
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 
 const InfoData = {
     imgLogo: MyLogoImg,
@@ -10,13 +11,15 @@ const InfoData = {
 }
 
 export const Info = () => {
+    const state = useSelector(state => state.user);
+    // console.log("state", state.data)
     return (
         <div>
             <InfoContainer>
-                <Avatar src={InfoData.imgLogo} className="logo_img" />
+                <Avatar src={state && state.data.profilePic} className="logo_img" />
                 <div className="Info_content">
-                    <div className="info_userName">{InfoData.userName}</div>
-                    <div className="info_description">{InfoData.name}</div>
+                    <div className="info_userName">{state && state.data.username}</div>
+                    <div className="info_description">{state && state.data.fullname}</div>
                 </div>
             </InfoContainer>
         </div>

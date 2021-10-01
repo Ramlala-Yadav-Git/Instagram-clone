@@ -7,82 +7,75 @@ import BookmarkBorderTwoToneIcon from '@material-ui/icons/BookmarkBorderTwoTone'
 import SettingsIcon from '@material-ui/icons/Settings';
 import { useState } from "react"
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom"
 
 
 
-export const Navbar = ()=>{
-const [profile,setProfile]=useState(false);
-const [home,setHome]=useState(true)
-const [message,setMessage]=useState(false);
-const [reels,setReels]=useState(false);
-const [likes,setLikes]=useState(false);
-const [search,setSearch]=useState(true)
-// const [userSeacrh , setUserSearch] = useState(initialState:[])
+export const Navbar = () => {
+    const [profile, setProfile] = useState(false);
+    const [home, setHome] = useState(true)
+    const [message, setMessage] = useState(false);
+    const [reels, setReels] = useState(false);
+    const [likes, setLikes] = useState(false);
+    const [search, setSearch] = useState(true)
+    const history = useHistory()
+    const handleProfile = () => {
+        setProfile(!profile)
 
-const handleChange = (value) =>{
-    fetch(`http://localhost:8000/users?query=${value}`)
-}
-
-const history = useHistory()
-const handleProfile=()=>{
-    setProfile(!profile)
-   
-}
-const handleHome=()=>{
-    setHome(true)
-    setMessage(false)
-    setReels(false)
-    setLikes(false)
-    setSearch(false)
-    setProfile(false)
-    history.push("/")
-}
-const handleMessage=()=>{
-    setHome(false)
-    setMessage(true)
-    setReels(false)
-    setLikes(false)
-    setSearch(false)
-    setProfile(false)
-    handleChatPush()
-}
-const handlePost=()=>{
-    setHome(false)
-    setMessage(false)
-    setReels(true)
-    setLikes(false)
-    setSearch(false)
-    setProfile(false)
-    history.push("/postFirst")
-}
-const handleLikes=()=>{
-    setHome(false)
-    setMessage(false)
-    setReels(false)
-    setLikes(true)
-    setSearch(false)
-    setProfile(false)
-}
-const handleSearch=()=>{
-    setSearch(false)
-}
-const handleSearch1=()=>{
-    setSearch(true)
-    console.log(search)
-}
-const handleHomeLogo =()=>{
-    history.push("/")
-}
-const handleChatPush = ()=>{
-    history.push("/directMessage")
-}
+    }
+    const handleHome = () => {
+        setHome(true)
+        setMessage(false)
+        setReels(false)
+        setLikes(false)
+        setProfile(false)
+        history.push("/")
+    }
+    const handleMessage = () => {
+        setHome(false)
+        setMessage(true)
+        setReels(false)
+        setLikes(false)
+        setProfile(false)
+        handleChatPush()
+    }
+    const handlePost = () => {
+        setHome(false)
+        setMessage(false)
+        setReels(true)
+        setLikes(false)
+        setProfile(false)
+        history.push("/postFirst")
+    }
+    const handleLikes = () => {
+        setHome(false)
+        setMessage(false)
+        setReels(false)
+        setLikes(true)
+        setProfile(false)
+    }
+    const handleSearch = () => {
+        setSearch(false)
+    }
+    const handleSearch1 = () => {
+        setSearch(true)
+    }
+    const handleHomeLogo = () => {
+        history.push("/")
+    }
+    const handleChatPush = () => {
+        history.push("/directMessage")
+    }
+    const handleChange = () => {
+        // history.push("/directMessage")
+    }
 
 
-  return <>
-   <div className={styles.navHeader}>
-    <div className={styles.navbarFirst}>
-      <div className={styles.instaLogo} onClick={handleHomeLogo}>
-        <img src={process.env.PUBLIC_URL + "/images/instalogo.png"} alt=""/>
+    return <>
+        <div className={styles.navHeader}>
+            <div className={styles.navbarFirst}>
+                <div className={styles.instaLogo} onClick={handleHomeLogo}>
+                    <img src={process.env.PUBLIC_URL + "/images/instalogo.png"} alt="" />
                 </div>
 
             </div>
@@ -136,7 +129,9 @@ const handleChatPush = ()=>{
                         <AccountCircleOutlinedIcon />
                     </div>
                     <div className={styles.settingTitle}>
-                        <p>Profile</p>
+                        <Link to="/profile" className={styles.link}>
+                            <p >Profile</p>
+                        </Link>
                     </div>
                 </div>
 

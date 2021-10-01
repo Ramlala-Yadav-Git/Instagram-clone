@@ -8,43 +8,45 @@ import googlePlay from "./images/googlestore.png";
 import phone from "./images/phones.png"
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { getallUser, GetLoggedData } from "../../redux/action";
+import { getUser } from "../../redux/loggedUser/action";
+import { getallUser } from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux"
+import { SetData } from "../../utils/localStorageData";
 
 export const Login = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const history = useHistory()
+  const state = useSelector(state => state.user)
   const dispatch = useDispatch()
+
   const handleLogin = () => {
     const payload = {
       username,
       password
     }
-    console.log(payload)
+    // console.log(payload)
     getData(payload)
+    // console.log("state", state)
     setUsername('')
     setPassword('')
   }
 
   const getData = (payload) => {
-    axios.post("http://localhost:8000/login", payload).then((res) => {
-      if (res.data.error) {
-        alert(res.data.message)
-      }
 
-      else {
-        let id = res.data.data
-        id = id._id
-        // console.log(id);
-        dispatch(GetLoggedData(id))
-        // dispatch(getallUser)
-        // localStorage.setItem("loginData", JSON.stringify(res))
-        // alert(res.data.message)
-        history.push("/")
-      }
-    })
+    dispatch(getUser(payload))
+    dispatch(getallUser)
+    const data = state;
+    if (data) {
+      SetData("loginData", data)
+      alert("Logged in succesfully")
+      history.push("/")
+    }
+
+    else {
+      alert("Something went wrong please try again")
+    }
+
   }
 
   return (<div>

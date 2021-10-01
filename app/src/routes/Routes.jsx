@@ -8,11 +8,12 @@ import { PostFirst } from '../components/Post/PostFirst'
 import { SignUp } from "../components/Home/signUp"
 import { Login } from "../components/Home/homePage"
 import { ViewStory } from '../components/stories/ViewStory'
+import Setting from "../components/settings/settings";
+import ProfileTop from '../components/profile/profileTop'
 
 export const Routes = () => {
     return (
         <>
-            {/* <Navbar /> */}
 
             <Switch>
                 <Route exact path="/">
@@ -30,6 +31,12 @@ export const Routes = () => {
                 </Route>
                 <Route path="/directMessage">
                     <Chat />
+                </Route>
+                <Route path="/profile">
+                    <ProfileTop />
+                </Route>
+                <Route path="/settings">
+                    <Setting />
                 </Route>
 
                 <Route path="/signup">

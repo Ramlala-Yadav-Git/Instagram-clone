@@ -1,5 +1,5 @@
 .mainDiv{
-   width: 70%;
+   width: 75%;
    
  
    background-color: #fff;
@@ -10,7 +10,7 @@
 
 }
 .leftDiv{
-    width:23% ;
+    width:25% ;
     cursor: pointer;
     border-right: 1px solid #d2dbdb ;
 }
@@ -75,9 +75,9 @@
     text-align: left;
 }
 .rightDiv{
-   min-width: 80%;
+   width: 72%;
     padding-top: 1vh;
-   padding-left: 10%;
+   padding-left: 7%;
   
 
 }
@@ -118,7 +118,7 @@ width: 20%;
 text-align: right;
 color: black;
 font-weight: 600;
-font-size: 19px;
+font-size: 15px;
 margin-right: 4%;
 
 }
@@ -182,7 +182,7 @@ margin-right: 4%;
     text-align: left;
     color: black;
     font-weight: 600;
-    font-size: 19px;
+    font-size: 15px;
 
 }
 .tick{
