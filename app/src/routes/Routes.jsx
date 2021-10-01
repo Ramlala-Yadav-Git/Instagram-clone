@@ -6,6 +6,8 @@ import {Navbar} from '../components/navbar/navbar'
 import { ImageInputPart } from '../components/Post/ImageInputPart'
 import { PostFirst } from '../components/Post/PostFirst'
 import {SignUp} from "../components/Home/signUp"
+import { HomePage } from '../components/Home/homePage'
+import { FeedCard } from '../components/feed/FeedCard'
 
 export const Routes = () => {
     return (
@@ -13,7 +15,9 @@ export const Routes = () => {
                 <Navbar/>
             <Switch>
                 <Route exact path="/">
-                    <HomeMain/>
+                    {/* <HomeMain/> */}
+                    <HomePage/>
+                   
 
                 </Route>
                 <Route path="/viewStory">
