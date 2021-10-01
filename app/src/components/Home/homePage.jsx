@@ -8,8 +8,8 @@ import googlePlay from "./images/googlestore.png";
 import phone from "./images/phones.png"
 import { useState } from "react";
 import { useHistory } from "react-router";
-import axios from "axios";
 import { getUser } from "../../redux/loggedUser/action";
+import { getallUser } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux"
 import { SetData } from "../../utils/localStorageData";
 
@@ -33,7 +33,9 @@ export const Login = () => {
   }
 
   const getData = (payload) => {
+
     dispatch(getUser(payload))
+    dispatch(getallUser)
     const data = state;
     if (data) {
       SetData("loginData", data)
