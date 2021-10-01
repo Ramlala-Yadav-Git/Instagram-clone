@@ -1,13 +1,15 @@
 
 .storiesContainer{
-border: 1px solid rgb(214, 207, 207);
-padding: 1%;
-width: 40%;
+border: 1px solid rgb(226, 214, 214);
+padding: 2.5% 1%;
+/* width: 45%; */
+
 margin: auto;
+/* margin-top:70px; */
 /* display: flex; */
 background-color: white;
-border-radius: 5px;
-box-shadow: 2px 2px 2px 2px rgba(192, 186, 186, 0.082);
+border-radius: 3px;
+box-shadow: 2px 2px 2px 2px rgba(240, 236, 236, 0.082);
 }
 .left{
     color: red;
