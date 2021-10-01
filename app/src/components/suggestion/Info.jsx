@@ -23,7 +23,7 @@ export const Info = () => {
     )
 }
 
-const InfoContainer = styled.div`
+export const InfoContainer = styled.div`
     width:300px;
     height:50px;
     margin-top:50px;

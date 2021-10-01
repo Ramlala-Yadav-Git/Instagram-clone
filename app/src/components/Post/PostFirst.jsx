@@ -34,7 +34,10 @@ export const PostFirst = () => {
 
     const [open, setOpen] = React.useState(true);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+      setOpen(false)
+      history.push("/")
+    }
 
     const [photo,setPhoto] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
     const  imageHandler = (e) => {
@@ -96,7 +99,7 @@ const TopBar = styled.div`
         width:5%
     }
     & .text{
-        width:90%;
+        width:95%;
         margin-bottom:-1%;
         text-align:center;
     }

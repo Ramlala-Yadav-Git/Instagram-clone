@@ -1,16 +1,20 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
-import { HomePage } from '../components/Home/homePage'
+import { Chat } from '../components/chat/Chat'
+import { HomeMain } from '../components/Home/HomeMain'
+import {Navbar} from '../components/navbar/navbar'
 import { ImageInputPart } from '../components/Post/ImageInputPart'
 import { PostFirst } from '../components/Post/PostFirst'
+import {SignUp} from "../components/Home/signUp"
 
 export const Routes = () => {
     return (
         <>
-            {/* <Stories /> */}
+                <Navbar/>
             <Switch>
                 <Route exact path="/">
-                    <HomePage />
+                    <HomeMain/>
+
                 </Route>
                 <Route path="/viewStory">
                     {/* <ViewStory /> */}
@@ -20,6 +24,13 @@ export const Routes = () => {
                 </Route>
                 <Route exact path="/imageInputPart">
                     <ImageInputPart />
+                </Route>
+                <Route exact path="/directMessage">
+                    <Chat/>
+                </Route>
+
+                <Route exact path="/signUP"> 
+                    <SignUp/>
                 </Route>
                 <Route>
                     <h1>Page not found</h1>
