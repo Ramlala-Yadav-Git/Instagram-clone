@@ -9,36 +9,42 @@ import phone from "./images/phones.png"
 import { useState } from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
+import { getUser } from "../../redux/loggedUser/action";
+import { useDispatch, useSelector } from "react-redux"
+import { SetData } from "../../utils/localStorageData";
 
 export const Login = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const history = useHistory()
+  const state = useSelector(state => state.user)
+  const dispatch = useDispatch()
 
   const handleLogin = () => {
     const payload = {
       username,
       password
     }
-    console.log(payload)
+    // console.log(payload)
     getData(payload)
+    // console.log("state", state)
     setUsername('')
     setPassword('')
   }
 
   const getData = (payload) => {
-    axios.post("http://localhost:8000/login", payload).then((res) => {
-      if (res.data.error) {
-        alert(res.data.message)
-      }
+    dispatch(getUser(payload))
+    const data = state;
+    if (data) {
+      SetData("loginData", data)
+      alert("Logged in succesfully")
+      history.push("/")
+    }
 
-      else {
+    else {
+      alert("Something went wrong please try again")
+    }
 
-        localStorage.setItem("loginData", JSON.stringify(res))
-        alert(res.data.message)
-        history.push("/")
-      }
-    })
   }
 
   return (<div>

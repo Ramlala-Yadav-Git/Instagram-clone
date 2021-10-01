@@ -105,17 +105,18 @@ align-items: center;
 
 .searchIcon{
     position: absolute;
-    top:10px;
-    left:30%;
+    top:8px;
+    left:34%;
 
     color: silver;
     /* border: 1px solid pink; */
 }
 .searchIcon1{
     position: absolute;
-    top:10px;
+    top:7px;
     left:90%;
     color: silver;
+    cursor: pointer;
 
 }
 .navbarLast{
@@ -148,12 +149,20 @@ align-items: center;
     position: absolute;
     top:54px;
     left:71%;
-    width: 10%;
+    width: 15%;
     padding: 1%;
     border: 1px solid #d2dbdb;
     background:var(--white);
     border-radius: 3px;
     cursor: pointer;
+}
+.link {
+color: #262626!important;
+font-style: none;
+text-decoration: none;
+}
+.link:hover{
+    text-decoration: none;
 }
 .settingPart{
     width: 100%;
