@@ -4,9 +4,9 @@ import { User } from "./User"
 import styled from "styled-components"
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Navbar } from "../navbar/navbar"
 
 const ChatWrapper = styled.div`
-/* border: 1px solid #d8d6d6; */
 width: 100%;
 display: flex;
 justify-content: center;
@@ -14,6 +14,11 @@ padding: 12%;
 padding-top: 4%;
 padding-bottom: 4%;
 background: #FAFAFA;
+margin-top: 30px;
+& > *{
+
+    border-radius: 3px;
+}
 & > div{
     width: 50%;
     max-height: 500px;
@@ -66,6 +71,7 @@ export const Chat = () => {
     }
 
     return <>
+        <Navbar />
         <ChatWrapper>
             <div>
                 <div>

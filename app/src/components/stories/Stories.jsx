@@ -32,7 +32,8 @@ export const Stories = () => {
                 {
                     stories && stories.map((el) => {
                         return <>
-                            <SingleStory img={el.img} name={el.username} />
+                            <SingleStory img={el.img} name={el.username} watch={true} id={el.id} />
+
                         </>
                     })
                 }
@@ -41,8 +42,8 @@ export const Stories = () => {
     </>
 }
 
-const left = <i className={"fa fa-chevron-circle-left"} style={{ color: "#7a757521", marginTop: "20px", cursor: "pointer", fontSize: "25px" }}></i>
-const right = <i className={"fa fa-chevron-circle-right"} style={{ color: "#7a757521", marginTop: "20px", cursor: "pointer", fontSize: "25px" }}></i>
+const left = <i className={"fa fa-chevron-circle-left"} style={{ color: "#7a757521", marginTop: "35px", cursor: "pointer", fontSize: "18px" }}></i>
+const right = <i className={"fa fa-chevron-circle-right"} style={{ color: "#7a757521", marginTop: "35px", cursor: "pointer", fontSize: "18px" }}></i>
 
 function renderArrow({ type, onClick, isEdge }) {
     const pointer = type === consts.PREV ? left : right;
