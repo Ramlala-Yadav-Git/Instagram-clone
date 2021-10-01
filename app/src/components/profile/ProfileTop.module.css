@@ -1,0 +1,106 @@
+
+.mainDiv{
+    width:70%;
+    margin: auto;
+    display: flex;
+    padding: 2%;
+    margin-top: 100px;
+  
+}
+
+.profilePicDiv{
+    
+  padding: 1%;
+  text-align: center;
+
+  margin-right: 4%;
+}
+.profilePic{
+min-width: 10vw;
+min-height: 20vh;
+
+}
+
+.userInfo{
+  padding: 0.5%;
+  width: 70%;
+  
+
+
+}
+.firstDiv{
+ width: 100%;
+ margin-right: 1%;
+ display: flex;
+
+
+}
+.userName{
+    width: 40%;
+
+    font-size: 28px;
+ 
+    
+
+}
+.name1{
+    font-weight: 400;
+    font-size: 1.3em;
+}
+.editButtonDiv{
+    width: 20%;
+  
+
+text-align: center;
+    
+}
+.button{
+  padding: 2%;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 1.2vh;
+  border-color: none;
+
+    text-decoration: none;
+}
+
+.stettingDiv{
+    width: 20%;
+   
+}
+.stettingDiv > svg{
+ margin-top: 1.7vh;
+   
+}
+.secondDiv{
+    width: 100%;
+    display: flex;
+}
+.postFollowers{
+display: flex;
+width: 15%;
+margin-right: 3%;
+
+}
+.data{
+    font-weight: 600;
+    margin-right: 5px;
+    font-size: 22px;
+
+}
+.text{
+    font-size: 22px;
+}
+.name{
+    font-weight: 500;
+  
+    
+}
+.fourthDiv{
+    width: 100%;
+}
+.bio{
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: -7px;
+}
