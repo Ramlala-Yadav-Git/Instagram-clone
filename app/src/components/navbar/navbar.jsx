@@ -17,6 +17,12 @@ const [message,setMessage]=useState(false);
 const [reels,setReels]=useState(false);
 const [likes,setLikes]=useState(false);
 const [search,setSearch]=useState(true)
+// const [userSeacrh , setUserSearch] = useState(initialState:[])
+
+const handleChange = (value) =>{
+    fetch(`http://localhost:8000/users?query=${value}`)
+}
+
 const history = useHistory()
 const handleProfile=()=>{
     setProfile(!profile)
@@ -83,7 +89,7 @@ const handleChatPush = ()=>{
             <div className={styles.navbarMiddle}>
                 <div className={styles.middleSearch}>
                     {(search) ? <div className={styles.navBarSearch} onClick={handleSearch}>  <FaSistrix className={styles.searchIcon} />Search</div> :
-                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} /><HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
+                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} onChange={handleChange} /><HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
 
 
             }           
