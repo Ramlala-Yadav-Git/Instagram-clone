@@ -36,9 +36,8 @@ router.post('/', async (req, res) => {
 
         }
         else {
-            user.password = null;
-            user.tokens = null;
-            res.status(200).json({ message: 'User logged in successsfully', data: user });
+
+            res.status(200).json({ message: 'User logged in successsfully', data: user, token });
         }
     }
 })

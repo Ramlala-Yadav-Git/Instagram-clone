@@ -57,11 +57,19 @@ router.get("/:id", async function (req, res) {
 router.get("/user/:id", async function (req, res) {
     // id => userId
     try {
+        const user = await UsersData.findById(req.params.id).lean().exec()
+        if (!user) {
+            return res.status(401).json({
+                error: true,
+                message: "user dosen't exist in database"
+            })
+        }
         const userId = req.params.id;
         const posts = await PostsData.find({ userId: userId })
             .sort({ createdAt: 'desc' })
             .lean()
             .exec();
+
         return res.status(200).json({
             error: "false",
             data: posts,
@@ -69,7 +77,11 @@ router.get("/user/:id", async function (req, res) {
         });
     } catch (err) {
         console.log(err);
-        return res.status(400).json({ error: 'something went wrong' });
+        return res.status(400).json({
+            error: true,
+
+            message: 'something went wrong'
+        });
     }
 
 })

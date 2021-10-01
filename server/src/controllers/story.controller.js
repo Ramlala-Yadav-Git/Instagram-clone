@@ -1,16 +1,22 @@
 
 const express = require('express')
-const userData = require("../models/user.model")
 const StoryData = require("../models/story.model")
 const fs = require("fs")
 // const upload = require("../utils/fileupload")
 require("../utils/cloudinary.config")
 const upload = require("../utils/multer")
+const UsersData = require('../models/user.model')
 
 const router = express.Router()
 
 router.get("/", async (req, res) => {
     const story = await StoryData.find().lean().exec();
+
+    return res.status(200).json({ data: story })
+
+})
+router.get("/:id", async (req, res) => {
+    const story = await UsersData.findById(req.params.id).lean().exec();
 
     return res.status(200).json({ data: story })
 
