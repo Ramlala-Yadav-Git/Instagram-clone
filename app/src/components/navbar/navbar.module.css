@@ -38,7 +38,7 @@ margin: auto;
 height: 54px;
 background: var(--white);
 display: flex;
-padding: 0 300px;
+padding: 0 200px;
 border-bottom: 1px solid #efefef;
 align-items: center;
 
@@ -65,12 +65,14 @@ align-items: center;
     display: flex;
     justify-content: center;
     margin-right:7%;
+    
 
 }
 
 .middleSearch{
     position: relative;
     width: 100%;
+    
    
 }
 
@@ -85,6 +87,7 @@ align-items: center;
     font-size: 14px;
     font-weight: 400 ;
     text-align: center;
+   
 }
 
 .navBarSearch1{

@@ -7,6 +7,7 @@ import { ImageInputPart } from '../components/Post/ImageInputPart'
 import { PostFirst } from '../components/Post/PostFirst'
 import { SignUp } from "../components/Home/signUp"
 import { Login } from "../components/Home/homePage"
+import { ViewStory } from '../components/stories/ViewStory'
 
 export const Routes = () => {
     return (
@@ -18,8 +19,8 @@ export const Routes = () => {
                     <HomeMain />
 
                 </Route>
-                <Route path="/viewStory">
-                    {/* <ViewStory /> */}
+                <Route path="/viewStory/:id">
+                    <ViewStory />
                 </Route>
                 <Route exact path="/postFirst">
                     <PostFirst />

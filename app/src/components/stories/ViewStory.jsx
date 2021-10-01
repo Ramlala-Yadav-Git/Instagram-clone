@@ -2,6 +2,9 @@ import { SingleStory } from "./SingleStory"
 import styles from "./Stories.module.css"
 import Styled from "styled-components"
 import Carousel, { consts } from 'react-elastic-carousel';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 
 
@@ -22,10 +25,36 @@ const StoryWrapper = Styled.div`
     border-radius:5px;
     /* padding-top:100px; */
     `
+const sample = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
 export const ViewStory = () => {
+    const [story, setStory] = useState([])
+    const [show, setShow] = useState("")
+    const params = useParams('')
+    const id = params.id;
+    useEffect(() => {
+        getStory()
+        filterData()
 
-    const sample = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+    }, [])
+    const getStory = () => {
+        axios.get(`http://localhost:8000/story`).then((res) => {
+            setStory(res.data)
+            filterData()
+            console.log(res.data, "id", id)
+        })
 
+    }
+    const filterData = () => {
+
+
+        const filt = story.filter((el) => {
+            console.log(id, el._id)
+            return el._id === id
+        })
+
+        setShow(filt)
+        console.log(filt)
+    }
 
     return <>
 
@@ -51,16 +80,7 @@ export const ViewStory = () => {
                             </div>
                         </div>
                     </ViewStoryWrapper>
-                    <ViewStoryWrapper img={sample}>
-                        <div className={styles.singleStory}>
-                            <SingleStory img={sample} name={"ramlala"} />
-                            <div >
-                                <i className="fa fa-play"></i>
-                                <i class="fa fa-volume-off"></i>
-                                <i class="fa fa-ellipsis-h"></i>
-                            </div>
-                        </div>
-                    </ViewStoryWrapper>
+
                 </Carousel>
             </StoryWrapper>
         </div>

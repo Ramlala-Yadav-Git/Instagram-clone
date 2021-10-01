@@ -75,9 +75,9 @@ background: #FFFFFF;
 `
 
 
-const sample = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+const sample = "https://i.pinimg.com/originals/a0/db/4b/a0db4b832f304ab2f2f7f631354fa9d7.gif"
 
-export const SecondPerson = ({ user = "user", img }) => {
+export const SecondPerson = ({ user, img }) => {
     const [inboxItem, setInboxItem] = useState([])
     const handleInput = (data) => {
         setInboxItem([data, ...inboxItem])
@@ -86,8 +86,8 @@ export const SecondPerson = ({ user = "user", img }) => {
         <SecondPersonWrapper>
             <div>
                 <div>
-                    <img src={img} alt="user" />
-                    <p>{user}</p>
+                    <img src={img ? img : sample} alt="user" />
+                    <p>{user ? user : "friend"}</p>
                 </div>
 
                 <div>
