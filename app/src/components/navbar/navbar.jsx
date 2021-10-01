@@ -25,42 +25,54 @@ const handleProfile=()=>{
     setProfile(!profile)
    
 }
-const handleHome=()=>{
+const handleHome=(e)=>{
+    e.stopPropagation() 
+    e.preventDefault()
+    console.log(e)
+    console.log("home")
     setHome(true)
     setMessage(false)
     setReels(false)
     setLikes(false)
-    setSearch(false)
+    
     setProfile(false)
 }
-const handleMessage=()=>{
+const handleMessage=(e)=>{
+    e.stopPropagation()
     setHome(false)
+    console.log("message")
     setMessage(true)
     setReels(false)
     setLikes(false)
-    setSearch(false)
+  
     setProfile(false)
 }
-const handleReels=()=>{
+const handleReels=(e)=>{
+    e.stopPropagation()
     setHome(false)
     setMessage(false)
     setReels(true)
     setLikes(false)
-    setSearch(false)
+  
     setProfile(false)
 }
-const handleLikes=()=>{
+const handleLikes=(e)=>{
+    e.stopPropagation()
     setHome(false)
     setMessage(false)
     setReels(false)
     setLikes(true)
-    setSearch(false)
+    
     setProfile(false)
 }
-const handleSearch=()=>{
+const handleSearch=(e)=>{
+    e.stopPropagation()
     setSearch(false)
+   
 }
-const handleSearch1=()=>{
+const handleSearch1=(e)=>{
+    e.stopPropagation() 
+    
     setSearch(true)
     console.log(search)
 }

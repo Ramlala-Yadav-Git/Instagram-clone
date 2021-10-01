@@ -3,6 +3,9 @@ import { Routes } from "./routes/Routes";
 import { Suggestion } from "./components/suggestion/Suggestion";
 import { Chat } from "./components/chat/Chat"
 import { Stories } from "./components/stories/Stories"
+import Navbar from "./components/navbar/navbar"
+import ProfileTop from "./components/profile/profileTop"
+import Settings from  "./components/settings/settings"
 function App() {
   return (
     <>
@@ -10,8 +13,11 @@ function App() {
       {/* <Suggestion /> */}
 
       {/* <Routes /> */}
-      <Stories />
-      <Chat />
+      <Navbar />
+    
+      {/*<Chat />*/}
+      <ProfileTop /> 
+      <Settings />
 
     </>
   );
