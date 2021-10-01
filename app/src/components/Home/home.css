@@ -163,11 +163,51 @@
     color: var(--fb-logo);
     font-weight: 700;
   }
-  
+
+  .white{
+    color: var(--white) !important;
+  }
+   
+
+  .blue-box{
+    background-color: var(--log-in-button);
+    display:flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+
+
+   
+  }
+  .blue-box img{
+    width: 2rem;
+    margin-right: 0.5rem;
+    filter: invert(10)
+
+  }
+  .margin{
+    margin-bottom: 2rem;
+  }
+  .tittle{
+    color: #8e8e8e;
+    
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+  }
+  .terms{
+    color: #8e8e8e;
+
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center
+  }
  
   .forgot-password {
     color: var(--fb-logo);
     font-size: 1.2rem;
+    
   }
   
 
@@ -185,6 +225,8 @@
     font-size: 1.2rem;
     margin-right: 0.5rem;
   }
+
+
   
  
   .sign-up a {

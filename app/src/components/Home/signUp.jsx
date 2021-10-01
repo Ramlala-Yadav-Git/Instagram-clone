@@ -1,46 +1,55 @@
-
 import "./home.css";
 import "./media.css"
 import logo from "./images/instagram-logo.png"
-import fbLogo from "./images/facebook-icon.png"
+import fbWhite from "./images/fb.png"
 import applePlay from "./images/applestore.png";
 import googlePlay from "./images/googlestore.png";
-import phone from "./images/phones.png"
 
-export const HomePage = ()=>{
 
-    
+export const SignUp = () => {
 
-    return (<div>
 
-<main>
+    return (
+        <div>
+            <main>
     <div class="log-in-container">
             <div class="log-in">
     
               <img src= {logo} class="logo" alt = "logo" />
-    
-              <div class="log-in-form">
-                <input type="text" placeholder="Phone number, username or email"  
+              <p class = 'tittle'>Sign up to see photos and videos from your friends.</p>
+
+                <div class = 'blue-box log-in-button'>
+                  
                     
-                />
-                <input type="password" placeholder="Password" />
-                <button class="log-in-button">Log In</button>
-              </div>
-    
-              <span class="or-divider">OR</span>
+                      <img src= {fbWhite} alt = "facebook logo" />
+                      <span class = "white">Log in with Facebook</span>
+                    
+
+                </div>
               
-              <div class="fb-login">
-                <a href="/">
-                  <img src= {fbLogo} alt = "facebook logo" />
-                  <span>Log in with Facebook</span>
-                </a>
+              <span class="or-divider">OR</span>
+              <div className="margin"></div>
+              <div class="log-in-form">
+                <input type="text" placeholder="Mobile Number or Email" /> 
+                <input type="text" placeholder="Full Name" /> 
+                <input type="text" placeholder="username" /> 
+                <input type="password" placeholder="Password" />
+                <button class="log-in-button">
+                    Sign up
+                </button>
+              </div>
+
+              <div >
+                <p className = "terms">by signing up, you agree to our <strong>Terms, Data Policy</strong> and <strong>Cookies Policy</strong> </p>
               </div>
     
-              <a href="/">Forgot password?</a>
+             
+              
+      
             </div>
     
             <div class="sign-up">
-              <span>Don't have an account?</span><a href="/signUP">Sign up</a>
+              <span>have an account?</span><a href="/">Log in</a>
             </div>
     
             <div class="get-the-app">
@@ -52,9 +61,7 @@ export const HomePage = ()=>{
             </div>
           </div>
     
-          <div class="phones-container">
-            <img src={phone} alt = "phoneImage" />
-          </div>
+         
 </main>
 <footer>
       <ul class="footer-links">
@@ -74,8 +81,6 @@ export const HomePage = ()=>{
       <span class="copyright">&copy; 2021 INSTAGRAM FROM FACEBOOK</span>
     </footer>
 
-        
-      
-        </div>)
-    
+        </div>
+    )
 }

@@ -5,6 +5,7 @@ import { HomeMain } from '../components/Home/HomeMain'
 import {Navbar} from '../components/navbar/navbar'
 import { ImageInputPart } from '../components/Post/ImageInputPart'
 import { PostFirst } from '../components/Post/PostFirst'
+import {SignUp} from "../components/Home/signUp"
 
 export const Routes = () => {
     return (
@@ -26,6 +27,10 @@ export const Routes = () => {
                 </Route>
                 <Route exact path="/directMessage">
                     <Chat/>
+                </Route>
+
+                <Route exact path="/signUP"> 
+                    <SignUp/>
                 </Route>
                 <Route>
                     <h1>Page not found</h1>
