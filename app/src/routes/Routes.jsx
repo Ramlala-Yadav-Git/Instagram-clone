@@ -2,18 +2,20 @@ import React from 'react'
 import { Route, Switch } from 'react-router'
 import { Chat } from '../components/chat/Chat'
 import { HomeMain } from '../components/Home/HomeMain'
-import {Navbar} from '../components/navbar/navbar'
+// import { Navbar } from '../components/navbar/navbar'
 import { ImageInputPart } from '../components/Post/ImageInputPart'
 import { PostFirst } from '../components/Post/PostFirst'
-import {SignUp} from "../components/Home/signUp"
+import { SignUp } from "../components/Home/signUp"
+import { Login } from "../components/Home/homePage"
 
 export const Routes = () => {
     return (
         <>
-                <Navbar/>
+            {/* <Navbar /> */}
+
             <Switch>
                 <Route exact path="/">
-                    <HomeMain/>
+                    <HomeMain />
 
                 </Route>
                 <Route path="/viewStory">
@@ -25,12 +27,15 @@ export const Routes = () => {
                 <Route exact path="/imageInputPart">
                     <ImageInputPart />
                 </Route>
-                <Route exact path="/directMessage">
-                    <Chat/>
+                <Route path="/directMessage">
+                    <Chat />
                 </Route>
 
-                <Route exact path="/signUP"> 
-                    <SignUp/>
+                <Route path="/signup">
+                    <SignUp />
+                </Route>
+                <Route path="/login">
+                    <Login />
                 </Route>
                 <Route>
                     <h1>Page not found</h1>

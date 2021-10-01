@@ -26,7 +26,8 @@ export const Stories = () => {
 
     return <>
         <div className={styles.storiesContainer}>
-            <Carousel itemsToShow={5 + 1} renderArrow={renderArrow} pagination={false} outerSpacing={-8} itemPadding={[0]} >
+            <Carousel itemsToShow={5 + 1
+            } renderArrow={renderArrow} pagination={false} outerSpacing={-8} itemPadding={[0]} >
 
                 {
                     stories && stories.map((el) => {

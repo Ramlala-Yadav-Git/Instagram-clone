@@ -1,12 +1,12 @@
 import React from 'react'
 
+import { Navbar } from "../navbar/navbar"
+import { Stories } from "../stories/Stories"
 export const HomeMain = () => {
     return (
         <div>
-            This is home page
-            <h1>This is home page</h1>
-            <h1>This is home page</h1>
-            <h1>This is home page</h1>
+            <Navbar />
+            <Stories />
         </div>
     )
 }

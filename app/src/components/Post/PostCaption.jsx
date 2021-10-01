@@ -2,12 +2,12 @@ import { Avatar, Button, TextField } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
 import MyLogoImg from "../../Image/Logos/amar pic.jpeg"
-export const PostCaption = ({data}) => {
+export const PostCaption = ({ data }) => {
 
     const InfoData = {
-        imgLogo:MyLogoImg,
-        name:"Profile amar",
-        userName:"Profile Username"
+        imgLogo: MyLogoImg,
+        name: "Profile amar",
+        userName: "Profile Username"
     }
     return (
         <>
@@ -16,32 +16,18 @@ export const PostCaption = ({data}) => {
                     <img src={data} alt="" id="img" className="img" />
                 </ImageBox>
                 <CaptionBox>
-                <div className="username_info">
-                <Avatar src={InfoData.imgLogo} className="logo_img"/>
-                <div className="info_username">{InfoData.userName}</div>
-                </div>
-                {/* <TextField
-                    className="text_field"
-                    id="standard-multiline-static"
-                    label="Write a caption..."
-                    multiline
-                    rows={28}
-                    size="large"
-                    variant="standard"
-                /> */}
-                 <TextField
-                 className="text_field"
-                    // size="large"
-                    // id="standard-search"
-                    multiline
-                    rows={28}
-                    label="Write a caption..."
-                    type="search"
-                    // variant="standard"
-                />
-                <Button variant="contained" className="button">Share</Button>
+                    <div className="username_info">
+                        <Avatar src={InfoData.imgLogo} className="logo_img" />
+                        <div className="info_username">{InfoData.userName}</div>
+                    </div>
+
+
+                    <textarea className="text_field" placeholder="Write a caption...">
+
+                    </textarea>
+                    <Button variant="contained" className="button">Share</Button>
                 </CaptionBox>
-                </Container>     
+            </Container>
         </>
     )
 }
@@ -77,9 +63,15 @@ font-size:20px;
     }
 }
 & .text_field{
-    font-size:14px;
+    font-size:17px;
     width:98%;
+    height: 40vh;
     margin:3% 2%;
+    outline: none;
+    border: 1px solid #a79d9d9e;
+    border-radius: 5px;
+   letter-spacing: 1.5px;
+
 }
 & .button{
     display:block;
