@@ -7,6 +7,7 @@ import BookmarkBorderTwoToneIcon from '@material-ui/icons/BookmarkBorderTwoTone'
 import SettingsIcon from '@material-ui/icons/Settings';
 import { useState } from "react"
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom"
 
 
 
@@ -27,7 +28,6 @@ export const Navbar = () => {
         setMessage(false)
         setReels(false)
         setLikes(false)
-        setSearch(false)
         setProfile(false)
         history.push("/")
     }
@@ -36,7 +36,6 @@ export const Navbar = () => {
         setMessage(true)
         setReels(false)
         setLikes(false)
-        setSearch(false)
         setProfile(false)
         handleChatPush()
     }
@@ -45,7 +44,6 @@ export const Navbar = () => {
         setMessage(false)
         setReels(true)
         setLikes(false)
-        setSearch(false)
         setProfile(false)
         history.push("/postFirst")
     }
@@ -54,7 +52,6 @@ export const Navbar = () => {
         setMessage(false)
         setReels(false)
         setLikes(true)
-        setSearch(false)
         setProfile(false)
     }
     const handleSearch = () => {
@@ -62,13 +59,15 @@ export const Navbar = () => {
     }
     const handleSearch1 = () => {
         setSearch(true)
-        console.log(search)
     }
     const handleHomeLogo = () => {
         history.push("/")
     }
     const handleChatPush = () => {
         history.push("/directMessage")
+    }
+    const handleChange = () => {
+        // history.push("/directMessage")
     }
 
 
@@ -83,7 +82,7 @@ export const Navbar = () => {
             <div className={styles.navbarMiddle}>
                 <div className={styles.middleSearch}>
                     {(search) ? <div className={styles.navBarSearch} onClick={handleSearch}>  <FaSistrix className={styles.searchIcon} />Search</div> :
-                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} /><HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
+                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} onChange={handleChange} /><HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
 
 
                     }
@@ -130,7 +129,9 @@ export const Navbar = () => {
                         <AccountCircleOutlinedIcon />
                     </div>
                     <div className={styles.settingTitle}>
-                        <p>Profile</p>
+                        <Link to="/profile" className={styles.link}>
+                            <p >Profile</p>
+                        </Link>
                     </div>
                 </div>
 
