@@ -3,8 +3,8 @@ import thunk from 'redux-thunk'
 import { homeReducer } from './reducer';
 import { postReducer } from './postImage/PostReducer';
 const rootReducer = combineReducers({
-    homeReducer,
-    postReducer
+    homeReducer:homeReducer,
+    postReducer:postReducer
 })
 
 const composedEnhancer =

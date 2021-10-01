@@ -1,12 +1,25 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState,useEffect } from 'react'
+import { shallowEqual, useSelector } from 'react-redux'
 
+import { Navbar } from "../navbar/navbar"
+import { Stories } from "../stories/Stories"
 export const HomeMain = () => {
+
+    const { data,loggedData, isLoading, isError } = useSelector(
+        (state)=>state.homeReducer,
+        shallowEqual
+    );
+
+    useEffect(() => {
+        setTimeout(()=>{
+            console.log(loggedData);
+        },1000)
+    }, [])
     return (
         <div>
-            This is home page
-            <h1>This is home page</h1>
-            <h1>This is home page</h1>
-            <h1>This is home page</h1>
+            <Navbar />
+            <Stories />
         </div>
     )
 }

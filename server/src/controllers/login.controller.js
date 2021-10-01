@@ -37,7 +37,10 @@ router.post('/', async (req, res) => {
         }
         else {
 
-            res.status(200).json({ message: 'User logged in successsfully', data: user, token });
+            res.status(200).json({
+                error: false,
+                message: 'User logged in successsfully', data: user, token
+            });
         }
     }
 })
