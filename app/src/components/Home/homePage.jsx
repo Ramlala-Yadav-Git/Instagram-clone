@@ -6,58 +6,91 @@ import fbLogo from "./images/facebook-icon.png"
 import applePlay from "./images/applestore.png";
 import googlePlay from "./images/googlestore.png";
 import phone from "./images/phones.png"
+import { useState } from "react";
+import { useHistory } from "react-router";
+import axios from "axios";
 
-export const HomePage = ()=>{
+export const Login = () => {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const history = useHistory()
 
-    
+  const handleLogin = () => {
+    const payload = {
+      username,
+      password
+    }
+    console.log(payload)
+    getData(payload)
+    setUsername('')
+    setPassword('')
+  }
 
-    return (<div>
+  const getData = (payload) => {
+    axios.post("http://localhost:8000/login", payload).then((res) => {
+      if (res.data.error) {
+        alert(res.data.message)
+      }
 
-<main>
-    <div class="log-in-container">
-            <div class="log-in">
-    
-              <img src= {logo} class="logo" alt = "logo" />
-    
-              <div class="log-in-form">
-                <input type="text" placeholder="Phone number, username or email"  
-                    
-                />
-                <input type="password" placeholder="Password" />
-                <button class="log-in-button">Log In</button>
-              </div>
-    
-              <span class="or-divider">OR</span>
-              
-              <div class="fb-login">
-                <a href="/">
-                  <img src= {fbLogo} alt = "facebook logo" />
-                  <span>Log in with Facebook</span>
-                </a>
-              </div>
-    
-              <a href="/">Forgot password?</a>
-            </div>
-    
-            <div class="sign-up">
-              <span>Don't have an account?</span><a href="/">Sign up</a>
-            </div>
-    
-            <div class="get-the-app">
-              <span>Get the app</span>
-              <div class="app-images">
-                <a href="/"><img src= {applePlay} alt ="appleLogo" /></a>
-                <a href="/"><img src= {googlePlay} alt = "googleLogo" /></a>
-              </div>
-            </div>
+      else {
+
+        localStorage.setItem("loginData", JSON.stringify(res))
+        alert(res.data.message)
+        history.push("/")
+      }
+    })
+  }
+
+  return (<div>
+
+    <main>
+      <div className="log-in-container">
+        <div className="log-in">
+
+          <img src={logo} className="logo" alt="logo" />
+
+          <div className="log-in-form">
+            <input type="text" placeholder="Phone number, username or email"
+              name="username" onChange={(e) => setUsername(e.target.value)} value={username}
+            />
+            <input type="password" placeholder="Password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)} value={password}
+            />
+            <button className="log-in-button" onClick={handleLogin}>Log In</button>
           </div>
-    
-          <div class="phones-container">
-            <img src={phone} alt = "phoneImage" />
+
+          <span className="or-divider">OR</span>
+
+          <div className="fb-login">
+            <a href="/">
+              <img src={fbLogo} alt="facebook logo" />
+              <span>Log in with Facebook</span>
+            </a>
           </div>
-</main>
-<footer>
-      <ul class="footer-links">
+
+          <a href="/">Forgot password?</a>
+        </div>
+
+        <div className="sign-up">
+          <span>Don't have an account?</span><a href="/signUP">Sign up</a>
+        </div>
+
+        <div className="get-the-app">
+          <span>Get the app</span>
+          <div className="app-images">
+            <a href="/"><img src={applePlay} alt="appleLogo" /></a>
+            <a href="/"><img src={googlePlay} alt="googleLogo" /></a>
+          </div>
+        </div>
+      </div>
+
+      <div className="phones-container">
+        <img src={phone} alt="phoneImage" />
+      </div>
+    </main>
+    <footer>
+      <ul className="footer-links">
         <li><a href="/">ABOUT</a></li>
         <li><a href="/">HELP</a></li>
         <li><a href="/">PRESS</a></li>
@@ -71,11 +104,11 @@ export const HomePage = ()=>{
         <li><a href="/">HASHTAGS</a></li>
         <li><a href="/">LANGUAGE</a></li>
       </ul>
-      <span class="copyright">&copy; 2021 INSTAGRAM FROM FACEBOOK</span>
+      <span className="copyright">&copy; 2021 INSTAGRAM FROM FACEBOOK</span>
     </footer>
 
-        
-      
-        </div>)
-    
+
+
+  </div>)
+
 }

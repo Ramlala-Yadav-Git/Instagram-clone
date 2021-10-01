@@ -7,7 +7,7 @@ import { Typography } from '@material-ui/core'
 export const SuggestionUser = ({item}) => {
     const [followState,setFollowState] = useState(false)
     const [follow,setFollow] = useState()
-    const {MyLogoImg,name,type,friend,accountType} = item
+    const {MyLogoImg,name,type,accountType} = item
     
     const followChange = function(e){
         if(!followState){

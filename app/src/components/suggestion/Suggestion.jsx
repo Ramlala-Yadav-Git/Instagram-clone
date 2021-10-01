@@ -10,14 +10,12 @@ const dataSuggestion = [
         MyLogoImg,
         name:"Aj_karnawal",
         type:"New To Instagram",
-        friend:"follow",
         accountType:"privet"
     },
     {
         MyLogoImg,
         name:"Aj_karnawal",
         type:"New To Instagram",
-        friend:"following",
         accountType:"public"
     }
 ]
