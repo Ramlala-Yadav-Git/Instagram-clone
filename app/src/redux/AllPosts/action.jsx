@@ -19,6 +19,13 @@ export const getAllPostFail = (payload) => {
 
     }
 }
+export const getCommentPost = (payload) => {
+    return {
+        type: payload.type,
+        payload
+
+    }
+}
 export const getAllPosts = () => dispatch => {
 
     dispatch(getAllPostReq());
@@ -35,17 +42,40 @@ export const getAllPosts = () => dispatch => {
 
 
 }
+export const updateComment = (payload) => dispatch => {
+    console.log("dispatching")
+    const data = {
+        ...payload,
+        type: "UPDATEPOST"
+    }
 
-export const AddCommentPosts = (payload) => {
-    console.log(payload)
-
+    dispatch(getAllPostReq());
     try {
-        axios.post(`http://localhost:8000/posts/addcomment/${payload.id}`, payload).then((res) => {
-            console.log("gettting", res.data.data);
-            getAllPosts()
-        })
+        dispatch(getCommentPost(data))
+
     } catch (err) {
         console.log(err)
-
+        dispatch(getAllPostFail(err));
     }
+
+
 }
+
+export const AddCommentPosts = (payload) => {
+
+    const data = {
+        userId: payload.userId._id,
+        comment: payload.comment,
+        id: payload.id
+    }
+
+    axios.post(`http://localhost:8000/posts/addcomment/${payload.id}`, data)
+
+
+
+
+    // console.log(data, "fkkfhlkashdata")
+
+
+}
+

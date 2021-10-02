@@ -9,12 +9,10 @@ import collection from "./assets/img/icons/collection.svg"
 import smile from "./assets/img/icons/smile.png"
 import styled from "styled-components";
 import { AddCommentPosts } from "../../redux/AllPosts/action"
-import { useDispatch } from "react-redux";
 import { useState } from "react";
 
 export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRender, userId, username, userPic, showHeart, handleShowHeart }) => {
     const [inputPost, setInputPost] = useState("")
-    const dispatch = useDispatch()
     const handleInput = (e) => {
         setInputPost(e.target.value)
     }
@@ -22,11 +20,12 @@ export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRen
         const payload = {
             userId,
             comment: inputPost,
-            id
+            id,
         }
-        AddCommentPosts(payload)
+        console.log(payload);
+        // getP(payload)
+        handleRender(payload)
         setInputPost("")
-        handleRender()
     }
     const handleHeart = () => {
         handleShowHeart()
@@ -96,7 +95,7 @@ export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRen
                                 comments.map((el) => {
 
 
-                                    return <div className="comments">
+                                    return <div className="comments" key={el._id}>
                                         <img src={el.userId.profilePic} alt="" />
                                         <h5>{el.userId.username}</h5>
                                         <p>{el.comment}</p>

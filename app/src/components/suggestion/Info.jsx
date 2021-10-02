@@ -3,6 +3,7 @@ import { Avatar } from '@material-ui/core'
 import MyLogoImg from "../../Image/Logos/amar pic.jpeg"
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
+import { GetData } from '../../utils/localStorageData'
 
 const InfoData = {
     imgLogo: MyLogoImg,
@@ -11,7 +12,8 @@ const InfoData = {
 }
 
 export const Info = () => {
-    const state = useSelector(state => state.user);
+    // const state = useSelector(state => state.user);
+    const state = GetData("loginData")
     // console.log("state", state.data)
     return (
         <div>

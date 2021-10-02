@@ -4,11 +4,13 @@ import { homeReducer } from './reducer';
 import { postReducer } from './postImage/PostReducer';
 import { LoggedUserReducer } from './loggedUser/LoggedUserReducer';
 import { AllPostReducer } from './AllPosts/AllPostsReducer';
+// import { AddCommentReducer } from './AddcommentReducer/AddCommentReducer';
 const rootReducer = combineReducers({
     user: LoggedUserReducer,
     homeReducer: homeReducer,
     postReducer: postReducer,
-    posts: AllPostReducer
+    posts: AllPostReducer,
+    // comment: AddCommentReducer
 
 })
 
