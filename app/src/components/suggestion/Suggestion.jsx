@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Avatar } from '@material-ui/core'
 import MyLogoImg from "../../Image/Logos/amar pic.jpeg"
 import styled from 'styled-components'
 import { SuggestionUser } from './SuggestionUser'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { getallUser } from '../../redux/action'
 
 
 const dataSuggestion = [
@@ -21,6 +23,16 @@ const dataSuggestion = [
 ]
 
 export const Suggestion = () => {
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(getallUser)
+    },[])
+    const { loggedData, isLoading,allUser} = useSelector(
+        (state)=>state.homeReducer,
+        shallowEqual
+    );
+    let {data} = allUser
+    // <SuggestionUser key={i} item={item} />
     return (
         <div>
             <SuggestionContainer>
@@ -28,8 +40,9 @@ export const Suggestion = () => {
                     <div>Suggestions For You</div>
                     <div className="see_all">See All</div>
                 </div>
-                <div>{dataSuggestion.map((item) => (
-                    <SuggestionUser item={item} />
+                <div>{(data)&&
+                data.map((item,i) =>(
+                     i<=3 && <SuggestionUser key={i} item={item} />
                 ))}</div>
             </SuggestionContainer>
 

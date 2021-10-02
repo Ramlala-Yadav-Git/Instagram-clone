@@ -6,7 +6,7 @@ import fbLogo from "./images/facebook-icon.png"
 import applePlay from "./images/applestore.png";
 import googlePlay from "./images/googlestore.png";
 import phone from "./images/phones.png"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { getUser } from "../../redux/loggedUser/action";
 import { getallUser } from "../../redux/action";
