@@ -1,0 +1,182 @@
+import "./feedCard.css";
+import more from './assets/img/icons/more.svg'
+import dummy from "./assets/img/dummy.jpg";
+import heart from "./assets/img/icons/heart.svg";
+import heartFilled from "./assets/img/icons/heartFilled.svg"
+import comment from "./assets/img/icons/comment.svg"
+import share from "./assets/img/icons/direct.svg"
+import collection from "./assets/img/icons/collection.svg"
+import smile from "./assets/img/icons/smile.png"
+import styled from "styled-components";
+import { AddCommentPosts } from "../../redux/AllPosts/action"
+import { useState } from "react";
+
+export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRender, userId, username, userPic, showHeart, handleShowHeart }) => {
+    const [inputPost, setInputPost] = useState("")
+    const handleInput = (e) => {
+        setInputPost(e.target.value)
+    }
+    const handleCommentInput = () => {
+        const payload = {
+            userId,
+            comment: inputPost,
+            id,
+        }
+        console.log(payload);
+        // getP(payload)
+        handleRender(payload)
+        setInputPost("")
+    }
+    const handleHeart = () => {
+        handleShowHeart()
+    }
+    return (
+        <>
+            <div className="card">
+                <div className="card-top flex">
+                    <div className="user-details flex">
+                        <div className="userImage">
+
+                            <img src={userPic} alt="" className="round" />
+                        </div>
+                        <div>
+                            <p className="user-name">{username}</p>
+                            {/* <p className="user-location">user location</p> */}
+                        </div>
+                    </div>
+                    <div>
+                        <img src={more} alt="options" className="more" />
+                    </div>
+                </div>
+
+                <div className="card-image">
+                    <img src={img} alt="Mainimage" />
+                </div>
+
+                <div className="card-top flex" >
+                    <div className="flex " >
+                        <div onClick={handleHeart}>
+
+                            {
+                                showHeart ? <svg aria-label="Unlike" className="iconHeart" color="#ed4956" fill="#ed4956" role="img" viewBox="0 0 48 48" ><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
+
+                                    : <img src={heart} alt="" className="icons" />
+
+                            }
+                        </div>
+                        <img src={comment} alt="" className="icons" />
+                        <img src={share} alt="" className="icons" />
+
+                    </div>
+                    <div>
+                        <img src={collection} alt="" className="icons" />
+                    </div>
+                </div>
+
+                <LikeWrapper>
+                    <h1 className="likes" >
+                        {showHeart ? likes + 1 : likes}
+
+                        {likes < 1 ? " like" : " likes"}
+                    </h1>
+                </LikeWrapper>
+                <CaptionWrapper>
+                    <h4>{caption}</h4>
+                </CaptionWrapper>
+                <h5 style={{ fontWeight: 500, marginLeft: "15px", marginBottom: "10px" }}>
+                    {comments.length === 0 ? "0 comment" : `${comments.length} comments.. `}
+                </h5>
+                <CommentWrapper>
+                    {
+                        <div>
+
+                            <div>{
+
+                                comments.map((el) => {
+
+
+                                    return <div className="comments" key={el._id}>
+                                        <img src={el.userId.profilePic} alt="" />
+                                        <h5>{el.userId.username}</h5>
+                                        <p>{el.comment}</p>
+
+
+                                    </div>
+
+                                })}
+                            </div>
+
+                        </div>
+                    }
+
+                </CommentWrapper>
+
+                <div className="card-top flex">
+
+
+                    <img src={smile} alt='sime' className="smileImage" />
+                    <input type="text" placeholder="add you comments" className="comment-input"
+                        onChange={handleInput}
+                        value={inputPost}
+                    />
+                    <button type="submit" className="btn" onClick={handleCommentInput}>Post</button>
+
+
+                </div>
+
+            </div>
+
+
+
+        </>
+    )
+}
+
+
+const CommentWrapper = styled.div`
+display: flex;
+flex-direction: column-reverse;
+/* border: 1px solid black; */
+padding: 10px;
+max-height: 100px;
+overflow: auto;
+& >div{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    margin-left: 8px;
+}
+& >div > :nth-child(1){
+font-weight: bold;
+}
+& >div .comments{
+    /* border:1px solid black; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+& >div .comments img{
+  width:30px;
+  height :30px;
+  border-radius: 50%;
+
+}
+& >div .comments h5{
+  font-weight: 500;
+
+}
+& >div .comments h5:hover{
+  text-decoration: underline;
+  cursor: pointer;
+
+}
+
+
+`
+const LikeWrapper = styled.div`
+
+`
+const CaptionWrapper = styled.div`
+margin: 15px;
+
+`

@@ -6,12 +6,12 @@ import fbLogo from "./images/facebook-icon.png"
 import applePlay from "./images/applestore.png";
 import googlePlay from "./images/googlestore.png";
 import phone from "./images/phones.png"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import axios from "axios";
 import { getUser } from "../../redux/loggedUser/action";
+import { getallUser } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux"
-import { SetData } from "../../utils/localStorageData";
+import { GetData, SetData } from "../../utils/localStorageData";
 
 export const Login = () => {
   const [username, setUsername] = useState("")
@@ -33,17 +33,25 @@ export const Login = () => {
   }
 
   const getData = (payload) => {
+
     dispatch(getUser(payload))
     const data = state;
-    if (data) {
-      SetData("loginData", data)
-      alert("Logged in succesfully")
-      history.push("/")
-    }
+    SetData("loginData", data)
+    // dispatch(getallUser)
+    const user = GetData("loginData")
 
-    else {
-      alert("Something went wrong please try again")
-    }
+    setTimeout(() => {
+      console.log(user)
+      if (user.data.username) {
+        alert("Logged in succesfully")
+        history.push("/")
+      }
+
+      else {
+        alert("Something went wrong please try again")
+      }
+
+    }, 2000)
 
   }
 

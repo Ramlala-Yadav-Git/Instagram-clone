@@ -7,36 +7,36 @@ import { Typography } from '@material-ui/core'
 export const SuggestionUser = ({item}) => {
     const [followState,setFollowState] = useState(false)
     const [follow,setFollow] = useState()
-    const {MyLogoImg,name,type,accountType} = item
+    const {profilePic,username} = item
     
-    const followChange = function(e){
-        if(!followState){
-            setFollowState(true)
-        if(e==="privet"){
-            e="Requested"
-        }
-        else if(e==="public"){
-            e="Following"
-        }
-        console.log(e);
-    }else{
-        setFollowState(false)
-        e="Follow"
+    const followChange = function(){
+
+    //     if(!followState){
+    //         setFollowState(true)
+    //     if(e==="privet"){
+    //         e="Requested"
+    //     }
+    //     else if(e==="public"){
+    //         e="Following"
+    //     }
+    //     console.log(e);
+    // }else{
+    //     setFollowState(false)
+    //     e="Follow"
         
-    }
-    setFollow(e)
+    // }
+    // setFollow(e)
 }
     return (
         <>
             <SuggestionFriend>
-                        <Avatar src={MyLogoImg} className="suggestions__image"/>
+                        <Avatar src={profilePic} className="suggestions__image"/>
                         <div className="suggestions__username">
-                            <Typography className="name_sugg">{name}</Typography>
-                            <Typography className="type_sugg">{type}</Typography>        
+                            <Typography className="name_sugg">{username}</Typography>
+                            <Typography className="type_sugg">"Suggested for you</Typography>        
                         </div>
-                        <div onClick={()=>followChange(accountType)} className="sugg_friend">{
+                        <div onClick={()=>setFollowState(!followState)} className="sugg_friend">{
                             followState===false?"Follow":
-                            follow==="Requested"?"Requested":
                             follow==="Following"?"Following":
                             "Follow"
                         }</div>
