@@ -3,12 +3,13 @@ import styled from "styled-components"
 import { MessageInput } from "./MessageInput"
 const SecondPersonWrapper = styled.div`
 border: 1px solid #d8d6d6;
-
+/* padding: 1%; */
 
 & >div{
     display: flex;
     justify-content: space-between;
 background: #FFFFFF;
+padding: 0.95%;
 
 }
 &>div>div{
@@ -30,7 +31,7 @@ background: #FFFFFF;
 }
 & p{
     font-size: 15px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     display: inline;
 }
 & > div i{

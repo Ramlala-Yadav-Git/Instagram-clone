@@ -15,6 +15,8 @@ router.post('/', async (req, res) => {
     const { username, password } = req.body;
 
     const user = await UserData.findOne({ username: username })
+    // console.log(user)
+
     if (!user) {
         return res.status(400).json({
             error: "true",
@@ -23,11 +25,14 @@ router.post('/', async (req, res) => {
     }
     else {
         const isPassMatch = await bcrypt.compare(password, user.password)
-        const token = await user.generateAuthToken();
-        res.cookie('instajwtoken', token, {
-            expires: new Date(Date.now() + 25892000000),
-            httpOnly: true,
-        });
+        if (!user.tokens) {
+            const token = await user.generateAuthToken();
+            console.log("token generation")
+            res.cookie('instajwtoken', token, {
+                expires: new Date(Date.now() + 25892000000),
+                httpOnly: true,
+            });
+        }
         if (!isPassMatch) {
             res.status(400).json({
                 error: "true",
@@ -39,7 +44,7 @@ router.post('/', async (req, res) => {
 
             res.status(200).json({
                 error: false,
-                message: 'User logged in successsfully', data: user, token
+                message: 'User logged in successsfully', data: user,
             });
         }
     }

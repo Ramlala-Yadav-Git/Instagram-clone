@@ -41,6 +41,7 @@ display: flex;
 padding: 0 200px;
 border-bottom: 1px solid #efefef;
 align-items: center;
+z-index:10 ;
 
 }
 
@@ -147,8 +148,8 @@ align-items: center;
 }
 .settings{
     position: absolute;
-    top:54px;
-    left:71%;
+    top:55px;
+    left:70%;
     width: 15%;
     padding: 1%;
     border: 1px solid #d2dbdb;
@@ -172,7 +173,6 @@ text-decoration: none;
 }
 .settingStyle{
     width: 20%;
-   
     padding-top: 2px;
     
 }
