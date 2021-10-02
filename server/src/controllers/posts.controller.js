@@ -203,9 +203,9 @@ router.patch("/likepost/:id", async function (req, res) {
         //     }
         // );
 
-        await UsersData.findByIdAndUpdate(postByUserId, {
-            isNewNotification: true,
-        });
+        // await UsersData.findByIdAndUpdate(postByUserId, {
+        //     isNewNotification: true,
+        // });
 
         res.status(200).json({ message: 'Liked post successfully', data: post });
 

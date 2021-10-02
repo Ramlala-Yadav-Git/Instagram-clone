@@ -35,7 +35,7 @@ export const PostCaption = ({ data }) => {
                 if (!res.data.data.error) {
                     dispatch(getAllPostData())
                     alert("Post added succesfully")
-                    history.push("/")
+                    window.location.href = "http://localhost:3000/"
                 }
                 else {
                     alert(res.data.data.message)

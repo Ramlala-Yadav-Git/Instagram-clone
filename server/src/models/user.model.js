@@ -16,6 +16,7 @@ const usersSchema = new mongoose.Schema(
         gender: { type: String, default: null },
         bio: { type: String, default: null },
         password: reqString,
+        number: { type: Number },
         profilePic: { type: String, default: sample },
         followers: [mongoose.Schema.Types.ObjectId],
         following: [mongoose.Schema.Types.ObjectId],

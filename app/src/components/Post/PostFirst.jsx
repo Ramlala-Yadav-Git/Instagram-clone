@@ -5,6 +5,7 @@ import { ComposeCont, ImageInputPart } from './ImageInputPart';
 import { useHistory } from 'react-router-dom';
 import { shallowEqual, useSelector, useDispatch } from 'react-redux'
 import { storePhoto } from '../../redux/postImage/PostAction';
+import axios from "axios"
 const style = {
   position: 'absolute',
   top: '50%',
@@ -25,39 +26,75 @@ const style = {
 
 
 export const PostFirst = () => {
+  const [img, setImg] = useState("")
+  const [file, setFiles] = useState([]);
   const history = useHistory()
   const dispatch = useDispatch()
-
+  const [next, setNext] = useState(false)
   const { data, isLoading, isError } = useSelector(
     (state) => state.postReducer,
     shallowEqual
   );
 
+  const [photo, setPhoto] = useState("")
   const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false)
+    setNext(false)
     history.push("/")
   }
 
-  const [photo, setPhoto] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
-  const imageHandler = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        // console.log(reader);
-        setPhoto(reader.result)
-      }
-    }
-    reader.readAsDataURL(e.target.files[0])
-  };
+  // const imageHandler = (e) => {
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     if (reader.readyState === 2) {
+  //       // console.log(reader);
+  //       setPhoto(reader.result)
+  //     }
+  //   }
+  //   reader.readAsDataURL(e.target.files[0])
+  // };
 
   const handleActivities = () => {
-    dispatch(storePhoto(photo))
+    dispatch(storePhoto(img))
   }
-  const handlePhoto = (e) => {
+  const handleChange = (e) => {
+    // e.preventDefault()
+    setFiles(e.target.files[0])
+    setFiles(e.target.files[0])
+
+  }
+  const handlePhoto = () => {
+    console.log(img)
+    setPhoto(img)
+
+    console.log(photo, "phtoto")
     handleActivities()
     history.push("/imageInputPart");
+  }
+  const handleSubmit = () => {
+
+    const data = new FormData();
+    data.append("img", file)
+    const config = {
+      headers: { "Content-Type": "multipart/form-data" },
+    };
+    // console.log(data, files)
+    try {
+
+      axios.post("http://localhost:8000/file", data, config).then((res) => {
+        // console.log(res.data.data.img)
+        setImg(res.data.data.img)
+        // console.log(res.data.data)
+        setNext(true)
+
+      })
+    }
+    catch (e) {
+      setNext(false)
+      console.log(e)
+    }
   }
 
   return (
@@ -82,8 +119,13 @@ export const PostFirst = () => {
             <Typography className="input_label" component="div">Drag photos and videos here.</Typography>
             {/* {!haveData?<Input type="file"accept="image/*" name="image-upload"/>:<ImageInputPart/>} */}
             <ComposeCont>
-              <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} onSelect={(e) => { handlePhoto(e) }} />
-              <button onClick={handlePhoto}>Add</button>
+              <input type="file" name="img" id="input" onChange={handleChange} />
+              <button onClick={handleSubmit}>Add</button>
+              <br />
+              {
+                next ? <button onClick={handlePhoto} >Next</button> : <button onClick={handlePhoto} disabled >Next</button>
+              }
+
             </ComposeCont>
           </ImageInput>
         </Box>

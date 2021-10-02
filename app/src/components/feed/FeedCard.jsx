@@ -24,7 +24,7 @@ export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRen
             comment: inputPost,
             id,
         }
-        console.log(payload);
+        // console.log(payload);
         // getP(payload)
         handleRender(payload)
         setInputPost("")

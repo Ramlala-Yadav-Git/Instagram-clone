@@ -11,6 +11,7 @@ const loginController = require("./controllers/login.controller")
 const registerController = require("./controllers/register.controller")
 const storyController = require("./controllers/story.controller")
 const postsController = require("./controllers/posts.controller")
+const fileController = require("./controllers/fileUploader")
 const app = express();
 
 app.use(cors())
@@ -22,6 +23,7 @@ app.use('/register', registerController)
 app.use("/users", userController)
 app.use("/story", storyController)
 app.use("/posts", postsController)
+app.use("/file", fileController)
 
 
 

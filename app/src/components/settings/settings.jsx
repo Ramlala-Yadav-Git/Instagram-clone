@@ -3,11 +3,61 @@ import Avatar from '@material-ui/core/Avatar';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import { Navbar } from "../navbar/navbar";
+import axios from "axios";
+import { useState } from "react";
 
 
 function Settings() {
+    const [file, setFiles] = useState([]);
+    const [img, setImg] = useState("")
+    const [username, setusername] = useState("")
+    const [fullname, setFullName] = useState("")
+    const [bio, setBio] = useState("")
+    const [email, setEmail] = useState("")
+    const [number, setNumber] = useState("")
+    const [gender, setGender] = useState("")
+
+    const handleChange = (e) => {
+        // e.preventDefault()
+        setFiles(e.target.files[0])
+        setFiles(e.target.files[0])
+
+    }
+
+    const handleSubmit = () => {
+
+        const data = new FormData();
 
 
+        data.append("img", file)
+        const config = {
+            headers: { "Content-Type": "multipart/form-data" },
+        };
+        // console.log(data, files)
+        try {
+
+            axios.post("http://localhost:8000/file", data, config).then((res) => {
+                console.log(res.data.data)
+                setImg(res.data.data.img)
+            })
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
+    const handleSubmitData = () => {
+        const payload = {
+            profilePic: img,
+            username,
+            fullname,
+            bio,
+            email,
+            number,
+            gender
+        }
+        console.log(payload)
+    }
     return <>
         <Navbar />
         <div className={styles.mainDiv}>
@@ -62,10 +112,14 @@ function Settings() {
                         <Avatar src="https://templates.joomla-monster.com/joomla30/jm-news-portal/components/com_djclassifieds/assets/images/default_profile.png" alt="" />
 
                     </div>
+
                     <div className={styles.fRight}>
                         <p className={styles.p1}>dhruvasurya1997</p>
-                        <input type="file" placeholder="Change profile photo" className={styles.p2} />
+                        <input type="file" name="img" placeholder="Change profile photo" className={styles.p2} onChange={(e) => handleChange(e)} />
+                        <button onClick={handleSubmit}>ADD</button>
                     </div>
+
+
 
                 </div>
                 <div className={styles.secondDiv}>
@@ -73,7 +127,7 @@ function Settings() {
                         Name
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="test" className={styles.input} />
+                        <input type="text" className={styles.input} onChange={(e) => setFullName(e.target.value)} />
                         <div className={styles.sub}>
                             Help people discover your account by using the name that you're known by: either your full name, nickname or business name.
                         </div>
@@ -88,7 +142,7 @@ function Settings() {
                         Username
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="test" className={styles.input} />
+                        <input type="test" className={styles.input} onChange={(e) => setusername(e.target.value)} />
                         <div className={styles.sub}>
                             In most cases, you'll be able to change your username back to dhruvasurya1997 for another 14 days. <span className={styles.blue}>Learn more</span>
                         </div>
@@ -117,6 +171,7 @@ function Settings() {
                             minRows={3}
 
                             style={{ width: 294, maxWidth: 294 }}
+                            onChange={(e) => setBio(e.target.value)}
                         />
                         <div className={styles.sub3}>
                             Personal information
@@ -132,7 +187,7 @@ function Settings() {
                         Email address
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="test" className={styles.input} />
+                        <input type="text" className={styles.input} onChange={(e) => setEmail(e.target.value)} />
 
 
                     </div>
@@ -143,7 +198,7 @@ function Settings() {
                         Phone number
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="test" className={styles.input} />
+                        <input type="text" className={styles.input} onChange={(e) => setNumber(e.target.value)} />
 
 
                     </div>
@@ -154,7 +209,7 @@ function Settings() {
                         Gender
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="test" className={styles.input} />
+                        <input type="text" className={styles.input} onChange={(e) => setGender(e.target.value)} />
 
 
                     </div>
@@ -180,7 +235,7 @@ function Settings() {
 
                 </div>
                 <div className={styles.sub5}>
-                    <Button variant="contained" className={styles.button}>
+                    <Button variant="contained" className={styles.button} onClick={handleSubmitData}>
                         Submit
                     </Button>
                     <div className={styles.final}>

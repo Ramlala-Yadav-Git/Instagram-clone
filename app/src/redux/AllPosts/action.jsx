@@ -70,12 +70,16 @@ export const AddCommentPosts = (payload) => {
     }
 
     axios.post(`http://localhost:8000/posts/addcomment/${payload.id}`, data)
+}
+export const AddLikePosts = (payload) => {
 
+    const data = {
+        userId: payload.userId._id,
+        id: payload.id
+    }
+    console.log(data)
 
-
-
-    // console.log(data, "fkkfhlkashdata")
-
-
+    axios.patch(`http://localhost:8000/posts/likepost/${payload.id}`, data)
+    console.log("added likes")
 }
 
