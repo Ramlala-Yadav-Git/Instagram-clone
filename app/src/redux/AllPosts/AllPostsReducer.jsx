@@ -5,7 +5,7 @@ const initState = {
     isError: false,
 }
 
-export const LoggedUserReducer = (state = initState, { type, payload }) => {
+export const AllPostReducer = (state = initState, { type, payload }) => {
     switch (type) {
         case GET_ALLPOST_REQUEST: {
             return {

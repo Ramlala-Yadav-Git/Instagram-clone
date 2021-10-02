@@ -17,7 +17,15 @@ router.get("/", async function (req, res) {
         const size = +req.query.limit || 10;
         const offset = (page - 1) * size;
 
-        const post = await PostsData.find().sort({ createdAt: 'desc' }).skip(offset).limit(size).lean().exec()
+        const post = await PostsData.find().sort({ createdAt: 'desc' }).skip(offset).limit(size).populate("userId")
+
+            .populate({
+                path: "comments",
+                populate: {
+                    path: 'userId',
+                    model: 'user'
+                }
+            }).lean().exec()
 
         return res.status(200).json({
             error: "false",
@@ -222,7 +230,7 @@ router.patch("/likepost/:id", async function (req, res) {
 
 router.post("/addcomment/:id", async function (req, res) {
     try {
-
+        // console.log(req.body)
         const id = req.params.id;
         const body = req.body;
         const { userId, comment } = body;
@@ -246,7 +254,7 @@ router.post("/addcomment/:id", async function (req, res) {
             {
                 new: true,
             }
-        );
+        ).populate("userId").lean().exec();
 
         // notification part
         const postByUserId = post.userId;
@@ -254,7 +262,7 @@ router.post("/addcomment/:id", async function (req, res) {
         const commentedBy = await UsersData.findOne(
             { _id: userId },
             { password: 0, tokens: 0 }
-        )
+        ).populate("userId")
             .lean()
             .exec();
 
@@ -281,7 +289,7 @@ router.post("/addcomment/:id", async function (req, res) {
             {
                 new: true,
             }
-        );
+        ).populate("userId").lean().exec();
 
         // updating isNewNotification
         await UsersData.findByIdAndUpdate(postByUserId, {

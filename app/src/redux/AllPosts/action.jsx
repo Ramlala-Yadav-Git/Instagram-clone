@@ -19,7 +19,7 @@ export const getAllPostFail = (payload) => {
 
     }
 }
-export const getUser = (payload) => dispatch => {
+export const getAllPosts = () => dispatch => {
 
     dispatch(getAllPostReq());
     try {
@@ -29,8 +29,23 @@ export const getUser = (payload) => dispatch => {
             return dispatch(getAllPostData(res.data.data))
         })
     } catch (err) {
-
+        console.log(err)
         dispatch(getAllPostFail(err));
     }
 
+
+}
+
+export const AddCommentPosts = (payload) => {
+    console.log(payload)
+
+    try {
+        axios.post(`http://localhost:8000/posts/addcomment/${payload.id}`, payload).then((res) => {
+            console.log("gettting", res.data.data);
+            getAllPosts()
+        })
+    } catch (err) {
+        console.log(err)
+
+    }
 }
