@@ -3,6 +3,7 @@ import { SingleStory } from "./SingleStory"
 import styles from "./Stories.module.css"
 import axios from "axios"
 import Carousel, { consts } from 'react-elastic-carousel';
+import { AddStory } from "./AddStory";
 
 const sample = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
 
@@ -29,6 +30,12 @@ export const Stories = () => {
             <Carousel itemsToShow={5 + 1
             } renderArrow={renderArrow} pagination={false} outerSpacing={-8} itemPadding={[0]} >
 
+                {/* Amar */}
+                <div>
+                    <AddStory />
+                </div>
+
+                {/* Amar */}
                 {
                     stories && stories.map((el) => {
                         return <>
