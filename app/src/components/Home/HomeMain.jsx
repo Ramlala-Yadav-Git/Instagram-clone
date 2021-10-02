@@ -1,6 +1,6 @@
-import axios from 'axios'
+// import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { shallowEqual, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { Navbar } from "../navbar/navbar"
 import { Stories } from "../stories/Stories"
@@ -15,11 +15,13 @@ import { Redirect } from 'react-router'
 
 import { AddCommentPosts } from '../../redux/AllPosts/action'
 export const HomeMain = () => {
-    const [showHeart, setShowHeart] = useState(false)
+    // const [showHeart, setShowHeart] = useState(false)
 
     const state = useSelector(state => state)
+    const [map, setMap] = useState([])
     const [post, setPost] = useState([])
     const dispatch = useDispatch()
+
     // const { data, loggedData, isLoading, isError } = useSelector(
     //     (state) => state.homeReducer,
     //     shallowEqual
@@ -34,21 +36,16 @@ export const HomeMain = () => {
 
     }, [])
     const handleRender = (payload) => {
-        // (GetPosts(payload))
-        // //dispatch(AddCommentPosts(payload))
-        // console.log(data)
-        // console.log(payload)
 
         const mapped = data.map((el) => el._id === payload.id ? { ...el, comments: [...el.comments, payload] } : el)
-        // console.log(mapped, "mapped")
         setPost([...mapped])
         AddCommentPosts(payload)
-        //setPost([...data])
 
     }
 
-    const handleShowHeart = () => {
-        setShowHeart(!showHeart)
+    const handleShowHeart = (payload) => {
+        const mapped = data.map((el) => el._id === payload.id ? { ...el, likes: [...el.likes, payload] } : el)
+        setMap(mapped)
     }
 
 
@@ -73,12 +70,12 @@ export const HomeMain = () => {
 
                         {
                             !isLoading && post.length !== 0 && post.map((e) => {
-                                return < FeedCard key={e._id} handleShowHeart={handleShowHeart} showHeart={showHeart} username={e.userId.username} userPic={e.userId.profilePic} handleRender={handleRender} img={e.img} id={e._id} userId={loggedUser.data} caption={e.caption} likes={e.likes.length} comments={e.comments} />
+                                return < FeedCard key={e._id} handleShowHeart={handleShowHeart} showHeart={map} username={e.userId.username} userPic={e.userId.profilePic} handleRender={handleRender} img={e.img} id={e._id} userId={loggedUser.data} caption={e.caption} likes={e.likes.length} comments={e.comments} />
                             })
                         }
                         {
                             !isLoading && post.length === 0 && data.map((e) => {
-                                return < FeedCard key={e._id} handleShowHeart={handleShowHeart} showHeart={showHeart} username={e.userId.username} userPic={e.userId.profilePic} handleRender={handleRender} img={e.img} id={e._id} userId={loggedUser.data} caption={e.caption} likes={e.likes.length} comments={e.comments} />
+                                return < FeedCard key={e._id} handleShowHeart={handleShowHeart} showHeart={map} username={e.userId.username} userPic={e.userId.profilePic} handleRender={handleRender} img={e.img} id={e._id} userId={loggedUser.data} caption={e.caption} likes={e.likes.length} comments={e.comments} />
                             })
                         }
 
@@ -100,6 +97,7 @@ width: 100%;
 margin-top: 80px;
 overflow: auto;
 padding-left: 10%;
+
 
 & > :nth-child(1){
     width: 55%;

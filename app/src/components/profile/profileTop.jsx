@@ -67,39 +67,39 @@ function ProfileTop() {
 
 
         </div>
-       
 
-     
-      <div className={styles.postsMainDiv}>
-          <div className={styles.titleHeading}>
-               <div className={styles.titles}>
-               <svg aria-label="" className={styles.svg}  color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path clip-rule="evenodd" d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z" fill-rule="evenodd"></path></svg>
-               Posts
-               </div>
-          </div>
 
-      </div>
-      <div className={styles.posts}>
-          <div className={styles.pictures}>
-             <img src="https://moneyscotch.com/wp-content/uploads/2019/09/69770954_2374368629345152_8522385848193008203_n-Cropped.jpg" alt=""/>
-          </div>
-          <div className={styles.pictures}>
-             <img src="https://s3.ap-southeast-1.amazonaws.com/images.deccanchronicle.com/dc-Cover-bkjeh4gluvdkobm158k2m4ps21-20180725143525.Medi.jpeg" alt=""/>
-          </div>
-          <div className={styles.pictures}>
-             <img src="https://www.youngisthan.in/wp-content/uploads/2017/10/Virat-Kohli.jpg" alt=""/>
-          </div>
-          <div className={styles.pictures}>
-             <img src="https://www.youngisthan.in/wp-content/uploads/2017/10/Virat-Kohli.jpg" alt=""/>
-          </div>
-        
-          <div className={styles.pictures}>
-             <img src="https://www.youngisthan.in/wp-content/uploads/2017/10/Virat-Kohli.jpg" alt=""/>
-          </div>
 
-      </div>
+        <div className={styles.postsMainDiv}>
+            <div className={styles.titleHeading}>
+                <div className={styles.titles}>
+                    <svg aria-label="" className={styles.svg} color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path clip-rule="evenodd" d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z" fill-rule="evenodd"></path></svg>
+                    Posts
+                </div>
+            </div>
 
-     
+        </div>
+        <div className={styles.posts}>
+            <div className={styles.pictures}>
+                <img src="https://moneyscotch.com/wp-content/uploads/2019/09/69770954_2374368629345152_8522385848193008203_n-Cropped.jpg" alt="" />
+            </div>
+            <div className={styles.pictures}>
+                <img src="https://s3.ap-southeast-1.amazonaws.com/images.deccanchronicle.com/dc-Cover-bkjeh4gluvdkobm158k2m4ps21-20180725143525.Medi.jpeg" alt="" />
+            </div>
+            <div className={styles.pictures}>
+                <img src="https://www.youngisthan.in/wp-content/uploads/2017/10/Virat-Kohli.jpg" alt="" />
+            </div>
+            <div className={styles.pictures}>
+                <img src="https://www.youngisthan.in/wp-content/uploads/2017/10/Virat-Kohli.jpg" alt="" />
+            </div>
+
+            <div className={styles.pictures}>
+                <img src="https://www.youngisthan.in/wp-content/uploads/2017/10/Virat-Kohli.jpg" alt="" />
+            </div>
+
+        </div>
+
+
 
 
 

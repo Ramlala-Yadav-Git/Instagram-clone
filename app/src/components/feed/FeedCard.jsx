@@ -1,18 +1,20 @@
 import "./feedCard.css";
 import more from './assets/img/icons/more.svg'
-import dummy from "./assets/img/dummy.jpg";
+// import dummy from "./assets/img/dummy.jpg";
 import heart from "./assets/img/icons/heart.svg";
-import heartFilled from "./assets/img/icons/heartFilled.svg"
+// import heartFilled from "./assets/img/icons/heartFilled.svg"
 import comment from "./assets/img/icons/comment.svg"
 import share from "./assets/img/icons/direct.svg"
 import collection from "./assets/img/icons/collection.svg"
 import smile from "./assets/img/icons/smile.png"
 import styled from "styled-components";
-import { AddCommentPosts } from "../../redux/AllPosts/action"
+// import { AddCommentPosts } from "../../redux/AllPosts/action"
 import { useState } from "react";
 
 export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRender, userId, username, userPic, showHeart, handleShowHeart }) => {
     const [inputPost, setInputPost] = useState("")
+    const [redHeart, setRedHeart] = useState(false)
+    const [count, setCount] = useState(0)
     const handleInput = (e) => {
         setInputPost(e.target.value)
     }
@@ -28,7 +30,31 @@ export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRen
         setInputPost("")
     }
     const handleHeart = () => {
-        handleShowHeart()
+        const payload = {
+            userId,
+            id,
+        }
+        handleShowHeart(payload)
+        hearSetup()
+    }
+    // console.log(userId, checkLike)
+    const hearSetup = () => {
+        const checkLike = showHeart.filter((el) => el._id === id)
+        if (checkLike) {
+
+            const c = checkLike.filter((el) => {
+                return el._id === id
+            })
+
+            if (c.length !== 0 && count === 0) {
+                setRedHeart(true)
+                setCount(1)
+            }
+            else {
+                setRedHeart(false)
+                setCount(0)
+            }
+        }
     }
     return (
         <>
@@ -58,7 +84,7 @@ export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRen
                         <div onClick={handleHeart}>
 
                             {
-                                showHeart ? <svg aria-label="Unlike" className="iconHeart" color="#ed4956" fill="#ed4956" role="img" viewBox="0 0 48 48" ><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
+                                redHeart ? <svg aria-label="Unlike" className="iconHeart" color="#ed4956" fill="#ed4956" role="img" viewBox="0 0 48 48" ><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
 
                                     : <img src={heart} alt="" className="icons" />
 
@@ -75,9 +101,9 @@ export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRen
 
                 <LikeWrapper>
                     <h1 className="likes" >
-                        {showHeart ? likes + 1 : likes}
+                        {redHeart ? likes + 1 : likes}
 
-                        {likes < 1 ? " like" : " likes"}
+                        {redHeart <= 1 ? " like" : " likes"}
                     </h1>
                 </LikeWrapper>
                 <CaptionWrapper>
@@ -140,6 +166,26 @@ flex-direction: column-reverse;
 padding: 10px;
 max-height: 100px;
 overflow: auto;
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b9248d; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a79292; 
+}
 & >div{
     display: flex;
     gap: 10px;

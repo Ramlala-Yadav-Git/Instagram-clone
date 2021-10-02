@@ -10,6 +10,8 @@ import { Login } from "../components/Home/homePage"
 import { ViewStory } from '../components/stories/ViewStory'
 import Setting from "../components/settings/settings";
 import ProfileTop from '../components/profile/profileTop'
+import { Link } from "react-router-dom"
+import Styled from "styled-components"
 
 export const Routes = () => {
     return (
@@ -46,9 +48,27 @@ export const Routes = () => {
                     <Login />
                 </Route>
                 <Route>
-                    <h1>Page not found</h1>
+                    <PageNotWrapper>
+                        <Link to="/">
+                            <img src="https://freefrontend.com/assets/img/html-funny-404-pages/CodePen-404-Page.gif" alt="" />
+                        </Link>
+                    </PageNotWrapper>
                 </Route>
             </Switch>
         </>
     )
 }
+
+const PageNotWrapper = Styled.div`
+
+width:90%;
+margin:auto;
+
+& >img{
+    width:100%;
+    height:90%;
+    cursor:pointer;
+}
+
+
+`

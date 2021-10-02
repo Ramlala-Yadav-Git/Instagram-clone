@@ -148,8 +148,8 @@ z-index:10 ;
 }
 .settings{
     position: absolute;
-    top:54px;
-    left:71%;
+    top:55px;
+    left:70%;
     width: 15%;
     padding: 1%;
     border: 1px solid #d2dbdb;
@@ -173,7 +173,6 @@ text-decoration: none;
 }
 .settingStyle{
     width: 20%;
-   
     padding-top: 2px;
     
 }

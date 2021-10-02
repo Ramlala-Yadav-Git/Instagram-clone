@@ -1,13 +1,13 @@
 
 .mainDiv{
-    width:60%;
+    /* width:60%; */
     margin: auto;
     display: flex;
     /* padding: 2%; */
     margin-top: 80px;
     align-items: center;
     margin-left: 25%;
-  
+    margin-bottom: 100px;
 }
 
 .profilePicDiv{
@@ -119,7 +119,7 @@ align-items: center;
 }
 
 .postsMainDiv{
-    width:60%;
+    width:70%;
     margin: auto;
     border-top: 1px solid #dbdbdb;
    
@@ -127,10 +127,10 @@ align-items: center;
 
 }
 .titleHeading{
-   width: 40%;
+   width: 95%;
  margin: auto;
    display: flex;
-   
+margin-bottom: 30px;   
   
 
 }
