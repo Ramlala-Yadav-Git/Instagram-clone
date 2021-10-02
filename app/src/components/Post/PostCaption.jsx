@@ -1,9 +1,18 @@
 import { Avatar, Button, TextField } from '@material-ui/core'
+import axios from 'axios'
 import React, { useState } from 'react'
+import { Redirect, useHistory } from 'react-router'
 import styled from 'styled-components'
 import MyLogoImg from "../../Image/Logos/amar pic.jpeg"
+import { GetData } from "../../utils/localStorageData"
+import { getAllPostData } from '../../redux/AllPosts/action'
+import { useDispatch } from 'react-redux'
+
 export const PostCaption = ({ data }) => {
     const [caption, setCaption] = useState("");
+    const dispatch = useDispatch()
+    const user = GetData("loginData")
+    const history = useHistory()
     const InfoData = {
         imgLogo: MyLogoImg,
         name: "Profile amar",
@@ -12,11 +21,33 @@ export const PostCaption = ({ data }) => {
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setCaption(values => ({...values, [name]: value}))
-      }
-    const handleShare = ()=>{
-        console.log(caption);
-        console.log(data);
+        setCaption(values => ({ ...values, [name]: value }))
+    }
+    const handleShare = () => {
+        if (user.data._id) {
+            const payload = {
+                caption: caption,
+                img: data,
+                userId: user.data._id
+            }
+            console.log(payload)
+            axios.post("http://localhost:8000/posts", payload).then((res) => {
+                if (!res.data.data.error) {
+                    dispatch(getAllPostData())
+                    alert("Post added succesfully")
+                    history.push("/")
+                }
+                else {
+                    alert(res.data.data.message)
+                    console.log(res.data.data.error)
+                }
+            })
+        }
+        else {
+            alert("Please add fields properly")
+        }
+
+
     }
     return (
         <>
@@ -32,10 +63,10 @@ export const PostCaption = ({ data }) => {
 
 
                     <textarea className="text_field" placeholder="Write a caption..."
-                    type="text" 
-                    name="caption" 
-                    onChange={(e)=>setCaption(e.target.value)}
-                    value={caption}
+                        type="text"
+                        name="caption"
+                        onChange={(e) => setCaption(e.target.value)}
+                        value={caption}
                     >
 
                     </textarea>
