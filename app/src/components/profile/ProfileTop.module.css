@@ -48,6 +48,7 @@ align-items: flex-start;
 .name1{
     font-weight: lighter;
     font-size: 25px;
+    color: black;
 }
 .editButtonDiv{
     width: 15%;
@@ -127,7 +128,7 @@ align-items: center;
 
 }
 .titleHeading{
-   width: 95%;
+   width: 60%;
  margin: auto;
    display: flex;
 margin-bottom: 30px;   
@@ -139,9 +140,12 @@ margin-bottom: 30px;
     margin-right: 5px;
 }
 .titles{
+    width: 15%;
     border-top: 1px solid black;
     padding: 5px 5px 5px;
     font-size: 16px;
+    margin-right: 10%;
+    text-align: center;
 }
 .posts{
     width:70%;

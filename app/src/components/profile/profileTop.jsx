@@ -1,10 +1,90 @@
 import styles from "./ProfileTop.module.css"
 import Avatar from '@material-ui/core/Avatar';
 import { Navbar } from "../navbar/navbar";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { useState } from "react";
+
+const Post = styled.div`
+  color: ${props => props.theme1 ? "black" : "#8e8e8e"};
+  border-top:${props => props.theme1 ? "1px solid black" : "none"} ;
+  font-size: 16px;
+  padding: 2%;
+    margin-right: 10%;
+    text-align: center;
+    
+    width: 15%;
+    cursor: pointer;
+
+`
+
+const Igtv = styled.div`
+  color: ${props => props.theme2 ? "black" : "#8e8e8e"};
+  border-top:${props => props.theme2 ? "1px solid black" : "none"} ;
+  font-size: 16px;
+  padding: 2%;
+    margin-right: 10%;
+    text-align: center;
+    width: 15%;
+    cursor: pointer;
+
+`
+const Saved = styled.div`
+  color: ${props => props.theme3 ? "black" : "#8e8e8e"};
+  border-top:${props => props.theme3 ? "1px solid black" : "none"} ;
+  font-size: 16px;
+  padding: 2%;
+    margin-right: 10%;
+    text-align: center;
+    width: 15%;
+    cursor: pointer;
+
+`
+const Tagged = styled.div`
+  color: ${props => props.theme4 ? "black" : "#8e8e8e"};
+  border-top:${props => props.theme4 ? "1px solid black" : "none"} ;
+  font-size: 16px;
+  padding: 2%;
+
+    margin-right: 10%;
+    text-align: center;
+    width: 16%;
+    cursor: pointer;
+
+`
 
 
 function ProfileTop() {
+    const [theme1, setTheme1] = useState(true)
+    const [theme2, setTheme2] = useState(false)
+    const [theme3, setTheme3] = useState(false)
+    const [theme4, setTheme4] = useState(false)
+
+
+    const handlePost = () => {
+        setTheme1(true)
+        setTheme2(false)
+        setTheme3(false)
+        setTheme4(false)
+    }
+    const handleIgtv = () => {
+        setTheme1(false)
+        setTheme2(true)
+        setTheme3(false)
+        setTheme4(false)
+    }
+    const handleSaved = () => {
+        setTheme1(false)
+        setTheme2(false)
+        setTheme3(true)
+        setTheme4(false)
+    }
+    const handleTagged = () => {
+        setTheme1(false)
+        setTheme2(false)
+        setTheme3(false)
+        setTheme4(true)
+    }
 
 
     return <>
@@ -72,14 +152,27 @@ function ProfileTop() {
 
         <div className={styles.postsMainDiv}>
             <div className={styles.titleHeading}>
-                <div className={styles.titles}>
+                <Post theme1={theme1} onClick={handlePost}>
                     <svg aria-label="" className={styles.svg} color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path clip-rule="evenodd" d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z" fill-rule="evenodd"></path></svg>
-                    Posts
-                </div>
+                    POSTS
+                </Post>
+                <Igtv theme2={theme2} onClick={handleIgtv}>
+                    <svg aria-label="" className={styles.svg} color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path d="M41 10c-2.2-2.1-4.8-3.5-10.4-3.5h-3.3L30.5 3c.6-.6.5-1.6-.1-2.1-.6-.6-1.6-.5-2.1.1L24 5.6 19.7 1c-.6-.6-1.5-.6-2.1-.1-.6.6-.7 1.5-.1 2.1l3.2 3.5h-3.3C11.8 6.5 9.2 7.9 7 10c-2.1 2.2-3.5 4.8-3.5 10.4v13.1c0 5.7 1.4 8.3 3.5 10.5 2.2 2.1 4.8 3.5 10.4 3.5h13.1c5.7 0 8.3-1.4 10.5-3.5 2.1-2.2 3.5-4.8 3.5-10.4V20.5c0-5.7-1.4-8.3-3.5-10.5zm.5 23.6c0 5.2-1.3 7-2.6 8.3-1.4 1.3-3.2 2.6-8.4 2.6H17.4c-5.2 0-7-1.3-8.3-2.6-1.3-1.4-2.6-3.2-2.6-8.4v-13c0-5.2 1.3-7 2.6-8.3 1.4-1.3 3.2-2.6 8.4-2.6h13.1c5.2 0 7 1.3 8.3 2.6 1.3 1.4 2.6 3.2 2.6 8.4v13zM34.6 25l-9.1 2.8v-3.7c0-.5-.2-.9-.6-1.2-.4-.3-.9-.4-1.3-.2l-11.1 3.4c-.8.2-1.2 1.1-1 1.9.2.8 1.1 1.2 1.9 1l9.1-2.8v3.7c0 .5.2.9.6 1.2.3.2.6.3.9.3.1 0 .3 0 .4-.1l11.1-3.4c.8-.2 1.2-1.1 1-1.9s-1.1-1.2-1.9-1z"></path></svg>
+                    IGTV
+                </Igtv>
+                <Saved theme3={theme3} onClick={handleSaved}>
+                    <svg aria-label="" className={styles.svg} color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path d="M43.5 48c-.4 0-.8-.2-1.1-.4L24 29 5.6 47.6c-.4.4-1.1.6-1.6.3-.6-.2-1-.8-1-1.4v-45C3 .7 3.7 0 4.5 0h39c.8 0 1.5.7 1.5 1.5v45c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1zM24 26c.8 0 1.6.3 2.2.9l15.8 16V3H6v39.9l15.8-16c.6-.6 1.4-.9 2.2-.9z"></path></svg>
+                    SAVED
+                </Saved>
+                <Tagged theme4={theme4} onClick={handleTagged}>
+                    <svg aria-label="" className={styles.svg} color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path clip-rule="evenodd" d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z" fill-rule="evenodd"></path></svg>
+                    TAGGED
+                </Tagged>
             </div>
 
         </div>
-        <div className={styles.posts}>
+
+        {(theme1) ? <div className={styles.posts}>
             <div className={styles.pictures}>
                 <img src="https://moneyscotch.com/wp-content/uploads/2019/09/69770954_2374368629345152_8522385848193008203_n-Cropped.jpg" alt="" />
             </div>
@@ -97,7 +190,40 @@ function ProfileTop() {
                 <img src="https://www.youngisthan.in/wp-content/uploads/2017/10/Virat-Kohli.jpg" alt="" />
             </div>
 
-        </div>
+        </div> : ""}
+        {(theme2) ? <div className={styles.posts}>
+            <div className={styles.pictures}>
+                <img src="https://femina.wwmindia.com/content/2021/jul/ladakhshutterstock10730658471627274968.jpg" alt="" />
+            </div>
+            <div className={styles.pictures}>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Rangdum_village_grazing_fields.jpg" alt="" />
+            </div>
+            <div className={styles.pictures}>
+                <img src="https://www.thrillophilia.com/blog/wp-content/uploads/2017/05/how-to-reach-ladakh-1.jpg" alt="" />
+            </div>
+
+
+        </div> : ""}
+        {(theme3) ? <div className={styles.posts}>
+            <div className={styles.pictures}>
+                <img src="https://moneyscotch.com/wp-content/uploads/2019/09/69770954_2374368629345152_8522385848193008203_n-Cropped.jpg" alt="" />
+            </div>
+            <div className={styles.pictures}>
+                <img src="https://s3.ap-southeast-1.amazonaws.com/images.deccanchronicle.com/dc-Cover-bkjeh4gluvdkobm158k2m4ps21-20180725143525.Medi.jpeg" alt="" />
+            </div>
+
+
+
+        </div> : ""}
+        {(theme4) ? <div className={styles.posts}>
+            <div className={styles.pictures}>
+                <img src="https://moneyscotch.com/wp-content/uploads/2019/09/69770954_2374368629345152_8522385848193008203_n-Cropped.jpg" alt="" />
+            </div>
+
+
+
+        </div> : ""}
+
 
 
 
