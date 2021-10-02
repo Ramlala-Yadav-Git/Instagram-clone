@@ -1,4 +1,4 @@
-# TravelGuru Website Clone
+# Instagram Website Clone
 
 <a href="https://www.instagram.com//">![Logo](https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png)</a>
 
