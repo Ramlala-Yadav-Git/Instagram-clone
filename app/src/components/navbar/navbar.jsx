@@ -8,6 +8,8 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import { useState } from "react"
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom"
+import axios from "axios";
+import { shallowEqual, useSelector } from "react-redux";
 
 
 
@@ -66,13 +68,28 @@ export const Navbar = () => {
     const handleChatPush = () => {
         history.push("/directMessage")
     }
-    const handleChange = () => {
-        // history.push("/directMessage")
+    //search work by amarjeet
+    const [searchUser,setSearchUser] = useState([])
+    const [query,setQuery] = useState()
+    const { loggedData, isLoading,allUser} = useSelector(
+        (state)=>state.homeReducer,
+        shallowEqual
+    );
+    let {data} = allUser
+    const names = ['James', 'John', 'Paul', 'Ringo', 'George'];
+
+    const handleChange = (event) => {
+        console.log(data);
+        const {value} = event.target
+        setQuery(value)
+        
     }
 
 
     return <>
+    
         <div className={styles.navHeader}>
+            
             <div className={styles.navbarFirst}>
                 <div className={styles.instaLogo} onClick={handleHomeLogo}>
                     <img src={process.env.PUBLIC_URL + "/images/instalogo.png"} alt="" />
@@ -82,14 +99,18 @@ export const Navbar = () => {
             <div className={styles.navbarMiddle}>
                 <div className={styles.middleSearch}>
                     {(search) ? <div className={styles.navBarSearch} onClick={handleSearch}>  <FaSistrix className={styles.searchIcon} />Search</div> :
-                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} onChange={handleChange} /><HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
-
-
+                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} onChange={handleChange} />
+                        {data?.length>0 &&
+                        <div className={styles.autocomplete}>
+                            {data?.filter((el)=> el.fullname.includes(query)||el.username.includes(query)).map((filteredName,i)=>(
+                            <div key={i} className={styles.autocompleteItems}>
+                                <span>{filteredName.fullname}</span>
+                            </div>))})
+                            </div>}
+                        <HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
                     }
 
                 </div>
-
-
 
 
             </div>
