@@ -41,7 +41,7 @@ export const AddStory = () => {
     const history = useHistory()
     let user = GetData('loginData')
     // data = data.data
-    // console.log(data);
+    // console.log(user, "my user");
     const story = true
 
     const handleDouble = () => {
@@ -53,9 +53,9 @@ export const AddStory = () => {
         console.log('story');
     }
     return <>
-        <SingleStoryContainer>
+        <SingleStoryContainer watch>
             <div onClick={showStory} onDoubleClick={handleDouble}>
-                <img src={user.data && user.data.profilePic} alt="story" />
+                <img src={user.data && user.data.profilePic} alt="aalll" />
             </div>
             <span>{user.data && user.data.username}</span>
         </SingleStoryContainer>
