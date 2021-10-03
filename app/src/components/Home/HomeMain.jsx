@@ -39,7 +39,7 @@ export const HomeMain = () => {
     }, [])
     const handleRender = (payload) => {
 
-        const mapped = post && post.map((el) => el._id === payload.id ? { ...el, comments: [...el.comments, payload] } : el)
+        const mapped = post && data.map((el) => el._id === payload.id ? { ...el, comments: [...el.comments, payload] } : el)
         setPost([...mapped])
         AddCommentPosts(payload)
 

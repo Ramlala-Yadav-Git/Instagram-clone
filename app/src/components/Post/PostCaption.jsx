@@ -30,7 +30,7 @@ export const PostCaption = ({ data }) => {
                 img: data,
                 userId: user.data._id
             }
-            console.log(payload)
+            // console.log(payload)
             axios.post("http://localhost:8000/posts", payload).then((res) => {
                 if (!res.data.data.error) {
                     dispatch(getAllPostData())

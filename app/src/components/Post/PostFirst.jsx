@@ -66,10 +66,10 @@ export const PostFirst = () => {
 
   }
   const handlePhoto = () => {
-    console.log(img)
+    // console.log(img)
     setPhoto(img)
 
-    console.log(photo, "phtoto")
+    // console.log(photo, "phtoto")
     handleActivities()
     history.push("/imageInputPart");
   }

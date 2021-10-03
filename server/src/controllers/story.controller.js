@@ -21,10 +21,10 @@ router.get("/:id", async (req, res) => {
     return res.status(200).json({ data: story })
 
 })
-
-router.post("/", upload.single("img"), async (req, res) => {
+// upload.single("img"),
+router.post("/", async (req, res) => {
     const story = await StoryData.create({
-        img: req.file.path,
+        img: req.body.img,
         userProfile: req.body.userProfile,
         username: req.body.username,
         id: req.body.id,

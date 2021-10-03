@@ -77,7 +77,7 @@ export const Login = () => {
           <span className="or-divider">OR</span>
 
           <div className="fb-login">
-            <a href="/">
+            <a href="/" style={{ display: "flex", justifyContent: "space-between" }}>
               <img src={fbLogo} alt="facebook logo" />
               <span>Log in with Facebook</span>
             </a>

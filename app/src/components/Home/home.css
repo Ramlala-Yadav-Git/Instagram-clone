@@ -178,7 +178,9 @@
   
   .fb-login img {
     width: 1.5rem;
+    height: 1.5rem;
     margin-right: 0.5rem;
+    margin-top: 0.2rem;
   }
   
   .fb-login span {
