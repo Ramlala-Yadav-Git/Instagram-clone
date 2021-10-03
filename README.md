@@ -70,7 +70,7 @@ npm run server
  </p>
  
  Click the link to view project: 
- <a href="">Travel_Guru</a>
+ <a href="">Instagram</a>
   
 
 
