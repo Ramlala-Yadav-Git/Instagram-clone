@@ -39,25 +39,25 @@ border: ${props => props.watch ? "2px solid #c70505" : "2px solid gray"};
 
 export const AddStory = () => {
     const history = useHistory()
-    let {data} = GetData('loginData')
-    data = data.data
-    console.log(data);
+    let user = GetData('loginData')
+    // data = data.data
+    // console.log(data);
     const story = true
 
-    const handleDouble = ()=>{
+    const handleDouble = () => {
         console.log("aaaa");
         history.push("/uploadStory")
     }
 
-    const showStory=()=>{
+    const showStory = () => {
         console.log('story');
     }
     return <>
         <SingleStoryContainer>
             <div onClick={showStory} onDoubleClick={handleDouble}>
-                <img src={data.profilePic} alt="story" />
+                <img src={user.data && user.data.profilePic} alt="story" />
             </div>
-            <span>{data.username}</span>
+            <span>{user.data && user.data.username}</span>
         </SingleStoryContainer>
 
 

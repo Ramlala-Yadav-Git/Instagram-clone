@@ -62,7 +62,7 @@ function ProfileTop() {
     const [theme2, setTheme2] = useState(false)
     const [theme3, setTheme3] = useState(false)
     const [theme4, setTheme4] = useState(false)
-    const [post,setPost] = useState()
+    const [post, setPost] = useState()
 
     const handlePost = () => {
         setTheme1(true)
@@ -88,31 +88,33 @@ function ProfileTop() {
         setTheme3(false)
         setTheme4(true)
     }
-    
-       let state = GetData("loginData")
-        state = state.data.data
-        let posts
-    const getPost = (id)=>{
+
+    let user = GetData("loginData")
+    console.log(user.data.profilePic)
+    // state = state.data && state.data.data
+    let posts
+    const getPost = (id) => {
         axios.get(`http://localhost:8000/posts/user/${id}`)
-        .then((res)=>{
-            posts = res.data
-            setPost(posts.data)
-        })
+            .then((res) => {
+                posts = res.data
+                setPost(posts.data)
+            })
     }
-    useEffect(() => {
-        getPost(state._id)
-    }, [])
-    console.log(post,'post');
+    // useEffect(() => {
+    //     getPost(user.data && user.data.data._id)
+    //     console.log(user)
+    // }, [])
+    console.log(post, 'post');
     return <>
         <Navbar />
         <div className={styles.mainDiv}>
             <div className={styles.profilePicDiv}>
-                <Avatar src={state.profilePic} alt="profilePic" className={styles.profilePic} />
+                <Avatar src={user.data && user.data.profilePic} alt="profilePic" className={styles.profilePic} />
             </div>
             <div className={styles.userInfo}>
                 <div className={styles.firstDiv}>
                     <div className={styles.userName}>
-                        <p className={styles.name1}>{state.username}</p>
+                        <p className={styles.name1}>{user.data && user.data.username}</p>
 
                     </div>
                     <div className={styles.editButtonDiv}>
@@ -121,7 +123,7 @@ function ProfileTop() {
                                 Edit Profile
                             </Link>
                         </Button>
-                        
+
 
                     </div>
                     <div className={styles.stettingDiv}>
@@ -135,27 +137,27 @@ function ProfileTop() {
                 </div>
                 <div className={styles.secondDiv}>
                     <div className={styles.postFollowers}>
-                        <div className={styles.data}>{state.tagedPosts}</div>
+                        <div className={styles.data}>{user.data && user.data.tagedPosts.length}</div>
                         <div className={styles.text}>posts</div>
 
                     </div>
                     <div className={styles.postFollowers}>
-                        <div className={styles.data}>{state.followers}</div>
+                        <div className={styles.data}>{user.data && user.data.followers}</div>
                         <div className={styles.text}>followers</div>
 
                     </div>
                     <div className={styles.postFollowers}>
-                        <div className={styles.data}>{state.following}</div>
+                        <div className={styles.data}>{user.data && user.data.following}</div>
                         <div className={styles.text}>following</div>
 
                     </div>
 
                 </div>
                 <div className={styles.thirdDiv}>
-                    <h1 className={styles.name}>{state.fullname}</h1>
+                    <h1 className={styles.name}>{user.data && user.data.fullname}</h1>
                     <br />
                     <div className={styles.bio}>
-                    <span >{state.bio}</span>
+                        <span >{user.data && user.data.bio}</span>
                     </div>
                 </div>
             </div>
@@ -188,12 +190,12 @@ function ProfileTop() {
         </div>
 
         {(theme1) ? <div className={styles.posts}>
-            {(post)&&
-            post.map((item,i)=>(
-            <div className={styles.pictures}>
-                <img src="https://moneyscotch.com/wp-content/uploads/2019/09/69770954_2374368629345152_8522385848193008203_n-Cropped.jpg" alt="" />
-            </div>
-            ))}
+            {(post) &&
+                post.map((item, i) => (
+                    <div className={styles.pictures}>
+                        <img src="https://moneyscotch.com/wp-content/uploads/2019/09/69770954_2374368629345152_8522385848193008203_n-Cropped.jpg" alt="" />
+                    </div>
+                ))}
             <div className={styles.pictures}>
                 <img src="https://s3.ap-southeast-1.amazonaws.com/images.deccanchronicle.com/dc-Cover-bkjeh4gluvdkobm158k2m4ps21-20180725143525.Medi.jpeg" alt="" />
             </div>
