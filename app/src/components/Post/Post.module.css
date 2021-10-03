@@ -1,27 +1,25 @@
 .customFileInput::-webkit-file-upload-button {
     visibility: hidden;
-    
+    /* max-width: 1px; */
+    position: relative;
   }
   .customFileInput{
-    text-align: center;
-    align-items: center;
-    max-width: 9%;
+    position: relative;
+    /* text-align: center;
+    align-items: center; */
+    max-width: 9.1%;
+    left: 32%;
     margin: 2% auto;
   }
   .customFileInput::before {
     
-    content: 'Select Story';
+    content: 'Select Post';
     display: inline-block;
     background: linear-gradient(top, #f9f9f9, #e3e3e3);
     border-radius: 3px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    /* -webkit-user-select: none; */
+    padding: 7px 10px;
     cursor: pointer;
-    text-shadow: 1px 1px #fff;
     font-weight: 700;
-    font-size: 10pt;
     border: 1px solid rgb(7, 218, 207);
   }
   .customFileInput:hover::before {
@@ -29,15 +27,9 @@
     text-align: center;
     align-items: center;
     background-color: rgb(7, 218, 207);
-
-  }
+    border: 0px solid white;
+}
   .customFileInput:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-  }
-  .shareButton{
-    float: right;
-  }
-
-  .imgaeInput{
-    padding-left: 1%;
+    border: 0px solid white;
   }

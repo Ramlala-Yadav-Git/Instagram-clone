@@ -5,6 +5,8 @@ import styles from "./Upload.module.css"
 import axios from 'axios'
 import { GetData } from "../../utils/localStorageData"
 import { useHistory } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const UploadModel = () => {
     const [img, setImg] = useState("")
@@ -31,8 +33,18 @@ export const UploadModel = () => {
         axios.post("http://localhost:8000/story", payload).then((res) => {
             console.log(res.data)
             if (res.data) {
-                alert("Story added successfully")
+                // alert("Story added successfully")
+                toast.success("Share Succesfully",{
+                    position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+                })
                 history.push("/")
+                
             }
             else {
                 alert("Something went wrong")
@@ -40,6 +52,15 @@ export const UploadModel = () => {
         })
     }
     const onUpload = () => {
+        toast.success("Upload Succesfully",{
+            position: "top-left",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+        })
         handleSubmit()
     }
     const handleSubmit = () => {
@@ -70,10 +91,24 @@ export const UploadModel = () => {
                 multiple=""
 
             />
-            
+           
+
             <Button variant="contained" color="secondary" loading={loading} loadingPosition="start" onClick={onUpload}>Upload</Button>
             <Button variant="contained" color="primary" loading={loading} loadingPosition="start" className={styles.shareButton} onClick={onSubmit}>Share</Button>
+
+            <ToastContainer 
+            position="top-left"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover/>
+            
         </div>
+        
     )
 }
 

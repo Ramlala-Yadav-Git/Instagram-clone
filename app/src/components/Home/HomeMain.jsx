@@ -13,7 +13,7 @@ import { getAllPosts } from "../../redux/AllPosts/action";
 import { GetData } from '../../utils/localStorageData'
 import { Redirect } from 'react-router'
 import { AddLikePosts } from '../../redux/AllPosts/action'
-
+import { ToastContainer, toast } from 'react-toastify';
 import { AddCommentPosts } from '../../redux/AllPosts/action'
 import { AddSavedPosts, AddToLocal } from '../../redux/AllPosts/action'
 export const HomeMain = () => {
@@ -93,6 +93,16 @@ export const HomeMain = () => {
                         <Suggestion />
                     </div>
                 </HomePageWrapper>
+                <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover/>
             </div>
     )
 }
