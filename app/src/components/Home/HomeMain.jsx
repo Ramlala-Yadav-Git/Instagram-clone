@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { getAllPosts } from "../../redux/AllPosts/action";
 import { GetData } from '../../utils/localStorageData'
 import { Redirect } from 'react-router'
+import { AddLikePosts } from '../../redux/AllPosts/action'
 
 import { AddCommentPosts } from '../../redux/AllPosts/action'
 export const HomeMain = () => {
@@ -32,12 +33,12 @@ export const HomeMain = () => {
         GetPosts()
         setPost(data)
 
-        console.log(data)
+        // console.log(data)
 
     }, [])
     const handleRender = (payload) => {
 
-        const mapped = data.map((el) => el._id === payload.id ? { ...el, comments: [...el.comments, payload] } : el)
+        const mapped = post && post.map((el) => el._id === payload.id ? { ...el, comments: [...el.comments, payload] } : el)
         setPost([...mapped])
         AddCommentPosts(payload)
 
@@ -46,6 +47,8 @@ export const HomeMain = () => {
     const handleShowHeart = (payload) => {
         const mapped = data.map((el) => el._id === payload.id ? { ...el, likes: [...el.likes, payload] } : el)
         setMap(mapped)
+        // console.log(payload)
+        AddLikePosts(payload)
     }
 
 

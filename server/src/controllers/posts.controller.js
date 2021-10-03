@@ -175,37 +175,37 @@ router.patch("/likepost/:id", async function (req, res) {
             }
         );
 
-        const postByUserId = post.userId;
-        const likeBy = await UsersData.findOne({ _id: userId }).lean().exec();
+        // const postByUserId = post.userId;
+        // const likeBy = await UsersData.findOne({ _id: userId }).lean().exec();
 
-        if (userId.toString() === postByUserId.toString()) {
-            return res.status(200).json({
-                error: false,
-                message: 'Like placed by yourself successfully',
-                data: post,
-            });
-        }
+        // if (userId.toString() === postByUserId.toString()) {
+        //     return res.status(200).json({
+        //         error: false,
+        //         message: 'Like placed by yourself successfully',
+        //         data: post,
+        //     });
+        // }
 
-        await UsersData.findOneAndUpdate(
-            { _id: postByUserId },
-            {
-                $addToSet: {
-                    notifications: {
-                        notification: `${likedBy.username} liked your post`,
-                        fromUserSrc: isUserExist.profilePic,
-                        postSrc: post.src,
-                        timestamp: Date.now(),
-                    },
-                },
-            },
-            {
-                new: true,
-            }
-        );
+        // await UsersData.findOneAndUpdate(
+        //     { _id: postByUserId },
+        //     {
+        //         $addToSet: {
+        //             notifications: {
+        //                 notification: `${likedBy.username} liked your post`,
+        //                 fromUserSrc: isUserExist.profilePic,
+        //                 postSrc: post.src,
+        //                 timestamp: Date.now(),
+        //             },
+        //         },
+        //     },
+        //     {
+        //         new: true,
+        //     }
+        // );
 
-        await UsersData.findByIdAndUpdate(postByUserId, {
-            isNewNotification: true,
-        });
+        // await UsersData.findByIdAndUpdate(postByUserId, {
+        //     isNewNotification: true,
+        // });
 
         res.status(200).json({ message: 'Liked post successfully', data: post });
 
@@ -257,44 +257,44 @@ router.post("/addcomment/:id", async function (req, res) {
         ).populate("userId").lean().exec();
 
         // notification part
-        const postByUserId = post.userId;
+        // const postByUserId = post.userId;
 
-        const commentedBy = await UsersData.findOne(
-            { _id: userId },
-            { password: 0, tokens: 0 }
-        ).populate("userId")
-            .lean()
-            .exec();
+        // const commentedBy = await UsersData.findOne(
+        //     { _id: userId },
+        //     { password: 0, tokens: 0 }
+        // ).populate("userId")
+        //     .lean()
+        //     .exec();
 
-        if (userId.toString() === postByUserId.toString()) {
-            return res.status(200).json({
-                message: 'Comment placed by yourself successfully',
-                data: post,
-            });
-        }
+        // if (userId.toString() === postByUserId.toString()) {
+        //     return res.status(200).json({
+        //         message: 'Comment placed by yourself successfully',
+        //         data: post,
+        //     });
+        // }
 
 
-        await UsersData.findOneAndUpdate(
-            { _id: postByUserId },
-            {
-                $addToSet: {
-                    notifications: {
-                        notification: `${commentedBy.username} commented on your post`,
-                        fromUserSrc: isUserExist.profilePic,
-                        postSrc: post.src,
-                        timestamp: Date.now(),
-                    },
-                },
-            },
-            {
-                new: true,
-            }
-        ).populate("userId").lean().exec();
+        // await UsersData.findOneAndUpdate(
+        //     { _id: postByUserId },
+        //     {
+        //         $addToSet: {
+        //             notifications: {
+        //                 notification: `${commentedBy.username} commented on your post`,
+        //                 fromUserSrc: isUserExist.profilePic,
+        //                 postSrc: post.src,
+        //                 timestamp: Date.now(),
+        //             },
+        //         },
+        //     },
+        //     {
+        //         new: true,
+        //     }
+        // ).populate("userId").lean().exec();
 
         // updating isNewNotification
-        await UsersData.findByIdAndUpdate(postByUserId, {
-            isNewNotification: true,
-        });
+        // await UsersData.findByIdAndUpdate(postByUserId, {
+        //     isNewNotification: true,
+        // });
 
         return res.status(200).json({
             error: false,

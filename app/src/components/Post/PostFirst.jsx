@@ -5,17 +5,19 @@ import { ComposeCont, ImageInputPart } from './ImageInputPart';
 import { useHistory } from 'react-router-dom';
 import { shallowEqual, useSelector, useDispatch } from 'react-redux'
 import { storePhoto } from '../../redux/postImage/PostAction';
+import axios from "axios"
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '90%',
-  height: '110%',
+  width: '80%',
+  height: '80%',
   bgcolor: 'background.paper',
   boxShadow: 24,
-  border: "0px solid white",
+  border: "1px solid #b9afaf",
   p: 4,
+  borderRadius: "10px"
 };
 
 // useEffect(() => {
@@ -24,43 +26,79 @@ const style = {
 
 
 export const PostFirst = () => {
+  const [img, setImg] = useState("")
+  const [file, setFiles] = useState([]);
   const history = useHistory()
   const dispatch = useDispatch()
-
+  const [next, setNext] = useState(false)
   const { data, isLoading, isError } = useSelector(
     (state) => state.postReducer,
     shallowEqual
   );
 
+  const [photo, setPhoto] = useState("")
   const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false)
+    setNext(false)
     history.push("/")
   }
 
-  const [photo, setPhoto] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
-  const imageHandler = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        // console.log(reader);
-        setPhoto(reader.result)
-      }
-    }
-    reader.readAsDataURL(e.target.files[0])
-  };
+  // const imageHandler = (e) => {
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     if (reader.readyState === 2) {
+  //       // console.log(reader);
+  //       setPhoto(reader.result)
+  //     }
+  //   }
+  //   reader.readAsDataURL(e.target.files[0])
+  // };
 
   const handleActivities = () => {
-    dispatch(storePhoto(photo))
+    dispatch(storePhoto(img))
   }
-  const handlePhoto = (e) => {
+  const handleChange = (e) => {
+    // e.preventDefault()
+    setFiles(e.target.files[0])
+    setFiles(e.target.files[0])
+
+  }
+  const handlePhoto = () => {
+    console.log(img)
+    setPhoto(img)
+
+    console.log(photo, "phtoto")
     handleActivities()
     history.push("/imageInputPart");
   }
+  const handleSubmit = () => {
+
+    const data = new FormData();
+    data.append("img", file)
+    const config = {
+      headers: { "Content-Type": "multipart/form-data" },
+    };
+    // console.log(data, files)
+    try {
+
+      axios.post("http://localhost:8000/file", data, config).then((res) => {
+        // console.log(res.data.data.img)
+        setImg(res.data.data.img)
+        // console.log(res.data.data)
+        setNext(true)
+
+      })
+    }
+    catch (e) {
+      setNext(false)
+      console.log(e)
+    }
+  }
 
   return (
-    <>
+    <PostWrapper>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         open={open}
@@ -71,7 +109,7 @@ export const PostFirst = () => {
         <Box sx={style}>
           <TopBar>
             <div className="back_arrow"></div>
-            <div className="text"><Typography variant="h4" gutterBottom component="div">New Post</Typography></div>
+            <div className="text"><Typography variant="h4" gutterBottom component="div">Create New Post</Typography></div>
             <div class="cross"><button onClick={handleClose} class="btn-cross" type="button"><div class="QBdPU "><svg aria-label="Close" class="_8-yf5 " color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 48 48" width="24"><path clip-rule="evenodd" d="M41.1 9.1l-15 15L41 39c.6.6.6 1.5 0 2.1s-1.5.6-2.1 0L24 26.1l-14.9 15c-.6.6-1.5.6-2.1 0-.6-.6-.6-1.5 0-2.1l14.9-15-15-15c-.6-.6-.6-1.5 0-2.1s1.5-.6 2.1 0l15 15 15-15c.6-.6 1.5-.6 2.1 0 .6.6.6 1.6 0 2.2z" fill-rule="evenodd"></path></svg></div></button></div>
           </TopBar>
           <hr />
@@ -81,13 +119,18 @@ export const PostFirst = () => {
             <Typography className="input_label" component="div">Drag photos and videos here.</Typography>
             {/* {!haveData?<Input type="file"accept="image/*" name="image-upload"/>:<ImageInputPart/>} */}
             <ComposeCont>
-              <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} onSelect={(e) => { handlePhoto(e) }} />
-              <button onClick={handlePhoto}>aa</button>
+              <input type="file" name="img" id="input" onChange={handleChange} />
+              <button onClick={handleSubmit}>Add</button>
+              <br />
+              {
+                next ? <button onClick={handlePhoto} >Next</button> : <button onClick={handlePhoto} disabled >Next</button>
+              }
+
             </ComposeCont>
           </ImageInput>
         </Box>
       </Modal>
-    </>
+    </PostWrapper>
   );
 }
 
@@ -95,8 +138,10 @@ const TopBar = styled.div`
     width:100%;
     display:flex;
     margin:1%;
+    /* border: 1px solid black; */
     & .back_arrow{
-        width:5%
+        width:1%
+
     }
     & .text{
         width:95%;
@@ -116,10 +161,20 @@ const TopBar = styled.div`
 const ImageInput = styled.div`
     align-items:center;
     text-align:center;
-    margin-top:30vh;
+    margin-top:5vh;
+    /* justify-content: space-around; */
+    /* border: 1px solid black; */
+    /* display: flex; */
+
 
     & .input_label{
         font-size:23px;
         color:#999;
+    /* border: 1px solid black; */
+
     }
+`
+const PostWrapper = styled.div`
+/* width: 50%; */
+/* border:1px solid red; */
 `

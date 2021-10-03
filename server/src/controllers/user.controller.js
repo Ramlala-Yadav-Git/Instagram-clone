@@ -50,7 +50,7 @@ router.patch("/", async function (req, res) {
                 message: "Something went wrong please try again!"
             })
         }
-        const { username, fullname, email, gender, bio, profilePic } = req.body
+        const { username, fullname, email, gender, bio, profilePic, number } = req.body
         if (username) {
             await UsersData.findOneAndUpdate({ _id: id }, { username: username },
                 {
@@ -88,6 +88,13 @@ router.patch("/", async function (req, res) {
         }
         if (profilePic) {
             await UsersData.findOneAndUpdate({ _id: id }, { profilePic: profilePic },
+                {
+                    new: true,
+                }
+            );
+        }
+        if (number) {
+            await UsersData.findOneAndUpdate({ _id: id }, { number: number },
                 {
                     new: true,
                 }
