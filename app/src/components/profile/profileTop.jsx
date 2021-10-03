@@ -104,7 +104,7 @@ function ProfileTop() {
     //     getPost(user.data && user.data.data._id)
     //     console.log(user)
     // }, [])
-    console.log(post, 'post');
+    // console.log(post, 'post');
     return <>
         <Navbar />
         <div className={styles.mainDiv}>
@@ -137,7 +137,7 @@ function ProfileTop() {
                 </div>
                 <div className={styles.secondDiv}>
                     <div className={styles.postFollowers}>
-                        <div className={styles.data}>{user.data && user.data.tagedPosts.length}</div>
+                        <div className={styles.data}>{user.data && user.data.savedPosts.length}</div>
                         <div className={styles.text}>posts</div>
 
                     </div>

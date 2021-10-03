@@ -97,7 +97,7 @@ export const PostFirst = () => {
       setNext(false)
       console.log(e)
     }
-    toast("Post added succesfully to upload click Next");
+    toast("uploading...");
   }
 
   return (
@@ -123,7 +123,7 @@ export const PostFirst = () => {
             {/* {!haveData?<Input type="file"accept="image/*" name="image-upload"/>:<ImageInputPart/>} */}
             <ComposeCont>
               <br />
-              <input type="file" name="img" id="input" onChange={handleChange} className={`${styles.customFileInput} ${styles.imgaeInput}`}  />
+              <input type="file" name="img" id="input" onChange={handleChange} className={`${styles.customFileInput} ${styles.imgaeInput}`} />
               <Button variant="contained" color="primary" loadingPosition="start" onClick={handleSubmit}>Add</Button>
               <br />
               {
@@ -135,16 +135,17 @@ export const PostFirst = () => {
         </Box>
       </Modal>
       <ToastContainer
-position="top-left"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-/>
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        margin-top="100px"
+      />
     </PostWrapper>
   );
 }

@@ -72,6 +72,10 @@ background: #FFFFFF;
     display: flex;
     flex-direction: column-reverse;
     justify-content: end;
+    gap:12px;
+    font-weight: 500;
+    font-size: 17px;
+    padding-left: 10px;
 }
 `
 

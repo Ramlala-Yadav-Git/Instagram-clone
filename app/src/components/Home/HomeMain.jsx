@@ -121,14 +121,19 @@ padding-left: 10%;
     width: 55%;
     display: flex;
     flex-direction: column;
+    margin-right: 35%;
     /* border: 1px solid black; */
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 
 & > :nth-child(2){
-    margin-left: 2%;
-    width: 35%;
+    margin-left: 50%;
+    width: 25%;
+    position: fixed;
+    /* border: 1px solid black; */
+    height: 70vh;
+    z-index: 40;
 }
 `
 const LoadingWrapper = styled.div`

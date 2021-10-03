@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { SuggestionUser } from './SuggestionUser'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { getallUser } from '../../redux/action'
+import { GetData } from "../../utils/localStorageData"
 
 
 const dataSuggestion = [
@@ -24,14 +25,16 @@ const dataSuggestion = [
 
 export const Suggestion = () => {
     const dispatch = useDispatch()
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getallUser)
-    },[])
-    const { loggedData, isLoading,allUser} = useSelector(
-        (state)=>state.homeReducer,
+    }, [])
+    const { loggedData, isLoading, allUser } = useSelector(
+        (state) => state.homeReducer,
         shallowEqual
     );
-    let {data} = allUser
+    const user = GetData("loginData")
+    let { data } = allUser;
+    console.log(user, data)
     // <SuggestionUser key={i} item={item} />
     return (
         <div>
@@ -40,10 +43,11 @@ export const Suggestion = () => {
                     <div>Suggestions For You</div>
                     <div className="see_all">See All</div>
                 </div>
-                <div>{(data)&&
-                data.map((item,i) =>(
-                     i<=3 && <SuggestionUser key={i} item={item} />
-                ))}</div>
+                <div>{(data) &&
+                    data.map((item, i) => (
+
+                        i <= 3 && user.data._id !== item._id && <SuggestionUser key={i} item={item} />
+                    ))}</div>
             </SuggestionContainer>
 
         </div>

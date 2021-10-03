@@ -42,7 +42,6 @@ padding: 0 200px;
 border-bottom: 1px solid #efefef;
 align-items: center;
 z-index:10 ;
-
 }
 
 .navbarFirst{
@@ -148,7 +147,7 @@ z-index:10 ;
     cursor: pointer;
 }
 .settings{
-    position: absolute;
+    position: fixed;
     top:55px;
     left:70%;
     width: 15%;
@@ -157,6 +156,8 @@ z-index:10 ;
     background:var(--white);
     border-radius: 3px;
     cursor: pointer;
+    z-index: 98;
+    /* position: sticky; */
 }
 .link {
 color: #262626!important;

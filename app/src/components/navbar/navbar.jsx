@@ -25,7 +25,7 @@ export const Navbar = () => {
     const [reels, setReels] = useState(false);
     const [likes, setLikes] = useState(false);
     const [search, setSearch] = useState(true)
-    const [dropDown,setDropDown] = useState(false)
+    const [dropDown, setDropDown] = useState(false)
     const history = useHistory()
     const user = GetData("loginData")
     const myLoggedData = user.data.data
@@ -92,12 +92,17 @@ export const Navbar = () => {
         setQuery(value)
     }
 
-    const openDropDown = () =>{
+    const handleLogOut = () => {
+        localStorage.removeItem("loginData");
+        history.push("/")
+    }
+
+    const openDropDown = () => {
         setDropDown(!dropDown)
     }
     return <>
 
-        <div  className={styles.navHeader}>
+        <div className={styles.navHeader}>
 
             <div className={styles.navbarFirst}>
                 <div className={styles.instaLogo} onClick={handleHomeLogo}>
@@ -119,12 +124,12 @@ export const Navbar = () => {
                                             {/* <span>{filteredName.fullname}</span> */}
                                             <SuggestionFriend className="indi-comp">
                                             <Avatar src={filteredName.profilePic} className="suggestions__image"/>
-                                            <div className="suggestions__username">
+                                            <div className="suggestions__username"> 
                             <Typography className="name_sugg">{filteredName.fullname}</Typography>
                             <Typography className="type_sugg">{filteredName.username}</Typography>        
                         </div>
                                             </SuggestionFriend>
-                                        </div>))})
+                                        </div>))}
                                 </div>}
                             </DropDown>
                             }
@@ -194,7 +199,10 @@ export const Navbar = () => {
                         <SettingsIcon />
                     </div>
                     <div className={styles.settingTitle}>
-                        <p>Settings</p>
+                        <Link to="/settings" style={{ textDecoration: "none", color: "inherit" }}>
+                            <p>Settings</p>
+
+                        </Link>
                     </div>
                 </div>
 
@@ -209,8 +217,8 @@ export const Navbar = () => {
 
                 <div className={styles.settingPart1}>
 
-                    <div  className={styles.settingTitle}>
-                        <p>Log out</p>
+                    <div className={styles.settingTitle}>
+                        <p onClick={() => handleLogOut()}>Log out</p>
                     </div>
                 </div>
             </div>
