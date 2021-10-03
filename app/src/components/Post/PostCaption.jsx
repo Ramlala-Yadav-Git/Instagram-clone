@@ -32,6 +32,7 @@ export const PostCaption = ({ data }) => {
             }
             // console.log(payload)
             axios.post("http://localhost:8000/posts", payload).then((res) => {
+                console.log(res, "photo data res");
                 if (!res.data.data.error) {
                     dispatch(getAllPostData())
                     alert("Post added succesfully")
@@ -57,8 +58,8 @@ export const PostCaption = ({ data }) => {
                 </ImageBox>
                 <CaptionBox>
                     <div className="username_info">
-                        <Avatar src={InfoData.imgLogo} className="logo_img" />
-                        <div className="info_username">{InfoData.userName}</div>
+                        <Avatar src={user.data && user.data.profilePic} className="logo_img" />
+                        <div className="info_username">{user.data.username}</div>
                     </div>
 
 

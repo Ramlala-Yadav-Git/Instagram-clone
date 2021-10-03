@@ -5,6 +5,8 @@ import { ComposeCont, ImageInputPart } from './ImageInputPart';
 import { useHistory } from 'react-router-dom';
 import { shallowEqual, useSelector, useDispatch } from 'react-redux'
 import { storePhoto } from '../../redux/postImage/PostAction';
+import styles from './Post.module.css'
+import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
 const style = {
   position: 'absolute',
@@ -95,6 +97,7 @@ export const PostFirst = () => {
       setNext(false)
       console.log(e)
     }
+    toast("uploading...");
   }
 
   return (
@@ -119,17 +122,30 @@ export const PostFirst = () => {
             <Typography className="input_label" component="div">Drag photos and videos here.</Typography>
             {/* {!haveData?<Input type="file"accept="image/*" name="image-upload"/>:<ImageInputPart/>} */}
             <ComposeCont>
-              <input type="file" name="img" id="input" onChange={handleChange} />
-              <button onClick={handleSubmit}>Add</button>
+              <br />
+              <input type="file" name="img" id="input" onChange={handleChange} className={`${styles.customFileInput} ${styles.imgaeInput}`} />
+              <Button variant="contained" color="primary" loadingPosition="start" onClick={handleSubmit}>Add</Button>
               <br />
               {
-                next ? <button onClick={handlePhoto} >Next</button> : <button onClick={handlePhoto} disabled >Next</button>
+                next ? <Button Button variant="contained" color="secondary" loadingPosition="start" onClick={handlePhoto} >Next</Button> : <Button Button variant="contained" color="secondary" loadingPosition="start" onClick={handlePhoto} disabled >Next</Button>
               }
 
             </ComposeCont>
           </ImageInput>
         </Box>
       </Modal>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        margin-top="100px"
+      />
     </PostWrapper>
   );
 }

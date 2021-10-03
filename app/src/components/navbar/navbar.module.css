@@ -170,16 +170,21 @@ text-decoration: none;
 .settingPart{
     width: 100%;
     display: flex;
+    font-size: 16px;
     
-    
+}
+
+.settingPart:hover{
+    background-color: rgb(240, 240, 240);
 }
 .settingStyle{
     width: 20%;
-    padding-top: 2px;
+    margin: 1vh 1%;
     
 }
 .settingTitle{
     color: #262626;
+    margin: 1vh 1%;
 }
 .switch{
     font-size: 15px;
