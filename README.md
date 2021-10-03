@@ -14,7 +14,7 @@ In this project we made clone of Instagram website.basically Instagram is an ent
     <img src="https://raw.githubusercontent.com/krishaayjois21/krishaayjois21/master/assets/javascript.png" width="100" height="100">
     <img src="https://yogalayout.com/static/reactnative.4e03ea5d.png" width="100" height="100">
     <img src="https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png" width="95" height="95">
-      <img src="https://www.clipartmax.com/png/middle/114-1147615_mongodb-leaf-open-source-nosql-database-startups-mongodb-logo.png" width="95" height="95">
+      <img src="https://www.clipartmax.com/png/middle/114-1147615_mongodb-leaf-open-source-nosql-database-startups-mongodb-logo.png" width="95" height="95" bacground="white">
  </p>
 
 #### Libraries Stack-
