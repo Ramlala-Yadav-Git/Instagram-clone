@@ -12,20 +12,20 @@ export const Info = () => {
     // const state = useSelector(state => state.user);
     let state = GetData("loginData")
     state = state.data
-    console.log(state);
+    // console.log(state);
 
-    const profilePush = () =>{
+    const profilePush = () => {
         history.push('/profile')
     }
     return (
         <div>
             <InfoContainer>
                 <div className="avt-logo">
-                <Avatar src={state && state.data.profilePic} className="logo_img" onClick={profilePush}/>
-</div>
+                    <Avatar src={state.data && state.data.profilePic} className="logo_img" onClick={profilePush} />
+                </div>
                 <div className="Info_content" onClick={profilePush}>
-                    <div className="info_userName">{state && state.data.username}</div>
-                    <div className="info_description">{state && state.data.fullname}</div>
+                    <div className="info_userName">{state.data && state.data.username}</div>
+                    <div className="info_description">{state.data && state.data.fullname}</div>
                 </div>
                 <div className="switch">
                     switch
