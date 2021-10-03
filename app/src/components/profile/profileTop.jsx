@@ -192,7 +192,7 @@ function ProfileTop() {
         {(theme1) ? <div className={styles.posts}>
             {(post) &&
                 post.map((item, i) => (
-                    <div className={styles.pictures}>
+                    <div className={styles.savedPosts}>
                         <img src="https://moneyscotch.com/wp-content/uploads/2019/09/69770954_2374368629345152_8522385848193008203_n-Cropped.jpg" alt="" />
                     </div>
                 ))}

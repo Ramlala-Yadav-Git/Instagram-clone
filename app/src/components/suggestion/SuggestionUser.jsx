@@ -45,7 +45,7 @@ export const SuggestionUser = ({item}) => {
     )
 }
 
-const SuggestionFriend = styled.div`
+export const SuggestionFriend = styled.div`
     display: flex;
     padding: 1px 0px;
 

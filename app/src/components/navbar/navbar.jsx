@@ -12,6 +12,8 @@ import { Link } from "react-router-dom"
 import { shallowEqual, useSelector } from "react-redux";
 import { GetData } from "../../utils/localStorageData";
 import styled from "styled-components";
+import { SuggestionFriend } from "../suggestion/SuggestionUser";
+import { Typography } from "@material-ui/core";
 const sample = "https://templates.joomla-monster.com/joomla30/jm-news-portal/components/com_djclassifieds/assets/images/default_profile.png"
 
 
@@ -114,7 +116,14 @@ export const Navbar = () => {
                                     
                                     {data?.filter((el) => el.fullname.includes(query) || el.username.includes(query)).map((filteredName, i) => (
                                         <div key={i} className={styles.autocompleteItems}>
-                                            <span>{filteredName.fullname}</span>
+                                            {/* <span>{filteredName.fullname}</span> */}
+                                            <SuggestionFriend className="indi-comp">
+                                            <Avatar src={filteredName.profilePic} className="suggestions__image"/>
+                                            <div className="suggestions__username">
+                            <Typography className="name_sugg">{filteredName.fullname}</Typography>
+                            <Typography className="type_sugg">{filteredName.username}</Typography>        
+                        </div>
+                                            </SuggestionFriend>
                                         </div>))})
                                 </div>}
                             </DropDown>
@@ -200,7 +209,7 @@ export const Navbar = () => {
 
                 <div className={styles.settingPart1}>
 
-                    <div className={styles.settingTitle}>
+                    <div  className={styles.settingTitle}>
                         <p>Log out</p>
                     </div>
                 </div>
@@ -211,15 +220,23 @@ export const Navbar = () => {
 }
 
 const DropDown = styled.div`
-width:400px;
-height:400px;
+width:300px;
+max-height:400px;
 position: absolute;
 display: inline-block;
 border:1px solid red;
-left:-40%;
+left:-12%;
 top:6vh;
-z-index:20;
-background-color:white;
+background-color: #f6f6f6;
+min-width: 230px;
+overflow: auto;
+border: 1px solid #ddd;
+z-index: 1;
+font-size:16px;
+
+& .indi-comp:hover{
+    background-color:#ececec
+}
 `
 
 
