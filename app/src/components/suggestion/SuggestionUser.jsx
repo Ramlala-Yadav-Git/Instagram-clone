@@ -33,7 +33,7 @@ export const SuggestionUser = ({item}) => {
                         <Avatar src={profilePic} className="suggestions__image"/>
                         <div className="suggestions__username">
                             <Typography className="name_sugg">{username}</Typography>
-                            <Typography className="type_sugg">"Suggested for you</Typography>        
+                            <Typography className="type_sugg">Suggested for you</Typography>        
                         </div>
                         <div onClick={()=>setFollowState(!followState)} className="sugg_friend">{
                             followState===false?"Follow":
@@ -47,11 +47,12 @@ export const SuggestionUser = ({item}) => {
 
 const SuggestionFriend = styled.div`
     display: flex;
-    padding: 5px 0px;
+    padding: 1px 0px;
+
 
 & .suggestions__image {
     max-width: 35px;
-    margin-top:4%;
+    margin-top:3%;
     max-height: 35px;
 }
 & .suggestions__username{
@@ -71,5 +72,4 @@ const SuggestionFriend = styled.div`
         cursor: pointer;
     }
 }
-
 `
