@@ -88,6 +88,10 @@ export const Navbar = () => {
 
     }
 
+    const handleLogOut = () => {
+        localStorage.removeItem("loginData");
+        history.push("/")
+    }
 
     return <>
 
@@ -108,7 +112,7 @@ export const Navbar = () => {
                                     {data?.filter((el) => el.fullname.includes(query) || el.username.includes(query)).map((filteredName, i) => (
                                         <div key={i} className={styles.autocompleteItems}>
                                             <span>{filteredName.fullname}</span>
-                                        </div>))})
+                                        </div>))}
                                 </div>}
                             <HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
                     }
@@ -173,7 +177,10 @@ export const Navbar = () => {
                         <SettingsIcon />
                     </div>
                     <div className={styles.settingTitle}>
-                        <p>Settings</p>
+                        <Link to="/settings" style={{ textDecoration: "none", color: "inherit" }}>
+                            <p>Settings</p>
+
+                        </Link>
                     </div>
                 </div>
 
@@ -189,7 +196,7 @@ export const Navbar = () => {
                 <div className={styles.settingPart1}>
 
                     <div className={styles.settingTitle}>
-                        <p>Log out</p>
+                        <p onClick={() => handleLogOut()}>Log out</p>
                     </div>
                 </div>
 

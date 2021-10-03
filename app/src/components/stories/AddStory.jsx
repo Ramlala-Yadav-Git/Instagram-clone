@@ -10,14 +10,29 @@ padding: 0px;
 display: inline;
 cursor: pointer;
 text-align: center;
+position :relative;
 /* font-size: 13px; */
 font-weight: 400;
 display: flex;
 flex-direction: column;
 
-:hover{
-
+&:hover{
+     content: "Add Story";
+    
 }
+& i{
+    display: inline;
+    color:#fff;
+    border:1px solid #fcf3f3;
+    position: absolute;
+    top: 0px;
+    font-size: 12px;
+    left: 10px;
+    border-radius: 50%;
+    padding: 2px;
+    background-color: #979393;
+}
+
 
 & img{
 
@@ -45,17 +60,18 @@ export const AddStory = () => {
     const story = true
 
     const handleDouble = () => {
-        console.log("aaaa");
+        // console.log("aaaa");
         history.push("/uploadStory")
     }
 
-    const showStory = () => {
-        console.log('story');
-    }
+    // const showStory = () => {
+    //     console.log('story');
+    // }
     return <>
         <SingleStoryContainer>
-            <div onClick={showStory} onDoubleClick={handleDouble}>
+            <div onClick={handleDouble}>
                 <img src={user.data && user.data.profilePic} alt="story" />
+                <i class="fa fa-plus"></i>
             </div>
             <span>{user.data && user.data.username}</span>
         </SingleStoryContainer>

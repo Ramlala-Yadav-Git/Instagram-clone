@@ -37,7 +37,7 @@ export const User = ({ name = "name", status = "22h", img, onClick, id }) => {
             </div>
             <div>
                 <p>{name}</p>
-                <p>{status}</p>
+                <p>active {Math.floor(Math.random() * 10)} hrs ago</p>
             </div>
         </UserWrapper>
 
