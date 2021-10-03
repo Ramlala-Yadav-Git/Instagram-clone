@@ -15,6 +15,7 @@ import { Redirect } from 'react-router'
 import { AddLikePosts } from '../../redux/AllPosts/action'
 
 import { AddCommentPosts } from '../../redux/AllPosts/action'
+import { AddSavedPosts, AddToLocal } from '../../redux/AllPosts/action'
 export const HomeMain = () => {
     // const [showHeart, setShowHeart] = useState(false)
 
@@ -56,6 +57,10 @@ export const HomeMain = () => {
         dispatch(getAllPosts())
 
     }
+    const savePost = (payload) => {
+        AddSavedPosts(payload)
+        AddToLocal(payload.userId._id)
+    }
 
     if (!loggedUser) {
         return <Redirect to="/login" />
@@ -73,12 +78,12 @@ export const HomeMain = () => {
 
                         {
                             !isLoading && post.length !== 0 && post.map((e) => {
-                                return < FeedCard key={e._id} handleShowHeart={handleShowHeart} showHeart={map} username={e.userId.username} userPic={e.userId.profilePic} handleRender={handleRender} img={e.img} id={e._id} userId={loggedUser.data} caption={e.caption} likes={e.likes.length} comments={e.comments} />
+                                return < FeedCard key={e._id} handleShowHeart={handleShowHeart} showHeart={map} username={e.userId.username} userPic={e.userId.profilePic} handleRender={handleRender} img={e.img} id={e._id} userId={loggedUser.data} caption={e.caption} likes={e.likes.length} comments={e.comments} SavePost={savePost} />
                             })
                         }
                         {
                             !isLoading && post.length === 0 && data.map((e) => {
-                                return < FeedCard key={e._id} handleShowHeart={handleShowHeart} showHeart={map} username={e.userId.username} userPic={e.userId.profilePic} handleRender={handleRender} img={e.img} id={e._id} userId={loggedUser.data} caption={e.caption} likes={e.likes.length} comments={e.comments} />
+                                return < FeedCard key={e._id} handleShowHeart={handleShowHeart} showHeart={map} username={e.userId.username} userPic={e.userId.profilePic} handleRender={handleRender} img={e.img} id={e._id} userId={loggedUser.data} caption={e.caption} likes={e.likes.length} comments={e.comments} SavePost={savePost} />
                             })
                         }
 

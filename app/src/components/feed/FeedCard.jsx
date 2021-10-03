@@ -1,20 +1,20 @@
 import "./feedCard.css";
 import more from './assets/img/icons/more.svg'
-// import dummy from "./assets/img/dummy.jpg";
 import heart from "./assets/img/icons/heart.svg";
-// import heartFilled from "./assets/img/icons/heartFilled.svg"
 import comment from "./assets/img/icons/comment.svg"
 import share from "./assets/img/icons/direct.svg"
 import collection from "./assets/img/icons/collection.svg"
 import smile from "./assets/img/icons/smile.png"
 import styled from "styled-components";
-// import { AddCommentPosts } from "../../redux/AllPosts/action"
 import { useState } from "react";
+import { GetData } from "../../utils/localStorageData"
 
-export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRender, userId, username, userPic, showHeart, handleShowHeart }) => {
+export const FeedCard = ({ img, postImg, SavePost, caption, likes, comments, id, handleRender, userId, username, userPic, showHeart, handleShowHeart }) => {
     const [inputPost, setInputPost] = useState("")
     const [redHeart, setRedHeart] = useState(false)
     const [count, setCount] = useState(0)
+    const [isSave, setIsNotSave] = useState(false)
+    const [saveCount, setSaveCount] = useState(0)
     const handleInput = (e) => {
         setInputPost(e.target.value)
     }
@@ -56,6 +56,36 @@ export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRen
             }
         }
     }
+    const handleSave = () => {
+        const payload = {
+            userId,
+            id,
+        }
+        SavePost(payload)
+        handleSaveToLocal()
+    }
+    const user = GetData("loginData")
+    const handleSaveToLocal = () => {
+
+        if (user.data) {
+
+            const getSavePosts = user.data.savedPosts.filter((el) => {
+
+                return el === id
+            })
+            if (getSavePosts.length !== 0 && saveCount === 0) {
+                setIsNotSave(true)
+                setSaveCount(1)
+            }
+            else {
+                setIsNotSave(false)
+                setSaveCount(0)
+
+            }
+            // console.log(getSavePosts, id)
+
+        }
+    }
     return (
         <>
             <div className="card">
@@ -94,8 +124,10 @@ export const FeedCard = ({ img, postImg, caption, likes, comments, id, handleRen
                         <img src={share} alt="" className="icons" />
 
                     </div>
-                    <div>
-                        <img src={collection} alt="" className="icons" />
+                    <div onClick={handleSave}>
+                        {!isSave ? <img src={collection} alt="" className="icons" />
+                            : <svg aria-label="Remove" className="_8-yf5 " color="#262626" fill="#262626" height="20" role="img" viewBox="0 0 48 48" width="20"><path d="M43.5 48c-.4 0-.8-.2-1.1-.4L24 28.9 5.6 47.6c-.4.4-1.1.6-1.6.3-.6-.2-1-.8-1-1.4v-45C3 .7 3.7 0 4.5 0h39c.8 0 1.5.7 1.5 1.5v45c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1z"></path></svg>
+                        }
                     </div>
                 </div>
 

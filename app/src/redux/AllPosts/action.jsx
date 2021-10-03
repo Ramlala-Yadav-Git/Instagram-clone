@@ -1,6 +1,7 @@
 
 import { GET_ALLPOST_DATA, GET_ALLPOST_FAILURE, GET_ALLPOST_REQUEST } from "./actionType"
 import axios from "axios"
+import { SetData } from "../../utils/localStorageData"
 export const getAllPostReq = () => {
     return {
         type: GET_ALLPOST_REQUEST
@@ -81,5 +82,23 @@ export const AddLikePosts = (payload) => {
 
     axios.patch(`http://localhost:8000/posts/likepost/${payload.id}`, data)
     console.log("added likes")
+}
+export const AddSavedPosts = (payload) => {
+
+
+
+    axios.patch(`http://localhost:8000/users/save`, payload)
+    console.log("added saved")
+}
+export const AddToLocal = (payload) => {
+
+
+
+    axios.get(`http://localhost:8000/users/${payload}`).then((res) => {
+        if (res.data) {
+            SetData("loginData", res.data)
+        }
+    })
+    // console.log(" saved")
 }
 
