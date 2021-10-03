@@ -61,7 +61,7 @@ const SuggestionContainer = styled.div`
     display:flex;
     & .see_all{
         align-items:right;
-        padding-left:37%;
+        padding-left:35%;
         font-weight:400;
     }
 }

@@ -2,6 +2,8 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import img from '.././../Image/Logos/amar pic.jpeg'
 import { shallowEqual, useSelector } from "react-redux"
+import { GetData } from "../../utils/localStorageData"
+import { useHistory } from 'react-router-dom';
 const SingleStoryContainer = styled.div`
 margin: 0px;
 padding: 0px;
@@ -12,6 +14,10 @@ text-align: center;
 font-weight: 400;
 display: flex;
 flex-direction: column;
+
+:hover{
+
+}
 
 & img{
 
@@ -32,17 +38,26 @@ border: ${props => props.watch ? "2px solid #c70505" : "2px solid gray"};
 `
 
 export const AddStory = () => {
-    const { loggedData, isLoading,allUser} = useSelector(
-        (state)=>state.homeReducer,
-        shallowEqual
-    );
-    console.log(loggedData);
+    const history = useHistory()
+    let {data} = GetData('loginData')
+    data = data.data
+    console.log(data);
+    const story = true
+
+    const handleDouble = ()=>{
+        console.log("aaaa");
+        history.push("/uploadStory")
+    }
+
+    const showStory=()=>{
+        console.log('story');
+    }
     return <>
-        <SingleStoryContainer  >
-            <Link to={`/viewstory/`}>
-                <img src={img} alt="story" />
-            </Link>
-            <span>aaaa</span>
+        <SingleStoryContainer>
+            <div onClick={showStory} onDoubleClick={handleDouble}>
+                <img src={data.profilePic} alt="story" />
+            </div>
+            <span>{data.username}</span>
         </SingleStoryContainer>
 
 

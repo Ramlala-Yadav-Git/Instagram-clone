@@ -3,7 +3,10 @@ import Avatar from '@material-ui/core/Avatar';
 import { Navbar } from "../navbar/navbar";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GetData } from "../../utils/localStorageData";
+import axios from "axios";
+import { Button } from "@material-ui/core";
 
 const Post = styled.div`
   color: ${props => props.theme1 ? "black" : "#8e8e8e"};
@@ -59,7 +62,7 @@ function ProfileTop() {
     const [theme2, setTheme2] = useState(false)
     const [theme3, setTheme3] = useState(false)
     const [theme4, setTheme4] = useState(false)
-
+    const [post,setPost] = useState()
 
     const handlePost = () => {
         setTheme1(true)
@@ -85,27 +88,40 @@ function ProfileTop() {
         setTheme3(false)
         setTheme4(true)
     }
-
-
+    
+       let state = GetData("loginData")
+        state = state.data.data
+        let posts
+    const getPost = (id)=>{
+        axios.get(`http://localhost:8000/posts/user/${id}`)
+        .then((res)=>{
+            posts = res.data
+            setPost(posts.data)
+        })
+    }
+    useEffect(() => {
+        getPost(state._id)
+    }, [])
+    console.log(post,'post');
     return <>
         <Navbar />
         <div className={styles.mainDiv}>
             <div className={styles.profilePicDiv}>
-                <Avatar src="https://templates.joomla-monster.com/joomla30/jm-news-portal/components/com_djclassifieds/assets/images/default_profile.png" alt="" className={styles.profilePic} />
+                <Avatar src={state.profilePic} alt="profilePic" className={styles.profilePic} />
             </div>
             <div className={styles.userInfo}>
                 <div className={styles.firstDiv}>
                     <div className={styles.userName}>
-                        <p className={styles.name1}>username</p>
+                        <p className={styles.name1}>{state.username}</p>
 
                     </div>
                     <div className={styles.editButtonDiv}>
-                        <button className={styles.button}>
+                        <Button variant="outlined" className={styles.button}>
                             <Link to="/settings" className={styles.buttonLink}>
                                 Edit Profile
                             </Link>
-                        </button>
-
+                        </Button>
+                        
 
                     </div>
                     <div className={styles.stettingDiv}>
@@ -119,29 +135,28 @@ function ProfileTop() {
                 </div>
                 <div className={styles.secondDiv}>
                     <div className={styles.postFollowers}>
-                        <div className={styles.data}>0</div>
+                        <div className={styles.data}>{state.tagedPosts}</div>
                         <div className={styles.text}>posts</div>
 
                     </div>
                     <div className={styles.postFollowers}>
-                        <div className={styles.data}>16</div>
+                        <div className={styles.data}>{state.followers}</div>
                         <div className={styles.text}>followers</div>
 
                     </div>
                     <div className={styles.postFollowers}>
-                        <div className={styles.data}>20</div>
+                        <div className={styles.data}>{state.following}</div>
                         <div className={styles.text}>following</div>
 
                     </div>
 
                 </div>
                 <div className={styles.thirdDiv}>
-                    <h3 className={styles.name}>dhruvsurya</h3>
-
-                </div>
-                <div className={styles.fourthDiv}>
-                    <p className={styles.bio}>peace for life</p>
-
+                    <h1 className={styles.name}>{state.fullname}</h1>
+                    <br />
+                    <div className={styles.bio}>
+                    <span >{state.bio}</span>
+                    </div>
                 </div>
             </div>
 
@@ -154,28 +169,31 @@ function ProfileTop() {
             <div className={styles.titleHeading}>
                 <Post theme1={theme1} onClick={handlePost}>
                     <svg aria-label="" className={styles.svg} color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path clip-rule="evenodd" d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z" fill-rule="evenodd"></path></svg>
-                    POSTS
+                    <p>POSTS</p>
                 </Post>
                 <Igtv theme2={theme2} onClick={handleIgtv}>
                     <svg aria-label="" className={styles.svg} color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path d="M41 10c-2.2-2.1-4.8-3.5-10.4-3.5h-3.3L30.5 3c.6-.6.5-1.6-.1-2.1-.6-.6-1.6-.5-2.1.1L24 5.6 19.7 1c-.6-.6-1.5-.6-2.1-.1-.6.6-.7 1.5-.1 2.1l3.2 3.5h-3.3C11.8 6.5 9.2 7.9 7 10c-2.1 2.2-3.5 4.8-3.5 10.4v13.1c0 5.7 1.4 8.3 3.5 10.5 2.2 2.1 4.8 3.5 10.4 3.5h13.1c5.7 0 8.3-1.4 10.5-3.5 2.1-2.2 3.5-4.8 3.5-10.4V20.5c0-5.7-1.4-8.3-3.5-10.5zm.5 23.6c0 5.2-1.3 7-2.6 8.3-1.4 1.3-3.2 2.6-8.4 2.6H17.4c-5.2 0-7-1.3-8.3-2.6-1.3-1.4-2.6-3.2-2.6-8.4v-13c0-5.2 1.3-7 2.6-8.3 1.4-1.3 3.2-2.6 8.4-2.6h13.1c5.2 0 7 1.3 8.3 2.6 1.3 1.4 2.6 3.2 2.6 8.4v13zM34.6 25l-9.1 2.8v-3.7c0-.5-.2-.9-.6-1.2-.4-.3-.9-.4-1.3-.2l-11.1 3.4c-.8.2-1.2 1.1-1 1.9.2.8 1.1 1.2 1.9 1l9.1-2.8v3.7c0 .5.2.9.6 1.2.3.2.6.3.9.3.1 0 .3 0 .4-.1l11.1-3.4c.8-.2 1.2-1.1 1-1.9s-1.1-1.2-1.9-1z"></path></svg>
-                    IGTV
+                    <p>IGTV</p>
                 </Igtv>
                 <Saved theme3={theme3} onClick={handleSaved}>
                     <svg aria-label="" className={styles.svg} color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path d="M43.5 48c-.4 0-.8-.2-1.1-.4L24 29 5.6 47.6c-.4.4-1.1.6-1.6.3-.6-.2-1-.8-1-1.4v-45C3 .7 3.7 0 4.5 0h39c.8 0 1.5.7 1.5 1.5v45c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1zM24 26c.8 0 1.6.3 2.2.9l15.8 16V3H6v39.9l15.8-16c.6-.6 1.4-.9 2.2-.9z"></path></svg>
-                    SAVED
+                    <p>SAVED</p>
                 </Saved>
                 <Tagged theme4={theme4} onClick={handleTagged}>
                     <svg aria-label="" className={styles.svg} color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 48 48" width="12"><path clip-rule="evenodd" d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z" fill-rule="evenodd"></path></svg>
-                    TAGGED
+                    <p>TAGGED</p>
                 </Tagged>
             </div>
 
         </div>
 
         {(theme1) ? <div className={styles.posts}>
+            {(post)&&
+            post.map((item,i)=>(
             <div className={styles.pictures}>
                 <img src="https://moneyscotch.com/wp-content/uploads/2019/09/69770954_2374368629345152_8522385848193008203_n-Cropped.jpg" alt="" />
             </div>
+            ))}
             <div className={styles.pictures}>
                 <img src="https://s3.ap-southeast-1.amazonaws.com/images.deccanchronicle.com/dc-Cover-bkjeh4gluvdkobm158k2m4ps21-20180725143525.Medi.jpeg" alt="" />
             </div>

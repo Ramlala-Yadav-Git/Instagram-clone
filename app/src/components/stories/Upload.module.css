@@ -1,0 +1,37 @@
+.customFileInput::-webkit-file-upload-button {
+    visibility: hidden;
+    
+  }
+  .customFileInput{
+    text-align: center;
+    align-items: center;
+    max-width: 10%;
+    margin: 2% auto;
+  }
+  .customFileInput::before {
+    
+    content: 'Select Story';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    /* -webkit-user-select: none; */
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    border: 1px solid rgb(7, 218, 207);
+  }
+  .customFileInput:hover::before {
+    border-color: black;
+    border: 1px solid white;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(7, 218, 207);
+
+  }
+  .customFileInput:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }

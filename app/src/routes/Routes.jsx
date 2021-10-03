@@ -12,7 +12,7 @@ import Setting from "../components/settings/settings";
 import ProfileTop from '../components/profile/profileTop'
 import { Link } from "react-router-dom"
 import Styled from "styled-components"
-
+import {UploadStory} from '../components/stories/UploadStory'
 export const Routes = () => {
     return (
         <>
@@ -20,7 +20,9 @@ export const Routes = () => {
             <Switch>
                 <Route exact path="/">
                     <HomeMain />
-
+                </Route>
+                <Route exact path="/uploadStory">
+                    <UploadStory/>
                 </Route>
                 <Route path="/viewStory/:id">
                     <ViewStory />
