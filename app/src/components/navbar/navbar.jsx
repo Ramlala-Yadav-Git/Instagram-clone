@@ -11,6 +11,7 @@ import { Link } from "react-router-dom"
 // import axios from "axios";
 import { shallowEqual, useSelector } from "react-redux";
 import { GetData } from "../../utils/localStorageData";
+import styled from "styled-components";
 const sample = "https://templates.joomla-monster.com/joomla30/jm-news-portal/components/com_djclassifieds/assets/images/default_profile.png"
 
 
@@ -22,8 +23,11 @@ export const Navbar = () => {
     const [reels, setReels] = useState(false);
     const [likes, setLikes] = useState(false);
     const [search, setSearch] = useState(true)
+    const [dropDown,setDropDown] = useState(false)
     const history = useHistory()
     const user = GetData("loginData")
+    const myLoggedData = user.data.data
+    console.log(myLoggedData);
     const handleProfile = () => {
         setProfile(!profile)
 
@@ -79,19 +83,19 @@ export const Navbar = () => {
         shallowEqual
     );
     let { data } = allUser
-    const names = ['James', 'John', 'Paul', 'Ringo', 'George'];
 
     const handleChange = (event) => {
         console.log(data);
         const { value } = event.target
         setQuery(value)
-
     }
 
-
+    const openDropDown = () =>{
+        setDropDown(!dropDown)
+    }
     return <>
 
-        <div className={styles.navHeader}>
+        <div  className={styles.navHeader}>
 
             <div className={styles.navbarFirst}>
                 <div className={styles.instaLogo} onClick={handleHomeLogo}>
@@ -102,16 +106,24 @@ export const Navbar = () => {
             <div className={styles.navbarMiddle}>
                 <div className={styles.middleSearch}>
                     {(search) ? <div className={styles.navBarSearch} onClick={handleSearch}>  <FaSistrix className={styles.searchIcon} />Search</div> :
-                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} onChange={handleChange} />
-                            {data?.length > 0 &&
+                        <div><input type="text" placeholder="Search" className={styles.navBarSearch1} onChange={handleChange} onClick={openDropDown} />
+                            {(dropDown)&&
+                            <DropDown>
+                                {data?.length > 0 &&
                                 <div className={styles.autocomplete}>
+                                    
                                     {data?.filter((el) => el.fullname.includes(query) || el.username.includes(query)).map((filteredName, i) => (
                                         <div key={i} className={styles.autocompleteItems}>
                                             <span>{filteredName.fullname}</span>
                                         </div>))})
                                 </div>}
+                            </DropDown>
+                            }
                             <HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
                     }
+
+
+
 
                 </div>
 
@@ -192,24 +204,23 @@ export const Navbar = () => {
                         <p>Log out</p>
                     </div>
                 </div>
-
-
             </div>
-
-
-
-
-
             : ""
-
         }
-
-
-
-
     </>
-
 }
+
+const DropDown = styled.div`
+width:400px;
+height:400px;
+position: absolute;
+display: inline-block;
+border:1px solid red;
+left:-40%;
+top:6vh;
+z-index:20;
+background-color:white;
+`
 
 
 
