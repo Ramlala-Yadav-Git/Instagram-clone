@@ -15,7 +15,7 @@ In this project we made clone of Instagram website.basically Instagram is an ent
     <img src="https://yogalayout.com/static/reactnative.4e03ea5d.png" width="100" height="100">
     <img src="https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png" width="95" height="95">
       <img src="https://gocode.colorado.gov/wp-content/uploads/2020/11/MongoDB-logo.gif" width="100" height="100" >
-     <img src="https://fungsitama.web.id/wp-content/uploads/2020/08/0_cQTv5n6xV7opBBIB.png" width="95" height="95">
+     <img src="https://fungsitama.web.id/wp-content/uploads/2020/08/0_cQTv5n6xV7opBBIB.png" width="110" height="110">
  </p>
 
 #### Libraries Stack-
