@@ -22,8 +22,8 @@ In this project we made clone of Instagram website.basically Instagram is an ent
 2. material-ui
 3. react js
 4. axios
-5.redux
-6.mango DB
+5. redux
+6. mango DB
 
 
 ## Functionalities associated with this website
