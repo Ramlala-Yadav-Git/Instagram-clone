@@ -20,7 +20,7 @@ export const Stories = () => {
     }
     const getStories = () => {
         axios.get("http://localhost:8000/story").then((res) => {
-            console.log(res.data.data);
+            // console.log(res.data.data);
             setStories(res.data.data)
         })
     }
@@ -39,7 +39,7 @@ export const Stories = () => {
                 {
                     stories && stories.map((el) => {
                         return <>
-                            <SingleStory img={el.img} name={el.username} watch={true} id={el.id} />
+                            <SingleStory img={el.img} name={el.username} watch={true} id={el._id} key={el._id} />
 
                         </>
                     })

@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 
 })
 router.get("/:id", async (req, res) => {
-    const story = await UsersData.findById(req.params.id).lean().exec();
+    const story = await StoryData.findById(req.params.id).lean().exec();
 
     return res.status(200).json({ data: story })
 

@@ -5,17 +5,21 @@ import Button from '@material-ui/core/Button';
 import { Navbar } from "../navbar/navbar";
 import axios from "axios";
 import { useState } from "react";
+import { GetData, SetData } from "../../utils/localStorageData"
+import { useHistory } from "react-router-dom"
 
 
 function Settings() {
+    const user = GetData("loginData")
     const [file, setFiles] = useState([]);
     const [img, setImg] = useState("")
-    const [username, setusername] = useState("")
-    const [fullname, setFullName] = useState("")
-    const [bio, setBio] = useState("")
-    const [email, setEmail] = useState("")
-    const [number, setNumber] = useState("")
-    const [gender, setGender] = useState("")
+    const [username, setusername] = useState(user.data.username)
+    const [fullname, setFullName] = useState(user.data.fullname)
+    const [bio, setBio] = useState(user.data.bio)
+    const [email, setEmail] = useState(user.data.email)
+    const [number, setNumber] = useState(user.data.number)
+    const [gender, setGender] = useState(user.data.gender)
+    const history = useHistory()
 
     const handleChange = (e) => {
         // e.preventDefault()
@@ -37,7 +41,7 @@ function Settings() {
         try {
 
             axios.post("http://localhost:8000/file", data, config).then((res) => {
-                console.log(res.data.data)
+                // console.log(res.data.data)
                 setImg(res.data.data.img)
             })
         }
@@ -54,9 +58,23 @@ function Settings() {
             bio,
             email,
             number,
-            gender
+            gender,
+            id: user.data._id
         }
-        console.log(payload)
+        axios.patch("http://localhost:8000/users", payload).then((res) => {
+            console.log(res.data)
+            if (!res.data.error) {
+                SetData("loginData", res.data)
+                alert(res.data.message)
+                history.push("/")
+
+            }
+            else {
+                alert(res.data.message)
+            }
+        })
+
+        // console.log(payload)
     }
     return <>
         <Navbar />
@@ -109,12 +127,12 @@ function Settings() {
             <div className={styles.rightDiv}>
                 <div className={styles.firstDiv}>
                     <div className={styles.avatar}>
-                        <Avatar src="https://templates.joomla-monster.com/joomla30/jm-news-portal/components/com_djclassifieds/assets/images/default_profile.png" alt="" />
+                        <Avatar src={user.data.profilePic} alt="" />
 
                     </div>
 
                     <div className={styles.fRight}>
-                        <p className={styles.p1}>dhruvasurya1997</p>
+                        <p className={styles.p1}>{user.data.username}</p>
                         <input type="file" name="img" placeholder="Change profile photo" className={styles.p2} onChange={(e) => handleChange(e)} />
                         <button onClick={handleSubmit}>ADD</button>
                     </div>
@@ -127,7 +145,7 @@ function Settings() {
                         Name
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="text" className={styles.input} onChange={(e) => setFullName(e.target.value)} />
+                        <input type="text" className={styles.input} onChange={(e) => setFullName(e.target.value)} value={fullname} />
                         <div className={styles.sub}>
                             Help people discover your account by using the name that you're known by: either your full name, nickname or business name.
                         </div>
@@ -142,7 +160,7 @@ function Settings() {
                         Username
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="test" className={styles.input} onChange={(e) => setusername(e.target.value)} />
+                        <input type="test" className={styles.input} onChange={(e) => setusername(e.target.value)} value={username} />
                         <div className={styles.sub}>
                             In most cases, you'll be able to change your username back to dhruvasurya1997 for another 14 days. <span className={styles.blue}>Learn more</span>
                         </div>
@@ -170,8 +188,9 @@ function Settings() {
                             aria-label="minimum height"
                             minRows={3}
 
-                            style={{ width: 294, maxWidth: 294 }}
+                            style={{ width: 320 }}
                             onChange={(e) => setBio(e.target.value)}
+                            value={bio}
                         />
                         <div className={styles.sub3}>
                             Personal information
@@ -187,7 +206,7 @@ function Settings() {
                         Email address
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="text" className={styles.input} onChange={(e) => setEmail(e.target.value)} />
+                        <input type="text" className={styles.input} onChange={(e) => setEmail(e.target.value)} value={email} />
 
 
                     </div>
@@ -198,7 +217,7 @@ function Settings() {
                         Phone number
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="text" className={styles.input} onChange={(e) => setNumber(e.target.value)} />
+                        <input type="text" className={styles.input} onChange={(e) => setNumber(e.target.value)} value={number} />
 
 
                     </div>
@@ -209,7 +228,7 @@ function Settings() {
                         Gender
                     </div>
                     <div className={styles.inputDiv}>
-                        <input type="text" className={styles.input} onChange={(e) => setGender(e.target.value)} />
+                        <input type="text" className={styles.input} onChange={(e) => setGender(e.target.value)} value={gender} />
 
 
                     </div>

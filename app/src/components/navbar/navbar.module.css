@@ -125,6 +125,7 @@ z-index:10 ;
     width: 26.666666%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .navbarLast li{
@@ -140,8 +141,8 @@ z-index:10 ;
 }
 
 .profilePic{
-    max-width: 23px;
-    max-height: 23px;
+    max-width:25px;
+    max-height:25px;
 
     margin-left: 3px;
     cursor: pointer;

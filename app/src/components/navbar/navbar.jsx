@@ -1,5 +1,5 @@
 import styles from "./navbar.module.css"
-import { FaLessThanEqual, FaSistrix, FaSyncAlt } from "react-icons/fa"
+import { FaSistrix, FaSyncAlt } from "react-icons/fa"
 import Avatar from '@material-ui/core/Avatar';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
@@ -8,8 +8,10 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import { useState } from "react"
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom"
-import axios from "axios";
+// import axios from "axios";
 import { shallowEqual, useSelector } from "react-redux";
+import { GetData } from "../../utils/localStorageData";
+const sample = "https://templates.joomla-monster.com/joomla30/jm-news-portal/components/com_djclassifieds/assets/images/default_profile.png"
 
 
 
@@ -21,6 +23,7 @@ export const Navbar = () => {
     const [likes, setLikes] = useState(false);
     const [search, setSearch] = useState(true)
     const history = useHistory()
+    const user = GetData("loginData")
     const handleProfile = () => {
         setProfile(!profile)
 
@@ -69,27 +72,27 @@ export const Navbar = () => {
         history.push("/directMessage")
     }
     //search work by amarjeet
-    const [searchUser,setSearchUser] = useState([])
-    const [query,setQuery] = useState()
-    const { loggedData, isLoading,allUser} = useSelector(
-        (state)=>state.homeReducer,
+    const [searchUser, setSearchUser] = useState([])
+    const [query, setQuery] = useState()
+    const { loggedData, isLoading, allUser } = useSelector(
+        (state) => state.homeReducer,
         shallowEqual
     );
-    let {data} = allUser
+    let { data } = allUser
     const names = ['James', 'John', 'Paul', 'Ringo', 'George'];
 
     const handleChange = (event) => {
         console.log(data);
-        const {value} = event.target
+        const { value } = event.target
         setQuery(value)
-        
+
     }
 
 
     return <>
-    
+
         <div className={styles.navHeader}>
-            
+
             <div className={styles.navbarFirst}>
                 <div className={styles.instaLogo} onClick={handleHomeLogo}>
                     <img src={process.env.PUBLIC_URL + "/images/instalogo.png"} alt="" />
@@ -100,14 +103,14 @@ export const Navbar = () => {
                 <div className={styles.middleSearch}>
                     {(search) ? <div className={styles.navBarSearch} onClick={handleSearch}>  <FaSistrix className={styles.searchIcon} />Search</div> :
                         <div><input type="text" placeholder="Search" className={styles.navBarSearch1} onChange={handleChange} />
-                        {data?.length>0 &&
-                        <div className={styles.autocomplete}>
-                            {data?.filter((el)=> el.fullname.includes(query)||el.username.includes(query)).map((filteredName,i)=>(
-                            <div key={i} className={styles.autocompleteItems}>
-                                <span>{filteredName.fullname}</span>
-                            </div>))})
-                            </div>}
-                        <HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
+                            {data?.length > 0 &&
+                                <div className={styles.autocomplete}>
+                                    {data?.filter((el) => el.fullname.includes(query) || el.username.includes(query)).map((filteredName, i) => (
+                                        <div key={i} className={styles.autocompleteItems}>
+                                            <span>{filteredName.fullname}</span>
+                                        </div>))})
+                                </div>}
+                            <HighlightOffIcon onClick={handleSearch1} className={styles.searchIcon1} /></div>
                     }
 
                 </div>
@@ -122,7 +125,7 @@ export const Navbar = () => {
 
                 <li onClick={handleMessage}>
 
-                    {(message) ? <svg aria-label="Direct" className="_8-yf5 " color="#262626" fill="#262626" height="22" role="img" viewBox="0 0 48 48" width="22"><path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 5.7l13.2 13c.5.4 1.1.6 1.7.3l16.6-8c.7-.3 1.6-.1 2 .5.4.7.2 1.6-.5 2l-15.6 9.9c-.5.3-.8 1-.7 1.6l4.6 19c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.5-.5.5-1.1.2-1.6z"></path></svg> :
+                    {(message) ? <svg aria-label="Direct" className="_8-yf5 " color="#262626" fill="#262626" height="22" role="img" viewBox="0 0 48 48" width="22" ><path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 5.7l13.2 13c.5.4 1.1.6 1.7.3l16.6-8c.7-.3 1.6-.1 2 .5.4.7.2 1.6-.5 2l-15.6 9.9c-.5.3-.8 1-.7 1.6l4.6 19c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.5-.5.5-1.1.2-1.6z"></path></svg> :
                         <svg aria-label="Direct" className="_8-yf5 " color="#262626" fill="#262626" height="22" role="img" viewBox="0 0 48 48" width="22"><path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.4-.4.4-1 .1-1.5zM5.2 6.1h35.5L18 18.7 5.2 6.1zm18.7 33.6l-4.4-18.4L42.4 8.6 23.9 39.7z"></path></svg>}
 
                 </li>
@@ -138,7 +141,7 @@ export const Navbar = () => {
 
                     }
                 </li>
-                <Avatar src="https://templates.joomla-monster.com/joomla30/jm-news-portal/components/com_djclassifieds/assets/images/default_profile.png" alt="" className={styles.profilePic} onClick={handleProfile} />
+                <Avatar src={user ? user.data.profilePic : sample} alt="" className={styles.profilePic} onClick={handleProfile} />
             </div>
 
         </div>

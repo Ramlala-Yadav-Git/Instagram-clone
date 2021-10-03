@@ -88,12 +88,22 @@
 }
 .avatar{
     width: 20%;
-    margin-right: 5%;
+    margin-right: 4%;
     margin-top: 10px;
     padding-left: 14%;
 }
 .fRight{
-    width: 80%;
+width: 80%;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.fRight > button{
+width: 105px;
+background-color: rgba(214, 211, 211, 0.623);
+border: 1px solid rgb(109, 105, 105);
+font-weight: 500;
+font-size: 15.2px;
 }
 .p1{
     color: #262626;
@@ -120,6 +130,9 @@ color: black;
 font-weight: 600;
 font-size: 15px;
 margin-right: 4%;
+/* margin-bottom: 10px; */
+/* border: 1px solid black; */
+
 
 }
 .inputDiv{
@@ -141,6 +154,8 @@ margin-right: 4%;
     line-height: 14px;
     text-align: left;
     margin-top: 10px;
+
+
 }
 .sub1{
     color: #8e8e8e;
