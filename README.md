@@ -14,6 +14,7 @@ In this project we made clone of Instagram website.basically Instagram is an ent
     <img src="https://raw.githubusercontent.com/krishaayjois21/krishaayjois21/master/assets/javascript.png" width="100" height="100">
     <img src="https://yogalayout.com/static/reactnative.4e03ea5d.png" width="100" height="100">
     <img src="https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png" width="95" height="95">
+      <img src="https://www.clipartmax.com/png/middle/114-1147615_mongodb-leaf-open-source-nosql-database-startups-mongodb-logo.png" width="95" height="95">
  </p>
 
 #### Libraries Stack-
@@ -43,7 +44,7 @@ Make sure you have node & npm install in your system both in app and server.
 ### Clone the App
 
 ```
-git clone <url>
+git clone https://github.com/Ramlala-Yadav-Git/Instagram-clone.git
 
 cd app
 
@@ -51,7 +52,7 @@ npm start
 
 cd server
 
-npm run server
+npm start
 ```
 
 
