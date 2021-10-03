@@ -14,6 +14,8 @@ In this project we made clone of Instagram website.basically Instagram is an ent
     <img src="https://raw.githubusercontent.com/krishaayjois21/krishaayjois21/master/assets/javascript.png" width="100" height="100">
     <img src="https://yogalayout.com/static/reactnative.4e03ea5d.png" width="100" height="100">
     <img src="https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png" width="95" height="95">
+      <img src="https://gocode.colorado.gov/wp-content/uploads/2020/11/MongoDB-logo.gif" width="100" height="100" >
+     <img src="https://fungsitama.web.id/wp-content/uploads/2020/08/0_cQTv5n6xV7opBBIB.png" width="110" height="110">
  </p>
 
 #### Libraries Stack-
@@ -23,7 +25,8 @@ In this project we made clone of Instagram website.basically Instagram is an ent
 3. react js
 4. axios
 5. redux
-6. mango DB
+6. express 
+7. mango DB
 
 
 ## Functionalities associated with this website
@@ -43,7 +46,7 @@ Make sure you have node & npm install in your system both in app and server.
 ### Clone the App
 
 ```
-git clone <url>
+git clone https://github.com/Ramlala-Yadav-Git/Instagram-clone.git
 
 cd app
 
@@ -51,7 +54,7 @@ npm start
 
 cd server
 
-npm run server
+npm start
 ```
 
 

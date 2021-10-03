@@ -3,7 +3,8 @@ import { Link } from "react-router-dom"
 import img from '.././../Image/Logos/amar pic.jpeg'
 import { shallowEqual, useSelector } from "react-redux"
 import { GetData } from "../../utils/localStorageData"
-import { useHistory } from 'react-router-dom';
+import { useHistory , Redirect} from 'react-router-dom';
+import { SingleStory } from "./SingleStory"
 const SingleStoryContainer = styled.div`
 margin: 0px;
 padding: 0px;
@@ -50,7 +51,7 @@ export const AddStory = () => {
     }
 
     const showStory = () => {
-        console.log('story');
+        <Redirect > <SingleStory  /></Redirect>
     }
     return <>
         <SingleStoryContainer watch>

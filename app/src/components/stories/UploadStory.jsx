@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Box, Button, Input, Modal, Typography } from '@material-ui/core';
 import styled from 'styled-components';
 import { UploadModel } from './UploadModel';
+import { useHistory } from 'react-router';
 
 const style = {
   position: 'absolute',
@@ -19,7 +20,11 @@ const style = {
 export function UploadStory() {
   const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const history = useHistory()
+  const handleClose = () => {
+    setOpen(false);
+    history.push('/')
+  }
 
   return (
     <div>

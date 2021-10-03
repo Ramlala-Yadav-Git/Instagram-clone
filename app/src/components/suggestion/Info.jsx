@@ -10,8 +10,8 @@ import { useHistory } from 'react-router'
 export const Info = () => {
     const history = useHistory()
     // const state = useSelector(state => state.user);
-    let state = GetData("loginData")
-    state = state.data
+    const state = GetData("loginData")
+    // state = state.data
     // console.log(state);
 
     const profilePush = () => {
