@@ -77,7 +77,7 @@ npm start
 <p>
 <h3>Login & Register Page</h3>
 <p>After registration user can login to his account</p> 
-  <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/Screenshot%202021-10-04%20102835.png" width="320" height="250">
+  <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/Screenshot%202021-10-04%20102835.png" width="420" height="350">
  <h1>Home Page</h1>
  <p>At home page you can see navbar at top and posts below and even follow suggestion side</p>
 <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1633268287011/AK0tel34l.png" width="500" height="250">
