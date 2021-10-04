@@ -98,6 +98,13 @@ npm start
 
  Click the link to view project: 
  <a href="">Instagram</a>
+ ## Lessons Learned
+
+We are a learner and we faced many issues to build this site. These are some topic that challenges us to make this:-
+- Creating backend data
+- Adding data on mongoDB atlas
+- Taking images from frontend and sending it to backend and retriving it back to front end.
+- using various styling libraries to write less code.
   
 
 
