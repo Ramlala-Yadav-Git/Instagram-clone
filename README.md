@@ -8,36 +8,41 @@ In this project we made clone of Instagram website.basically Instagram is an ent
 
 #### Tech Stack-
 
-<p float="left">
-    <img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_640.png" width="100" height="100">
-    <img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747_640.png" width="100" height="100">
-    <img src="https://raw.githubusercontent.com/krishaayjois21/krishaayjois21/master/assets/javascript.png" width="100" height="100">
-    <img src="https://yogalayout.com/static/reactnative.4e03ea5d.png" width="100" height="100">
-    <img src="https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png" width="95" height="95">
-      <img src="https://gocode.colorado.gov/wp-content/uploads/2020/11/MongoDB-logo.gif" width="100" height="100" >
-     <img src="https://fungsitama.web.id/wp-content/uploads/2020/08/0_cQTv5n6xV7opBBIB.png" width="110" height="110">
- </p>
+<p align="left">
+    <a href="https://www.w3.org/html/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/html-5.png"/> </a>
+    <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/css3.png"/> </a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://img.icons8.com/color/48/000000/javascript.png"/> </a>
+    <a href="https://reactjs.org/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/react-native.png"/> </a>
+    <a href="https://redux.js.org" target="_blank"> <img src="https://img.icons8.com/color/48/000000/redux.png"/> </a>    
+    <!-- <a href="https://getbootstrap.com" target="_blank"> <img src="https://img.icons8.com/color/48/000000/bootstrap.png"/> </a>  -->
+    <a style="padding-right:8px;" href="https://nodejs.org" target="_blank"> <img src="https://img.icons8.com/color/48/000000/nodejs.png"/> </a>
+     <a href="https://www.mongodb.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="48" height="48"/> </a>
+     <a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a>
+    
+</p>
 
 #### Libraries Stack-
-
-1. styled-components
-2. material-ui
-3. react js
-4. axios
-5. redux
+1.React.js
+2.Redux
+3.Bootstrap
+4. styled-components
+5. material-ui
 6. express 
 7. mango DB
+8. node.js
+9.axios
 
 
 ## Functionalities associated with this website
 
-1. A user can register his account.
-2. Can log in using given credentials during registration.
-3. User can post photos and videos .
-4. User can text his friends.
-5. User can like a photo.
-6. User can comment and share a post.
-7. User can follow the people whom they like.
+1. A user can register account and login to website.
+2. User can post photos with caption.
+3. User can text his friends.
+4. User can comment and like a post.
+5. User can follow the people whom they like.
+6. user can post his story and see others story as well.
+7. user can update his profile name, username,bio etc.
+8. user can see saved posts.
 
 ## Prerequisites-
 
@@ -48,12 +53,14 @@ Make sure you have node & npm install in your system both in app and server.
 ```
 git clone https://github.com/Ramlala-Yadav-Git/Instagram-clone.git
 
+For run app 
 cd app
-
+npm install
 npm start
 
+for run server
 cd server
-
+npm install
 npm start
 ```
 
@@ -68,8 +75,12 @@ npm start
 ## Snippets
 
 <p>
-    <img src="https://images.unsplash.com/photo-1619837374214-f5b9eb80876d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGVoJTIwbGFkYWtofGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" width="320" height="250">
-
+<h3>Login & Register Page</h3>
+<p>After registration user can login to his account</p> 
+  <img src="https://res-console.cloudinary.com/ramlala/thumbnails/transform/v1/image/upload//v1633321368/TVkgcGVyc29uYWwvU2NyZWVuc2hvdF8zNzdfcmY1amY5/drilldown" width="320" height="250">
+ <h1>Home Page</h1>
+ <p>At home page you can see navbar at top and posts below and even follow suggestion side</p>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1633268287011/AK0tel34l.png" width="500" height="250">
  </p>
  
  Click the link to view project: 
@@ -82,6 +93,8 @@ npm start
 Contributions are always welcome!
 
 You can contribute with us to make this more functionable.
+
+Suggestions are always welcome.
   
 ## Support
 
