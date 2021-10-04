@@ -74,15 +74,18 @@ npm start
 
 ## Snippets
 
-<p>
-<h3>Login & Register Page</h3>
-<p>After registration user can login to his account</p> 
+
   <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/Screenshot%202021-10-04%20102835.png" width="780" height="550">
- <h1>Home Page</h1>
- <p>At home page you can see navbar at top and posts below and even follow suggestion side</p>
-<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1633268287011/AK0tel34l.png" width="500" height="250">
- </p>
- 
+    <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/chat.png" width="780" height="550">
+      <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/composePost.png" width="780" height="550">
+        <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/createPost.png" width="780" height="550">
+          <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/post.png" width="780" height="550">
+          <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/profile.png" width="780" height="550">
+    <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/story.png" width="780" height="550">
+      <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/suggession.png" width="780" height="550">
+        <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/updateProfile.png" width="780" height="550">
+          <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/userProfile.png" width="780" height="550">
+
  Click the link to view project: 
  <a href="">Instagram</a>
   
