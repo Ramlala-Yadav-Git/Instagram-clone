@@ -85,7 +85,7 @@ npm start
         
    <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/post.png" width="780" height="450">
           
-   <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/profile.png" width="780" height="450">
+   <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/profile.png" width="580" height="350">
           
   <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/story.png" width="780" height="450">
     
