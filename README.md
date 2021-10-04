@@ -76,15 +76,25 @@ npm start
 
 
   <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/Screenshot%202021-10-04%20102835.png" width="780" height="550">
+  
     <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/chat.png" width="780" height="550">
+    
       <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/composePost.png" width="780" height="550">
+      
         <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/createPost.png" width="780" height="550">
+        
           <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/post.png" width="780" height="550">
+          
           <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/profile.png" width="780" height="550">
+          
     <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/story.png" width="780" height="550">
+    
       <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/suggession.png" width="780" height="550">
+      
         <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/updateProfile.png" width="780" height="550">
+        
           <img src="https://github.com/Ramlala-Yadav-Git/Instagram-clone/blob/main/app/src/Image/productImages/userProfile.png" width="780" height="550">
+          
 
  Click the link to view project: 
  <a href="">Instagram</a>
